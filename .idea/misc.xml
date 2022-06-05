@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_agenda.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_animals.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_basic.xml" value="0.264" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_calendar.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_calendar_add_event.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_crops.xml" value="0.264" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_crops_add.xml" value="0.2" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_crops_detailed.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_crops_detailed_edit.xml" value="0.24864130434782608" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_general_information.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_include.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_login.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_main.xml" value="0.213768115942029" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_menu.xml" value="0.14385964912280702" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_new_calendar_event.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_register.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_settings.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_settings2.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_weather.xml" value="0.2" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_weather_forecast.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/basic.xml" value="0.213768115942029" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/crop_info.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/crops_cardview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/list_item.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/toolbar.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

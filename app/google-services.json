@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "87842166014",
+    "project_id": "senior-design-project-c7afe",
+    "storage_bucket": "senior-design-project-c7afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87842166014:android:8cfd7c39b3eb2ccdbe41af",
+        "android_client_info": {
+          "package_name": "com.example.seniordesignproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87842166014-fg9qlulor1p7t9n4tauipk3ttpum9n52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIaXCxxPs-zWT-lUodBjBLS3xctVO9RII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87842166014-fg9qlulor1p7t9n4tauipk3ttpum9n52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

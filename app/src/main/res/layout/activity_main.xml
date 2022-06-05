@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+
+        <TextView
+            android:id="@+id/menu_welcome_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/str_menu_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/menu_weather_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/str_menu_weather"
+            app:layout_constraintEnd_toStartOf="@+id/menu_temp_txt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt" />
+
+        <TextView
+            android:id="@+id/menu_temp_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/str_menu_temp_example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/menu_weather_txt"
+            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt" />
+
+        <TextView
+            android:id="@+id/menu_date_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/str_menu_date_example"
+            app:layout_constraintEnd_toStartOf="@+id/menu_weather_type_txt"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_weather_txt" />
+
+        <TextView
+            android:id="@+id/menu_weather_type_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/str_menu_weather_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/menu_date_txt"
+            app:layout_constraintTop_toBottomOf="@+id/menu_temp_txt" />
+
+        <Button
+            android:id="@+id/menu_weather_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:alpha="0.25"
+            android:color="#66FF0000"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/menu_date_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/menu_agenda_btn"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/str_menu_agenda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_weather_btn" />
+
+        <Button
+            android:id="@+id/menu_crops_btn"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_menu_crops"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_agenda_btn" />
+
+        <Button
+            android:id="@+id/menu_animals_btn"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_menu_animals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_crops_btn" />
+
+        <Button
+            android:id="@+id/menu_general_info_btn"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_menu_general_information"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_animals_btn" />
+
+        <Button
+            android:id="@+id/menu_settings_btn"
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_menu_settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_general_info_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

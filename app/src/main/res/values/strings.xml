@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">SeniorDesignProject</string>
+    <!-- Main Activity -->
+    <string name="str_menu_welcome">Welcome</string>
+    <string name="str_menu_weather">Weather</string>
+    <string name="str_menu_temp_example">30C</string>
+    <string name="str_menu_date_example">01.01.2022</string>
+    <string name="str_menu_weather_type">Clear</string>
+    <string name="str_menu_agenda">Agenda</string>
+    <string name="str_menu_crops">Crops</string>
+    <string name="str_menu_animals">Animals</string>
+    <string name="str_menu_general_information">General Information</string>
+    <string name="str_menu_settings">Settings</string>
+    <!-- Weather Activity -->
+    <string name="str_weather_today">Today</string>
+    <string name="str_weather_tomorrow">Tomorrow</string>
+    <string name="str_weather_nextweek">Next Week</string>
+    <string name="str_weather_weather">Weather</string>
+    <!-- Agenda Activity -->
+    <string name="str_agenda_calendar">Calendar</string>
+    <string name="str_agenda_todo_list">To-Do List</string>
+    <string name="str_agenda_notes">Notes</string>
+    <string name="str_agenda_inventory">Inventory</string>
+    <!-- Calendar Activity -->
+    <string name="str_calendar_new">New</string>
+    <string name="str_calendar_empty">empty</string>
+    <string name="str_calendar_date">Date:</string>
+    <string name="str_calendar_task">Task:</string>
+    <string name="str_calendar_selectField">Select Field</string>
+    <string name="str_calendar_addEvent">Add Event</string>
+    <!-- Crops Activity -->
+    <string name="str_crops_new">new</string>
+    <!-- Crops Add  - Crops Deatield Activity -->
+    <string name="str_crop_type">Crop Type:</string>
+    <string name="str_crop_acres">Acres:</string>
+    <string name="str_crop_total_tree">Tree Number:</string>
+    <string name="str_crop_empty_hint">empty</string>
+    <string name="str_crop_add">Add</string>
+    <string name="str_crop_save_changes">Save Changes</string>
+    <string name="str_crop_empty">empty</string>
+    <string name="str_crop_name">Name:</string>
+    <!-- Crops Card View -->
+    <string name="str_crops_cardView_acres">Acres</string>
+    <!-- Animals Activity -->
+
+    <!-- General Information Activity -->
+
+    <!-- Settings Activity -->
+    <string name="str_settings_signout">Sign Out</string>
+
+    <!-- Login Activity -->
+    <string name="str_login_email">E-mail</string>
+    <string name="str_login_password">Password</string>
+    <string name="str_login_login">Login</string>
+    <string name="str_login_forget_password">Forget my password</string>
+
+    <!-- Register Activity -->
+    <string name="str_register_name">Name</string>
+    <string name="str_register_email">E-mail</string>
+    <string name="str_register_password">Password</string>
+    <string name="str_register_create_account">Create Account</string>
+    <string name="str_register_already_have_account">Already have an account?</string>
+
+
+</resources>
