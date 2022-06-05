@@ -21,12 +21,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.protobuf.StringValue;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NewCalendarEvent extends AppCompatActivity {
@@ -39,6 +41,7 @@ public class NewCalendarEvent extends AppCompatActivity {
     ArrayAdapter<String> adapterItems;
     Button addEvent_btn;
     EditText task_et, field_et;
+    ArrayList<String> datesFromDatabase;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.newCalendarEvent_toolbar);
@@ -55,8 +58,7 @@ public class NewCalendarEvent extends AppCompatActivity {
         field_list.add("None");
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
         addEvent_btn = findViewById(R.id.new_calendar_event_addEvent_btn);
-
-
+        datesFromDatabase = new ArrayList<>();
 
 
     }
@@ -103,28 +105,63 @@ public class NewCalendarEvent extends AppCompatActivity {
         long millis = date.getTime();
         System.out.println("millis  "+millis);
 
+        // Get all the dates for checking duplicates
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        ref = database.getReference("Users/"+userUid+"/Events");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    datesFromDatabase.add(ds.getKey());
+                }
+                // If selected date key equals to any other existing key, change its name
+                for (int i = 0; i < datesFromDatabase.size(); i++){
+                    System.out.println("dateExtra out if: " + dateExtra);
+                    if(datesFromDatabase.get(i).equals(dateExtra)){
+                        dateExtra= dateExtra + "-" + i;
+                        i = 0;
+                        System.out.println("dateExtra in if: " + dateExtra);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+
+
         addEvent_btn.setOnClickListener(v -> {
-
-
-            String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            if (task_et.getText().toString().isEmpty()){
+                Toast.makeText(NewCalendarEvent.this, "Task Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+                task_et.requestFocus();
+                return;
+            }
             database = FirebaseDatabase.getInstance();
-            ref = database.getReference("Users/"+userUid+"/Events"); // can also be used to create a table
-            //convert date to millis
+            ref = database.getReference("Users/"+userUid+"/Events");
 
             //adding table continents
             HashMap map = new HashMap();
             map.put("Date", millis);
-            map.put("Field", field_et.getText().toString());
+            map.put("Date yyyy-mm-dd", date_tv.getText().toString());
+            // If field is not selected assign "None" to it
+            if (field_et.getText().toString().isEmpty()){
+                map.put("Field", "None");
+            }
+            else {
+                map.put("Field", field_et.getText().toString());
+            }
             map.put("Task", task_et.getText().toString());
-            //update the database
 
-            int randomNum = ThreadLocalRandom.current().nextInt(0, 99999);
-            ref.child(date_tv.getText().toString()+" "+ String.valueOf(randomNum)).updateChildren(map);
+            //update the database
+            System.out.println("dateExtra before push: " + dateExtra);
+            ref.child(dateExtra).updateChildren(map);
             Toast.makeText(NewCalendarEvent.this, "Event Successfully Added!" , Toast.LENGTH_SHORT).show();
             startActivity(new Intent(NewCalendarEvent.this, Calendar.class));
 
         });
 
-
     }
+
 }
