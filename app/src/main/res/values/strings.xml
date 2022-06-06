@@ -30,7 +30,7 @@
     <string name="str_calendar_addEvent">Add Event</string>
     <!-- Crops Activity -->
     <string name="str_crops_new">new</string>
-    <!-- Crops Add  - Crops Deatield Activity -->
+    <!-- Crops Add  - Crops Detailed Activity -->
     <string name="str_crop_type">Crop Type:</string>
     <string name="str_crop_acres">Acres:</string>
     <string name="str_crop_total_tree">Tree Number:</string>
@@ -42,6 +42,10 @@
     <!-- Crops Card View -->
     <string name="str_crops_cardView_acres">Acres</string>
     <!-- Animals Activity -->
+    <string name="str_animals_add_animals">Add Animals</string>
+    <!-- Animal_add Activity -->
+    <string name="str_animals_add_type">Type</string>
+    <string name="str_animals_add_number">Number</string>
 
     <!-- General Information Activity -->
 

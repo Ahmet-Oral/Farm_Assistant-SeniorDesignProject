@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+
+    <TextView
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="feature"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/animal_feature_adapter_feature"
+        android:layout_weight="50"/>
+
+
+
+        <TextView
+            android:gravity="center"
+            android:text="feature value"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:id="@+id/animal_feature_adapter_value"/>
+
+
+
+</LinearLayout>
+
+
+

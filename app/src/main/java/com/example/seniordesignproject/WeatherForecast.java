@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,11 +37,11 @@ public class WeatherForecast extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Weather Forecast");
 
-        editText = findViewById(R.id.editTextTextPersonName);
+        editText = findViewById(R.id.weather_cityName);
         searchWeather_btn = findViewById(R.id.weather_searchWeather_btn);
         imageView = findViewById(R.id.imageView);
-        temptv = findViewById(R.id.textView3);
-        time = findViewById(R.id.textView2);
+        temptv = findViewById(R.id.weather_temperature);
+        time = findViewById(R.id.weather_date);
 
         longitude = findViewById(R.id.longitude);
         latitude = findViewById(R.id.latitude);
@@ -51,8 +50,8 @@ public class WeatherForecast extends AppCompatActivity {
         sunset = findViewById(R.id.sunset);
         pressure = findViewById(R.id.pressure);
         wind = findViewById(R.id.wind);
-        country = findViewById(R.id.country);
-        city_nam = findViewById(R.id.city_nam);
+        country = findViewById(R.id.weather_country);
+        city_nam = findViewById(R.id.weather_city);
         max_temp = findViewById(R.id.temp_max);
         min_temp = findViewById(R.id.min_temp);
         feels = findViewById(R.id.feels);
