@@ -34,9 +34,10 @@
         android:id="@+id/animals_add_type_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="@string/str_animals_add_type"
         app:layout_constraintEnd_toStartOf="@+id/animals_add_type_pt"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_animals_add" />
 
@@ -77,10 +78,32 @@
     <ListView
         android:id="@+id/animals_add_listview"
         android:layout_width="409dp"
-        android:layout_height="400dp"
+        android:layout_height="380dp"
         app:layout_constraintBottom_toTopOf="@+id/animals_add_addAnimal_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animals_add_name_tv" />
+
+    <TextView
+        android:id="@+id/animals_add_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/str_animals_add_name"
+        app:layout_constraintEnd_toStartOf="@+id/animals_add_name_pt"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animals_add_number_tv" />
+
+    <EditText
+        android:id="@+id/animals_add_name_pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/str_animals_add_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/animals_add_number_pt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

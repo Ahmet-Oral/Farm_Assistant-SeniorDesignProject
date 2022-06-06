@@ -46,6 +46,7 @@
     <!-- Animal_add Activity -->
     <string name="str_animals_add_type">Type</string>
     <string name="str_animals_add_number">Number</string>
+    <string name="str_animals_add_name">Name</string>
 
     <!-- General Information Activity -->
 

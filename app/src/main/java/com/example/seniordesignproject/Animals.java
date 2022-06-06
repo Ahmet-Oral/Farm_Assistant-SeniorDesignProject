@@ -42,7 +42,7 @@ public class Animals extends AppCompatActivity {
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Crops");
+        ref = database.getReference("Users/"+userUid+"/Animals");
 
 
     }
@@ -60,7 +60,7 @@ public class Animals extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    animals_list.add(new Animal_Field(ds.child("Name").getValue().toString(),ds.child("Acres").getValue().toString()));
+                    animals_list.add(new Animal_Field(ds.child("AnimalType").getValue().toString(),ds.child("NumberOfAnimals").getValue().toString()));
                     list_keys.add(ds.getKey());
 
                 }
@@ -71,13 +71,10 @@ public class Animals extends AppCompatActivity {
             }
         });
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                adapter.notifyDataSetChanged();
-                System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
+        listview.setOnItemClickListener((parent, view, position, id) -> {
+            adapter.notifyDataSetChanged();
+            System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
 
-            }
         });
 
         btn_add.setOnClickListener(v -> {
