@@ -47,6 +47,11 @@
     <string name="str_animals_add_type">Type</string>
     <string name="str_animals_add_number">Number</string>
     <string name="str_animals_add_name">Name</string>
+    <!-- Animals detailed Activity -->
+    <string name="str_animals_detailed_save">Save Changes</string>
+    <string name="str_animals_detailed_cancel">Cancel Changes</string>
+
+
 
     <!-- General Information Activity -->
 

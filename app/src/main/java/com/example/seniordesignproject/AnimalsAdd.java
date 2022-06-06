@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -82,10 +84,10 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         listView.setAdapter(adapter);
 
 
-        for(int i=0; i<features_list.size(); i++) {
-            System.out.println("feature: "+features_list.get(i).getFeature());
-            System.out.println("value: "+features_list.get(i).getValue());
-        }
+//        for(int i=0; i<features_list.size(); i++) {
+//            System.out.println("feature: "+features_list.get(i).getFeature());
+//            System.out.println("value: "+features_list.get(i).getValue());
+//        }
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Temp");
@@ -114,17 +116,14 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
                     }
                     FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Temp").child("AnimalFeatures").removeValue();
                     adapter.notifyDataSetChanged();
-
                 }
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+
+
 
 
     }

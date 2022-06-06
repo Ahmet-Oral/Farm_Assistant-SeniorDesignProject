@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.protobuf.StringValue;
 
 import java.util.ArrayList;
 
@@ -74,6 +75,9 @@ public class Animals extends AppCompatActivity {
         listview.setOnItemClickListener((parent, view, position, id) -> {
             adapter.notifyDataSetChanged();
             System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
+            Intent intent = new Intent(Animals.this, AnimalsDetailed.class);
+            intent.putExtra("position", list_keys.get(position));
+            startActivity(intent);
 
         });
 

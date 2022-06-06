@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeniorDesignProject">
         <activity
-            android:name=".AnimalsAdd"
+            android:name=".AnimalsDetailed"
             android:exported="false"
             android:parentActivityName=".Animals"/>
+        <activity
+            android:name=".AnimalsAdd"
+            android:exported="false"
+            android:parentActivityName=".Animals" />
         <activity
             android:name=".WeatherForecast"
             android:exported="false"
