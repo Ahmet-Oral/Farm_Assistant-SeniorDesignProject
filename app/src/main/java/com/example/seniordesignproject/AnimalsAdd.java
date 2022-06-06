@@ -1,5 +1,6 @@
 package com.example.seniordesignproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -11,8 +12,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +27,7 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
     ArrayList<Animal_Feature> features_list;
     String dialog_feature;
     String dialog_value;
+    String temp_feature, temp_value;
     FirebaseDatabase database;
     DatabaseReference ref;
     private EditText animalType_et, animalNumber_et, fieldName_et;
@@ -40,24 +45,25 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         features_list = new ArrayList<Animal_Feature>();
         addFeature_btn = findViewById(R.id.animals_add_addFeature_btn);
         addAnimal_btn = findViewById(R.id.animals_add_addAnimal_btn);
-        dialog_feature = getIntent().getStringExtra("feature");
-        dialog_value = getIntent().getStringExtra("value");
-        System.out.println("extras: " + dialog_feature+ " "+ dialog_value);
+        //dialog_feature = getIntent().getStringExtra("feature");
+        //dialog_value = getIntent().getStringExtra("value");
+        //System.out.println("extras: " + dialog_feature+ " "+ dialog_value);
 
         animalType_et = findViewById(R.id.animals_add_type_pt);
         animalNumber_et = findViewById(R.id.animals_add_number_pt);
         fieldName_et = findViewById(R.id.animals_add_name_pt);
 
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
+
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //System.out.println("Started activity: ");
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         setContentView(R.layout.activity_animals_add);
         init();
         addAnimal_btn.setOnClickListener(v -> {
@@ -66,20 +72,51 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
 
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
 
-        features_list.add(new Animal_Feature("feature1","value1"));
+        //features_list.add(new Animal_Feature("feature1","value1"));
 
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
-            System.out.println("before: " + dialog_feature+ " "+ dialog_value);
-
-            if (dialog_feature != null) {
-                features_list.add(new Animal_Feature(dialog_feature,dialog_value));
-                adapter.notifyDataSetChanged();
-            }
-
 
         });
+
         listView.setAdapter(adapter);
+
+
+        for(int i=0; i<features_list.size(); i++) {
+            System.out.println("feature: "+features_list.get(i).getFeature());
+            System.out.println("value: "+features_list.get(i).getValue());
+
+        }
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid+"/Temp");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    System.out.println("ds: "+ ds);
+
+                    if(ds.child("temp_feature") != null){
+                        temp_feature = ds.child("temp_feature").getValue().toString();
+                    }
+                    if(ds.child("temp_value") != null){
+                        temp_value = ds.child("temp_value").getValue().toString();
+
+                    }
+                }
+                if(temp_feature != null & temp_value != null){
+                    features_list.add(new Animal_Feature(temp_feature,temp_value));
+                }
+
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }
@@ -91,7 +128,16 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
     @Override
     public void applyTexts(String feature, String value) {
         //feature and value are the strings taken from the pop up dialog
-        System.out.println("feature: " + feature+" value: "+value);
+        //System.out.println("feature: " + feature+" value: "+value);
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid);
+        HashMap map = new HashMap();
+        map.put("temp_feature", feature);
+        map.put("temp_value", value);
+
+        //update the database
+        ref.child("Temp/AnimalFeatures").updateChildren(map);
 
 
     }
@@ -124,6 +170,8 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         }else {
             map.put("FieldName", fieldName);
         }
+
+
 
         //update the database
         ref.child(animalType).updateChildren(map);

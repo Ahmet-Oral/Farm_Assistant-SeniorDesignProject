@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class ExampleDialog extends AppCompatDialogFragment {
-    private EditText editTextFeature;
-    private EditText editTextValue;
+    private static EditText editTextFeature;
+    private static EditText editTextValue;
     private ExampleDialogListener listener;
 
 
@@ -39,13 +39,14 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         String feature = editTextFeature.getText().toString();
                         String value = editTextValue.getText().toString();
 
-                        Intent intent = new Intent(getActivity(), AnimalsAdd.class);
-                        intent.putExtra("feature",feature);
-                        intent.putExtra("value",value);
-                        System.out.println("feature extra: " + feature+" value extra: "+value);
-                        startActivity(intent);
+//                        Intent intent = new Intent(getActivity(), AnimalsAdd.class);
+//                        intent.putExtra("feature",feature);
+//                        intent.putExtra("value",value);
+//                        System.out.println("feature extra: " + feature+" value extra: "+value);
+//                        startActivity(intent);
 
                         listener.applyTexts(feature, value);
+
 
                     }
                 });
@@ -66,5 +67,13 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
     public interface ExampleDialogListener{
         void applyTexts(String feature, String value);
+    }
+
+    public static EditText getEditTextFeature() {
+        return editTextFeature;
+    }
+
+    public static EditText getEditTextValue() {
+        return editTextValue;
     }
 }
