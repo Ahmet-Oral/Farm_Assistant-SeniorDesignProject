@@ -85,7 +85,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         for(int i=0; i<features_list.size(); i++) {
             System.out.println("feature: "+features_list.get(i).getFeature());
             System.out.println("value: "+features_list.get(i).getValue());
-
         }
 
         database = FirebaseDatabase.getInstance();
@@ -93,22 +92,31 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds: snapshot.getChildren()){
-                    System.out.println("ds: "+ ds);
+                if(snapshot.getValue() != null){
+                    for(DataSnapshot ds: snapshot.getChildren()){
+                        //System.out.println("ds: "+ ds);
 
-                    if(ds.child("temp_feature") != null){
-                        temp_feature = ds.child("temp_feature").getValue().toString();
+                        if(ds.child("temp_feature") != null){
+                            temp_feature = ds.child("temp_feature").getValue().toString();
+                        }
+                        if(ds.child("temp_value") != null){
+                            temp_value = ds.child("temp_value").getValue().toString();
+
+                        }
                     }
-                    if(ds.child("temp_value") != null){
-                        temp_value = ds.child("temp_value").getValue().toString();
+                    if(temp_feature != null & temp_value != null){
+                        features_list.add(new Animal_Feature(temp_feature,temp_value));
+                    }
+
+                    for(int i=0; i<features_list.size(); i++) {
+                        System.out.println("feature - value : " + features_list.get(i).getFeature()+ " " + features_list.get(i).getValue());
 
                     }
-                }
-                if(temp_feature != null & temp_value != null){
-                    features_list.add(new Animal_Feature(temp_feature,temp_value));
+                    FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Temp").child("AnimalFeatures").removeValue();
+                    adapter.notifyDataSetChanged();
+
                 }
 
-                adapter.notifyDataSetChanged();
 
             }
 
@@ -169,6 +177,10 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
             return;
         }else {
             map.put("FieldName", fieldName);
+        }
+
+        for (int i = 0; i < features_list.size(); i++){
+            map.put(features_list.get(i).getFeature(),features_list.get(i).getValue());
         }
 
 
