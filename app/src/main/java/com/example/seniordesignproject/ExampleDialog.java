@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,13 @@ public class ExampleDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String feature = editTextFeature.getText().toString();
                         String value = editTextValue.getText().toString();
+
+                        Intent intent = new Intent(getActivity(), AnimalsAdd.class);
+                        intent.putExtra("feature",feature);
+                        intent.putExtra("value",value);
+                        System.out.println("feature extra: " + feature+" value extra: "+value);
+                        startActivity(intent);
+
                         listener.applyTexts(feature, value);
 
                     }

@@ -13,6 +13,8 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
     private Button addFeature_btn;
     ListView listView;
     ArrayList<Animal_Feature> features_list;
+    String dialog_feature;
+    String dialog_value;
 
 
 
@@ -25,6 +27,9 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         listView = findViewById(R.id.animals_add_listview);
         features_list = new ArrayList<Animal_Feature>();
         addFeature_btn = findViewById(R.id.animals_add_addFeature_btn);
+        dialog_feature = getIntent().getStringExtra("feature");
+        dialog_value = getIntent().getStringExtra("value");
+        System.out.println("extras: " + dialog_feature+ " "+ dialog_value);
 
     }
 
@@ -40,7 +45,13 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
 
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
-            adapter.notifyDataSetChanged();
+            System.out.println("before: " + dialog_feature+ " "+ dialog_value);
+
+            if (dialog_feature != null) {
+                features_list.add(new Animal_Feature(dialog_feature,dialog_value));
+                adapter.notifyDataSetChanged();
+            }
+
 
         });
         listView.setAdapter(adapter);
@@ -56,6 +67,7 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
     public void applyTexts(String feature, String value) {
         //feature and value are the strings taken from the pop up dialog
         System.out.println("feature: " + feature+" value: "+value);
+
 
     }
 }
