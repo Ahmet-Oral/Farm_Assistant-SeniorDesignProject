@@ -35,8 +35,7 @@ public class Calendar extends AppCompatActivity {
     private SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
     List eventDatesList = new ArrayList<String>();
     List eventInfoList = new ArrayList<String>();
-    ArrayList<String> database_events_dates;
-    ArrayList<String> database_events_tasks;
+    ArrayList<String> database_events_dates,database_events_tasks, database_events_types;
     FirebaseDatabase database;
     DatabaseReference ref;
     ArrayAdapter<String> adapter;
@@ -58,6 +57,7 @@ public class Calendar extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         database_events_tasks = new ArrayList<>();
         database_events_dates = new ArrayList<>();
+        database_events_types = new ArrayList<>();
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ref = database.getReference("Users/"+userUid+"/Events");
     }
@@ -81,6 +81,7 @@ public class Calendar extends AppCompatActivity {
                     //Store dates for all events in database
                     database_events_tasks.add(ds.child("Task").getValue().toString());
                     database_events_dates.add(ds.child("Date").getValue().toString());
+                    database_events_types.add(ds.child("Type").getValue().toString());
                     eventDatesList.add(ds.child("Date yyyy-mm-dd").getValue().toString());
                     //System.out.println("eventDatesList: " + eventDatesList);
 
@@ -90,7 +91,13 @@ public class Calendar extends AppCompatActivity {
                     Long newEventDate = Long.parseLong(database_events_dates.get(i));
                     String newEventTask = database_events_tasks.get(i);
                     //System.out.println("date-task " + newEventDate+" - "+newEventTask);
-                    compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
+                    if (database_events_types.get(i).equals("Animal")){
+                        compactCalendar.addEvent(new Event(Color.YELLOW,newEventDate,newEventTask));
+                    }else if(database_events_types.get(i).equals("Crop")){
+                        compactCalendar.addEvent(new Event(Color.GREEN,newEventDate,newEventTask));
+                    }else{
+                        compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
+                    }
                 }
             }
             @Override
