@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeniorDesignProject">
         <activity
+            android:name=".CalendarEventDetails"
+            android:exported="false"
+            android:parentActivityName=".Calendar"/>
+        <activity
             android:name=".AnimalsDetailedEdit"
             android:exported="false"
-            android:parentActivityName=".AnimalsDetailed"/>
+            android:parentActivityName=".AnimalsDetailed" />
         <activity
             android:name=".AnimalsDetailed"
             android:exported="false"

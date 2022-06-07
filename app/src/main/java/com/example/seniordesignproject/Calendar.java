@@ -32,10 +32,10 @@ import java.util.Locale;
 public class Calendar extends AppCompatActivity {
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
-    private SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd-MM-yyyy");
     List eventDatesList = new ArrayList<String>();
     List eventInfoList = new ArrayList<String>();
-    ArrayList<String> database_events_dates,database_events_tasks, database_events_types;
+    ArrayList<String> database_events_dates,database_events_tasks, database_events_types, database_events_keys;
     FirebaseDatabase database;
     DatabaseReference ref;
     ArrayAdapter<String> adapter;
@@ -54,11 +54,12 @@ public class Calendar extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(Calendar.this,R.layout.crop_info,R.id.cropInfo,eventInfoList);
         listView = findViewById(R.id.calendar_ListView);
         new_btn = findViewById(R.id.calendar_New_btn);
-        database = FirebaseDatabase.getInstance();
         database_events_tasks = new ArrayList<>();
         database_events_dates = new ArrayList<>();
         database_events_types = new ArrayList<>();
+        database_events_keys = new ArrayList<>();
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Events");
     }
 
@@ -76,13 +77,17 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //System.out.println("snapshot:  " +snapshot);
-
+                // Clear lists to avoid duplicates
+                database_events_tasks.clear();
+                database_events_dates.clear();
+                database_events_types.clear();
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    //Store dates for all events in database
+                    //Store values for all events in database
                     database_events_tasks.add(ds.child("Task").getValue().toString());
                     database_events_dates.add(ds.child("Date").getValue().toString());
                     database_events_types.add(ds.child("Type").getValue().toString());
-                    eventDatesList.add(ds.child("Date yyyy-mm-dd").getValue().toString());
+                    database_events_keys.add(ds.getKey());
+                    eventDatesList.add(ds.child("Date dd-MM-yyyy").getValue().toString());
                     //System.out.println("eventDatesList: " + eventDatesList);
 
                 }
@@ -127,16 +132,20 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 getSupportActionBar().setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-
             }
         });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println(database_events_tasks.get(position));
+                System.out.println("Clicked Date: "+dateC+" Clicked Task: "+ eventInfoList.get(position));
+                Intent intent = new Intent(Calendar.this, CalendarEventDetails.class);
+                intent.putExtra("ClickedDate",dateC);
+                intent.putExtra("ClickedTask", eventInfoList.get(position).toString());
+                startActivity(intent);
             }
         });
+
 
         new_btn.setOnClickListener(v -> {
             if (dateC == null) {

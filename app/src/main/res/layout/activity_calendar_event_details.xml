@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalendarEventDetails">
+
+    <TextView
+        android:id="@+id/calendar_event_details_Task_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/str_calendar_event_details_Task"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_event_details_Task_pt"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_Date_tv" />
+
+    <TextView
+        android:id="@+id/calendar_event_details_Date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/str_calendar_event_details_Date"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_event_details_DatePicker_btn"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_textInputLayout" />
+
+    <EditText
+        android:id="@+id/calendar_event_details_Task_pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
+        android:ems="10"
+        android:hint="@string/str_calendar_event_details_Task"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_DatePicker_btn" />
+
+    <include
+        android:id="@+id/toolbar_calendar_event_details"
+        layout="@layout/toolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/calendar_event_details_textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/str_calendar_event_details_SelectField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_calendar_event_details">
+
+        <AutoCompleteTextView
+            android:id="@+id/calendar_event_details_auto_complete_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/calendar_event_details_DatePicker_btn"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="72dp"
+        android:onClick="openDatePicker"
+        android:text="@string/str_calendar_event_details_Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_textInputLayout" />
+
+    <Button
+        android:id="@+id/calendar_event_details_Save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="72dp"
+        android:text="@string/str_calendar_event_details_Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_Task_pt"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <Button
+        android:id="@+id/calendar_event_details_Cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="73dp"
+        android:text="@string/str_calendar_event_details_Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_event_details_Save_btn"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_event_details_Task_tv"
+        app:layout_constraintVertical_bias="0.507" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

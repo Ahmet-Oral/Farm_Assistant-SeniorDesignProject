@@ -29,6 +29,15 @@
     <string name="str_calendar_new_event_Task">Task:</string>
     <string name="str_calendar_new_event_SelectField">Select Field</string>
     <string name="str_calendar_new_event_AddEvent">Add Event</string>
+    <!-- Calendar_event_details Activity -->
+    <string name="str_calendar_event_details_SelectField">Select Field</string>
+    <string name="str_calendar_event_details_Date">Date</string>
+    <string name="str_calendar_event_details_Task">Task</string>
+    <string name="str_calendar_event_details_Save">Save</string>
+    <string name="str_calendar_event_details_Cancel">Cancel</string>
+
+
+
     <!-- Crops Activity -->
     <string name="str_crops_new">new</string>
     <!-- Crops Add  - Crops Detailed Activity -->
@@ -59,8 +68,6 @@
     <string name="str_animals_detailed_edit_Delete">Delete Feature</string>
     <string name="str_animals_detailed_edit_Cancel">Cancel</string>
     <string name="str_animals_detailed_edit_Save">Save</string>
-
-
 
 
     <!-- General Information Activity -->
