@@ -35,6 +35,8 @@
     <string name="str_calendar_event_details_Task">Task</string>
     <string name="str_calendar_event_details_Save">Save</string>
     <string name="str_calendar_event_details_Cancel">Cancel</string>
+    <string name="str_calendar_event_details_DeleteEvent">Delete Event</string>
+
 
 
 

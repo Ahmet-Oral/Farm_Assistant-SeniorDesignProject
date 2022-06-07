@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class CalendarEventDetails extends AppCompatActivity {
-    private Button datePicker_btn, save_btn, cancel_btn;
+    private Button datePicker_btn, save_btn, cancel_btn, delete_btn;
     private DatePickerDialog datePickerDialog;
     private String date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, fieldKey_str;
     private EditText task_et, field_et;
@@ -69,6 +69,7 @@ public class CalendarEventDetails extends AppCompatActivity {
 
         save_btn = findViewById(R.id.calendar_event_details_Save_btn);
         cancel_btn = findViewById(R.id.calendar_event_details_Cancel_btn);
+        delete_btn = findViewById(R.id.calendar_event_details_DeleteEvent_btn);
         datePicker_btn = findViewById(R.id.calendar_event_details_DatePicker_btn);
         datePicker_btn.setText(clickedDate_extra);
     }
@@ -207,6 +208,13 @@ public class CalendarEventDetails extends AppCompatActivity {
         cancel_btn.setOnClickListener(v -> {
             Intent intent = new Intent(CalendarEventDetails.this, Calendar.class);
             startActivity(intent);
+        });
+
+        delete_btn.setOnClickListener(v -> {
+            FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Events").child(eventKey_str).removeValue();
+            Intent intent = new Intent(CalendarEventDetails.this, Calendar.class);
+            startActivity(intent);
+
         });
     }
 
