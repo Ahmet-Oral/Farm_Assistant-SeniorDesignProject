@@ -103,17 +103,15 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
                         }
                         if(ds.child("temp_value") != null){
                             temp_value = ds.child("temp_value").getValue().toString();
-
                         }
                     }
                     if(temp_feature != null & temp_value != null){
                         features_list.add(new Animal_Feature(temp_feature,temp_value));
                     }
 
-                    for(int i=0; i<features_list.size(); i++) {
-                        System.out.println("feature - value : " + features_list.get(i).getFeature()+ " " + features_list.get(i).getValue());
-
-                    }
+//                    for(int i=0; i<features_list.size(); i++) {
+//                        System.out.println("feature - value : " + features_list.get(i).getFeature()+ " " + features_list.get(i).getValue());
+//                    }
                     FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Temp").child("AnimalFeatures").removeValue();
                     adapter.notifyDataSetChanged();
                 }

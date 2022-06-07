@@ -48,8 +48,14 @@
     <string name="str_animals_add_number">Number</string>
     <string name="str_animals_add_name">Name</string>
     <!-- Animals detailed Activity -->
-    <string name="str_animals_detailed_save">Save Changes</string>
-    <string name="str_animals_detailed_cancel">Cancel Changes</string>
+    <string name="str_animals_detailed_addFeature">Add Feature</string>
+    <!-- Animals detailed Edit Activity -->
+    <string name="str_animals_detailed_edit_feature">Feature</string>
+    <string name="str_animals_detailed_edit_value">Value</string>
+    <string name="str_animals_detailed_edit_delete">Delete Feature</string>
+    <string name="str_animals_detailed_edit_cancel">Cancel</string>
+    <string name="str_animals_detailed_edit_save">Save</string>
+
 
 
 

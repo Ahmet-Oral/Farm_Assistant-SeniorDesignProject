@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,13 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AnimalsDetailed extends AppCompatActivity {
-    private Button saveChanges_btn, cancelChanges_btn;
+public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
+    private Button addFeature_btn;
     ListView listView;
     ArrayList<Animal_Feature> features_list;
     FirebaseDatabase database;
     DatabaseReference ref;
-    String positionExtra;
+    String key_extra;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_animals_detailed);
@@ -34,12 +35,11 @@ public class AnimalsDetailed extends AppCompatActivity {
         getSupportActionBar().setTitle("Animals Detailed");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        positionExtra = getIntent().getStringExtra("position");
+        key_extra = getIntent().getStringExtra("key");
 
         listView = findViewById(R.id.animalsDetailed_listview);
         features_list = new ArrayList<Animal_Feature>();
-        saveChanges_btn = findViewById(R.id.animalsDetailed_Save_btn);
-        cancelChanges_btn = findViewById(R.id.animalsDetailed_Cancel_btn);
+        addFeature_btn = findViewById(R.id.animalsDetailed_addFeature_btn);
 
 
 
@@ -50,21 +50,26 @@ public class AnimalsDetailed extends AppCompatActivity {
         setContentView(R.layout.activity_animals_detailed);
         init();
 
+
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Animals");
 
+        addFeature_btn.setOnClickListener(v -> {
+            openDialog();
+        });
+
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
 
-        features_list.add(new Animal_Feature("feature1","value1"));
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                features_list.clear();
                 //System.out.println("on data change activated");
                 for(DataSnapshot ds: snapshot.getChildren()){
 
-                    if(ds.getKey().equals(positionExtra)){
+                    if(ds.getKey().equals(key_extra)){
                         //System.out.println("ds match: "+ds);
                         //System.out.println("asd: " + ds.getChildren());
                         for(DataSnapshot i: ds.getChildren()){
@@ -87,9 +92,30 @@ public class AnimalsDetailed extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("feature: "+features_list.get(position).getFeature()+" value: "+ features_list.get(position).getValue());
+                //System.out.println("feature: "+features_list.get(position).getFeature()+" value: "+ features_list.get(position).getValue());
+                Intent intent = new Intent(AnimalsDetailed.this, AnimalsDetailedEdit.class);
+                intent.putExtra("feature",features_list.get(position).getFeature());
+                intent.putExtra("value",features_list.get(position).getValue());
+                intent.putExtra("key",key_extra);
+
+                startActivity(intent);
+
             }
         });
+
+    }
+    public void openDialog(){
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    @Override
+    public void applyTexts(String feature, String value) {
+        HashMap map = new HashMap();
+        map.put(feature,value);
+
+        //update the database
+        ref.child(key_extra).updateChildren(map);
 
     }
 }

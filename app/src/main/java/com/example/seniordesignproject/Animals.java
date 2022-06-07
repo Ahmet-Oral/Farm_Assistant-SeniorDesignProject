@@ -76,7 +76,7 @@ public class Animals extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
             Intent intent = new Intent(Animals.this, AnimalsDetailed.class);
-            intent.putExtra("position", list_keys.get(position));
+            intent.putExtra("key", list_keys.get(position));
             startActivity(intent);
 
         });
