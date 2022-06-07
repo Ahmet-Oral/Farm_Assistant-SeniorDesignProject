@@ -19,14 +19,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Animals extends AppCompatActivity {
-    ArrayList<Animal_Field> animals_list;
-    ArrayList<String> list_keys;
+    private ArrayList<Animal_Field> animals_list;
+    private ArrayList<String> list_keys;
 
-    ListView listview;
-    Button btn_add;
+    private ListView listview;
+    private Button btn_add;
 
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
 
     public void init(){

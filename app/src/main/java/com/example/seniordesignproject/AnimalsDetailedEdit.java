@@ -97,8 +97,10 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
                 // Put new feature and it's value to the hashmap
                 map.put(feature_et.getText().toString(), value_et.getText().toString());
 
-                // Remove old value
-                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
+                // If feature's name is updated, remove old feature
+                if(!feature_et.getText().toString().equals(feature_extra)){
+                    FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
+                }
 
                 // Update the database with new value
                 ref.child(key_extra).updateChildren(map);
