@@ -27,10 +27,11 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class CalendarNewEvent extends AppCompatActivity {
-    String dateExtra;
+    String dateExtra, fieldType;
     TextView date_tv;
     FirebaseDatabase database;
     DatabaseReference ref;
+    DatabaseReference ref_fieldType;
     ArrayList<String> field_list;
     AutoCompleteTextView autoCompleteTxt;
     ArrayAdapter<String> adapterItems;
@@ -125,8 +126,6 @@ public class CalendarNewEvent extends AppCompatActivity {
         });
 
 
-
-
         addEvent_btn.setOnClickListener(v -> {
             if (task_et.getText().toString().isEmpty()){
                 Toast.makeText(CalendarNewEvent.this, "Task Cannot be Empty!" , Toast.LENGTH_SHORT).show();
@@ -134,7 +133,34 @@ public class CalendarNewEvent extends AppCompatActivity {
                 return;
             }
             database = FirebaseDatabase.getInstance();
-            ref = database.getReference("Users/"+userUid+"/Events");
+
+            // Get field type to determine color in calender view
+            ref_fieldType = database.getReference("Users/"+userUid+"/Animals-Crops");
+            ref_fieldType.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot ds: snapshot.getChildren()){
+                        if (ds.child("Name").getValue().toString().equals(field_et.getText().toString())){
+                            fieldType = ds.child("TYPE").getValue().toString();
+                            System.out.println("fieldType1: "+fieldType);
+                        }
+                    }
+                    HashMap map1 = new HashMap();
+
+                    if (fieldType!=null){
+                        map1.put("Type",fieldType);
+                    }else {
+                        map1.put("Type","None");
+
+                    }
+                    ref = database.getReference("Users/"+userUid+"/Events");
+                    ref.child(dateExtra).updateChildren(map1);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
 
             //adding table continents
             HashMap map = new HashMap();
@@ -148,9 +174,12 @@ public class CalendarNewEvent extends AppCompatActivity {
                 map.put("Field", field_et.getText().toString());
             }
             map.put("Task", task_et.getText().toString());
+            System.out.println("fieldType2: "+fieldType);
+
 
             //update the database
             System.out.println("dateExtra before push: " + dateExtra);
+            ref = database.getReference("Users/"+userUid+"/Events");
             ref.child(dateExtra).updateChildren(map);
             Toast.makeText(CalendarNewEvent.this, "Event Successfully Added!" , Toast.LENGTH_SHORT).show();
             startActivity(new Intent(CalendarNewEvent.this, Calendar.class));

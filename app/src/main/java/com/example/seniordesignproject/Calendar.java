@@ -75,21 +75,21 @@ public class Calendar extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("snapshot:  " +snapshot);
+                //System.out.println("snapshot:  " +snapshot);
 
                 for(DataSnapshot ds: snapshot.getChildren()){
                     //Store dates for all events in database
                     database_events_tasks.add(ds.child("Task").getValue().toString());
                     database_events_dates.add(ds.child("Date").getValue().toString());
                     eventDatesList.add(ds.child("Date yyyy-mm-dd").getValue().toString());
-                    System.out.println("eventDatesList: " + eventDatesList);
+                    //System.out.println("eventDatesList: " + eventDatesList);
 
                 }
                 // Create events with values taken from the database
                 for (int i = 0; i < database_events_dates.size(); i++){
                     Long newEventDate = Long.parseLong(database_events_dates.get(i));
                     String newEventTask = database_events_tasks.get(i);
-                    System.out.println("date-task " + newEventDate+" - "+newEventTask);
+                    //System.out.println("date-task " + newEventDate+" - "+newEventTask);
                     compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
                 }
             }
