@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -24,9 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,8 +51,8 @@ public class Calendar extends AppCompatActivity {
         getSupportActionBar().setTitle(currentDate);
         //same one as used in crops (crop_info activity)
         adapter = new ArrayAdapter<String>(Calendar.this,R.layout.crop_info,R.id.cropInfo,eventInfoList);
-        listView = findViewById(R.id.calendar_listview);
-        new_btn = findViewById(R.id.calendar_new_btn);
+        listView = findViewById(R.id.calendar_ListView);
+        new_btn = findViewById(R.id.calendar_New_btn);
         database = FirebaseDatabase.getInstance();
         database_events_tasks = new ArrayList<>();
         database_events_dates = new ArrayList<>();

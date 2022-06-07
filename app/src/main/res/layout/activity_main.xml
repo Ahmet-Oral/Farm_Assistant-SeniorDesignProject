@@ -16,121 +16,121 @@
 
 
         <TextView
-            android:id="@+id/menu_welcome_txt"
+            android:id="@+id/main_Welcome_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/str_menu_welcome"
+            android:text="@string/str_main_Welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/menu_weather_txt"
+            android:id="@+id/main_Weather_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/str_menu_weather"
-            app:layout_constraintEnd_toStartOf="@+id/menu_temp_txt"
+            android:text="@string/str_main_Weather"
+            app:layout_constraintEnd_toStartOf="@+id/main_Temperature_tv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Welcome_tv" />
 
         <TextView
-            android:id="@+id/menu_temp_txt"
+            android:id="@+id/main_Temperature_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/str_menu_temp_example"
+            android:text="@string/str_main_TempExample"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/menu_weather_txt"
-            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt" />
+            app:layout_constraintStart_toEndOf="@+id/main_Weather_tv"
+            app:layout_constraintTop_toBottomOf="@+id/main_Welcome_tv" />
 
         <TextView
-            android:id="@+id/menu_date_txt"
+            android:id="@+id/main_Date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/str_menu_date_example"
-            app:layout_constraintEnd_toStartOf="@+id/menu_weather_type_txt"
+            android:text="@string/str_main_DateExample"
+            app:layout_constraintEnd_toStartOf="@+id/main_WeatherType_tv"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_weather_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Weather_tv" />
 
         <TextView
-            android:id="@+id/menu_weather_type_txt"
+            android:id="@+id/main_WeatherType_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/str_menu_weather_type"
+            android:text="@string/str_main_WeatherType"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/menu_date_txt"
-            app:layout_constraintTop_toBottomOf="@+id/menu_temp_txt" />
+            app:layout_constraintStart_toEndOf="@+id/main_Date_tv"
+            app:layout_constraintTop_toBottomOf="@+id/main_Temperature_tv" />
 
         <Button
-            android:id="@+id/menu_weather_btn"
+            android:id="@+id/main_Weather_btn"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
             android:alpha="0.25"
             android:color="#66FF0000"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/menu_date_txt"
+            app:layout_constraintBottom_toBottomOf="@+id/main_Date_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_welcome_txt"
+            app:layout_constraintTop_toBottomOf="@+id/main_Welcome_tv"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/menu_agenda_btn"
+            android:id="@+id/main_Agenda_btn"
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="32dp"
-            android:text="@string/str_menu_agenda"
+            android:text="@string/str_main_Agenda"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_weather_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Weather_btn" />
 
         <Button
-            android:id="@+id/menu_crops_btn"
+            android:id="@+id/main_Crops_btn"
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:text="@string/str_menu_crops"
+            android:text="@string/str_main_Crops"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_agenda_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Agenda_btn" />
 
         <Button
-            android:id="@+id/menu_animals_btn"
+            android:id="@+id/main_Animals_btn"
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:text="@string/str_menu_animals"
+            android:text="@string/str_main_Animals"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_crops_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Crops_btn" />
 
         <Button
-            android:id="@+id/menu_general_info_btn"
+            android:id="@+id/main_GeneralInfo_btn"
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:text="@string/str_menu_general_information"
+            android:text="@string/str_main_GeneralInformation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_animals_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Animals_btn" />
 
         <Button
-            android:id="@+id/menu_settings_btn"
+            android:id="@+id/main_Settings_btn"
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
-            android:text="@string/str_menu_settings"
+            android:text="@string/str_main_Settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_general_info_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_GeneralInfo_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

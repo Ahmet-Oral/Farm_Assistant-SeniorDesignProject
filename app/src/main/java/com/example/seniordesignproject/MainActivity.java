@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,12 +14,12 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;
 
     public void init(){
-        btn_weather = (Button) findViewById(R.id.menu_weather_btn);
-        btn_agenda = (Button) findViewById(R.id.menu_agenda_btn);
-        btn_crops = (Button) findViewById(R.id.menu_crops_btn);
-        btn_animals = (Button) findViewById(R.id.menu_animals_btn);
-        btn_general_information = (Button) findViewById(R.id.menu_general_info_btn);
-        btn_settings = (Button) findViewById(R.id.menu_settings_btn);
+        btn_weather = (Button) findViewById(R.id.main_Weather_btn);
+        btn_agenda = (Button) findViewById(R.id.main_Agenda_btn);
+        btn_crops = (Button) findViewById(R.id.main_Crops_btn);
+        btn_animals = (Button) findViewById(R.id.main_Animals_btn);
+        btn_general_information = (Button) findViewById(R.id.main_GeneralInfo_btn);
+        btn_settings = (Button) findViewById(R.id.main_Settings_btn);
         auth = FirebaseAuth.getInstance();
     }
 

@@ -22,12 +22,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
-    private Button addFeature_btn;
+    Button addFeature_btn;
+    String key_extra;
+
     ListView listView;
     ArrayList<Animal_Feature> features_list;
+
     FirebaseDatabase database;
     DatabaseReference ref;
-    String key_extra;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_animals_detailed);
@@ -36,13 +38,13 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         key_extra = getIntent().getStringExtra("key");
-
-        listView = findViewById(R.id.animalsDetailed_listview);
+        listView = findViewById(R.id.animals_detailed_ListView);
         features_list = new ArrayList<Animal_Feature>();
-        addFeature_btn = findViewById(R.id.animalsDetailed_addFeature_btn);
+        addFeature_btn = findViewById(R.id.animals_detailed_AddFeature_btn);
 
-
-
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid+"/Animals");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +52,11 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         setContentView(R.layout.activity_animals_detailed);
         init();
 
-
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
-
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
         });
 
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
-
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,13 +93,13 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
                 intent.putExtra("feature",features_list.get(position).getFeature());
                 intent.putExtra("value",features_list.get(position).getValue());
                 intent.putExtra("key",key_extra);
-
                 startActivity(intent);
-
             }
         });
 
     }
+
+
     public void openDialog(){
         ExampleDialog exampleDialog = new ExampleDialog();
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
@@ -113,9 +109,7 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
     public void applyTexts(String feature, String value) {
         HashMap map = new HashMap();
         map.put(feature,value);
-
         //update the database
         ref.child(key_extra).updateChildren(map);
-
     }
 }

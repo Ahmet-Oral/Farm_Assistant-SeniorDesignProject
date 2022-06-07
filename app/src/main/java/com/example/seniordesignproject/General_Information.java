@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class General_Information extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

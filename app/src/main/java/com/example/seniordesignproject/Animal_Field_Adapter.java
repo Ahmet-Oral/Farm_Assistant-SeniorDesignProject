@@ -12,12 +12,12 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class AnimalListAdapter extends ArrayAdapter<Animal_Field> {
+public class Animal_Field_Adapter extends ArrayAdapter<Animal_Field> {
 
     private Context mContext;
     int mResource;
 
-    public AnimalListAdapter(Context context, int resource, ArrayList<Animal_Field> objects) {
+    public Animal_Field_Adapter(Context context, int resource, ArrayList<Animal_Field> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;

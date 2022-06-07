@@ -38,13 +38,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String feature = editTextFeature.getText().toString();
                         String value = editTextValue.getText().toString();
-
-//                        Intent intent = new Intent(getActivity(), AnimalsAdd.class);
-//                        intent.putExtra("feature",feature);
-//                        intent.putExtra("value",value);
-//                        System.out.println("feature extra: " + feature+" value extra: "+value);
-//                        startActivity(intent);
-
                         listener.applyTexts(feature, value);
 
 

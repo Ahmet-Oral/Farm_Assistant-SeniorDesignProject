@@ -6,8 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,18 +22,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
-    private Button addFeature_btn, addAnimal_btn;
+    Button addFeature_btn, addAnimal_btn;
+    EditText animalType_et, animalNumber_et, fieldName_et;
+    String temp_feature, temp_value;
+
     ListView listView;
     ArrayList<Animal_Feature> features_list;
-    String dialog_feature;
-    String dialog_value;
-    String temp_feature, temp_value;
+
     FirebaseDatabase database;
     DatabaseReference ref;
-    private EditText animalType_et, animalNumber_et, fieldName_et;
-
-
-
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_animals_add);
@@ -43,51 +38,37 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         getSupportActionBar().setTitle("Add Animals");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        listView = findViewById(R.id.animals_add_listview);
+        listView = findViewById(R.id.animals_add_ListView);
         features_list = new ArrayList<Animal_Feature>();
-        addFeature_btn = findViewById(R.id.animals_add_addFeature_btn);
-        addAnimal_btn = findViewById(R.id.animals_add_addAnimal_btn);
-        //dialog_feature = getIntent().getStringExtra("feature");
-        //dialog_value = getIntent().getStringExtra("value");
-        //System.out.println("extras: " + dialog_feature+ " "+ dialog_value);
 
-        animalType_et = findViewById(R.id.animals_add_type_pt);
-        animalNumber_et = findViewById(R.id.animals_add_number_pt);
-        fieldName_et = findViewById(R.id.animals_add_name_pt);
+        addFeature_btn = findViewById(R.id.animals_add_AddFeature_btn);
+        addAnimal_btn = findViewById(R.id.animals_add_AddAnimal_btn);
 
-
-
-
-    }
+        animalType_et = findViewById(R.id.animals_add_Type_pt);
+        animalNumber_et = findViewById(R.id.animals_add_Number_pt);
+        fieldName_et = findViewById(R.id.animals_add_Name_pt);
+            }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //System.out.println("Started activity: ");
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         setContentView(R.layout.activity_animals_add);
         init();
+
         addAnimal_btn.setOnClickListener(v -> {
             addNewAnimal();
         });
 
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
-
         //features_list.add(new Animal_Feature("feature1","value1"));
 
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
-
         });
 
         listView.setAdapter(adapter);
 
-
-//        for(int i=0; i<features_list.size(); i++) {
-//            System.out.println("feature: "+features_list.get(i).getFeature());
-//            System.out.println("value: "+features_list.get(i).getValue());
-//        }
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Temp");
@@ -96,8 +77,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.getValue() != null){
                     for(DataSnapshot ds: snapshot.getChildren()){
-                        //System.out.println("ds: "+ ds);
-
                         if(ds.child("temp_feature") != null){
                             temp_feature = ds.child("temp_feature").getValue().toString();
                         }
@@ -108,10 +87,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
                     if(temp_feature != null & temp_value != null){
                         features_list.add(new Animal_Feature(temp_feature,temp_value));
                     }
-
-//                    for(int i=0; i<features_list.size(); i++) {
-//                        System.out.println("feature - value : " + features_list.get(i).getFeature()+ " " + features_list.get(i).getValue());
-//                    }
                     FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Temp").child("AnimalFeatures").removeValue();
                     adapter.notifyDataSetChanged();
                 }
@@ -121,10 +96,9 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
             }
         });
 
-
-
-
     }
+
+
     public void openDialog(){
         ExampleDialog exampleDialog = new ExampleDialog();
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
@@ -133,7 +107,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
     @Override
     public void applyTexts(String feature, String value) {
         //feature and value are the strings taken from the pop up dialog
-        //System.out.println("feature: " + feature+" value: "+value);
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid);
@@ -143,8 +116,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
 
         //update the database
         ref.child("Temp/AnimalFeatures").updateChildren(map);
-
-
     }
 
     public void addNewAnimal(){
@@ -179,8 +150,6 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         for (int i = 0; i < features_list.size(); i++){
             map.put(features_list.get(i).getFeature(),features_list.get(i).getValue());
         }
-
-
 
         //update the database
         ref.child(animalType).updateChildren(map);

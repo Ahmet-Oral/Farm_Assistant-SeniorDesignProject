@@ -14,11 +14,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/animals_addAnimals_btn"
+        android:id="@+id/animals_AddAnimals_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/str_animals_add_animals"
+        android:text="@string/str_animals_AddAnimals"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -28,9 +28,10 @@
         android:layout_width="409dp"
         android:layout_height="500dp"
         android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/animals_addAnimals_btn"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintBottom_toTopOf="@+id/animals_AddAnimals_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

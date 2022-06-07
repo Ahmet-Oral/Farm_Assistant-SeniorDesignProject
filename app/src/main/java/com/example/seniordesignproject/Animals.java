@@ -6,8 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -17,25 +15,27 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.protobuf.StringValue;
 
 import java.util.ArrayList;
 
 public class Animals extends AppCompatActivity {
     ArrayList<Animal_Field> animals_list;
     ArrayList<String> list_keys;
+
     ListView listview;
+    Button btn_add;
+
     FirebaseDatabase database;
     DatabaseReference ref;
-    private Button btn_add;
+
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_animals);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Animals");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btn_add = findViewById(R.id.animals_addAnimals_btn);
 
+        btn_add = findViewById(R.id.animals_AddAnimals_btn);
 
         animals_list = new ArrayList<>();
         list_keys = new ArrayList<>();
@@ -44,8 +44,6 @@ public class Animals extends AppCompatActivity {
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Animals");
-
-
     }
 
     @Override
@@ -54,8 +52,7 @@ public class Animals extends AppCompatActivity {
         setContentView(R.layout.activity_animals);
         init();
 
-        AnimalListAdapter adapter = new AnimalListAdapter(this, R.layout.animals_info_listview, animals_list);
-
+        Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.animals_info_listview, animals_list);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,7 +60,6 @@ public class Animals extends AppCompatActivity {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     animals_list.add(new Animal_Field(ds.child("AnimalType").getValue().toString(),ds.child("NumberOfAnimals").getValue().toString()));
                     list_keys.add(ds.getKey());
-
                 }
                 listview.setAdapter(adapter);
             }
@@ -74,19 +70,15 @@ public class Animals extends AppCompatActivity {
 
         listview.setOnItemClickListener((parent, view, position, id) -> {
             adapter.notifyDataSetChanged();
-            System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
+            //System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
             Intent intent = new Intent(Animals.this, AnimalsDetailed.class);
             intent.putExtra("key", list_keys.get(position));
             startActivity(intent);
-
         });
 
         btn_add.setOnClickListener(v -> {
-            startActivity(new Intent(Animals.this, AnimalsAdd.class));});
-
-
-
-
+            startActivity(new Intent(Animals.this, AnimalsAdd.class));
+        });
 
 
     }
