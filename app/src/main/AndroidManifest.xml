@@ -28,7 +28,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".NewCalendarEvent"
+            android:name=".CalendarNewEvent"
             android:exported="false"
             android:parentActivityName=".Calendar" />
         <activity

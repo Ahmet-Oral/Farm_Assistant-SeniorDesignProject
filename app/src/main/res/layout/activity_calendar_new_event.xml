@@ -8,7 +8,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".NewCalendarEvent">
+tools:context=".CalendarNewEvent">
 
     <include
         android:id="@+id/newCalendarEvent_toolbar"
@@ -22,7 +22,7 @@ tools:context=".NewCalendarEvent">
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/str_calendar_selectField"
+        android:hint="@string/str_calendar_new_event_SelectField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newCalendarEvent_toolbar">
@@ -35,50 +35,50 @@ tools:context=".NewCalendarEvent">
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/calendar_new_event_Date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="84dp"
-        android:text="@string/str_calendar_date"
+        android:text="@string/str_calendar_new_event_Date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        tools:text="@string/str_calendar_date" />
+        tools:text="@string/str_calendar_new_event_Date" />
 
     <TextView
-        android:id="@+id/weather_textView5"
+        android:id="@+id/calendar_new_event_Task_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
-        android:text="@string/str_calendar_task"
+        android:text="@string/str_calendar_new_event_Task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar_new_event_Date_tv" />
 
     <EditText
-        android:id="@+id/newCalendarEvent_task_tv"
+        android:id="@+id/calendar_new_event_Task_pt"
         android:layout_width="258dp"
         android:layout_height="48dp"
         android:layout_marginTop="72dp"
         android:ems="10"
-        android:hint="@string/str_calendar_empty"
+        android:hint="@string/str_calendar_new_event_Empty"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.663"
-        app:layout_constraintStart_toEndOf="@+id/weather_textView5"
-        app:layout_constraintTop_toBottomOf="@+id/newCalendarEvent_date_tv" />
+        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Task_tv"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_new_event_DateDisplay_tv" />
 
     <TextView
-        android:id="@+id/newCalendarEvent_date_tv"
+        android:id="@+id/calendar_new_event_DateDisplay_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
-        android:text="@string/str_calendar_empty"
+        android:text="@string/str_calendar_new_event_Empty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Date_tv"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
@@ -86,7 +86,7 @@ tools:context=".NewCalendarEvent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:text="@string/str_calendar_addEvent"
+        android:text="@string/str_calendar_new_event_AddEvent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

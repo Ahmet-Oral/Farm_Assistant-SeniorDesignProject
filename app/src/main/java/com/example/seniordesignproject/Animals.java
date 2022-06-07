@@ -43,7 +43,7 @@ public class Animals extends AppCompatActivity {
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
     }
 
     @Override
@@ -52,14 +52,16 @@ public class Animals extends AppCompatActivity {
         setContentView(R.layout.activity_animals);
         init();
 
-        Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.animals_info_listview, animals_list);
+        Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.animals_info_adapter_view, animals_list);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    animals_list.add(new Animal_Field(ds.child("AnimalType").getValue().toString(),ds.child("NumberOfAnimals").getValue().toString()));
-                    list_keys.add(ds.getKey());
+                    if(ds.child("TYPE").getValue().toString().equals("Animal")){
+                        animals_list.add(new Animal_Field(ds.child("Name").getValue().toString(),ds.child("NumberOfAnimals").getValue().toString()));
+                        list_keys.add(ds.getKey());
+                    }
                 }
                 listview.setAdapter(adapter);
             }

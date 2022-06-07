@@ -48,7 +48,7 @@ public class Crops extends AppCompatActivity {
         btn_add = findViewById(R.id.crops_new_btn);
         listView = findViewById(R.id.crops_listView);
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Crops");
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
         list = new ArrayList<>();
         crop_types_list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(Crops.this,R.layout.crop_info,R.id.cropInfo,list);
@@ -68,8 +68,11 @@ public class Crops extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    list.add(ds.child("Name").getValue().toString() + " - "+ ds.child("Acres").getValue().toString()+" Acres");
-                    crop_types_list.add(ds.getKey().toString());
+                    if(ds.child("TYPE").getValue().toString().equals("Crop")){
+                        list.add(ds.child("Name").getValue().toString() + " - "+ ds.child("Acres").getValue().toString()+" Acres");
+                        crop_types_list.add(ds.getKey().toString());
+                    }
+
                 }
                 listView.setAdapter(adapter);
             }

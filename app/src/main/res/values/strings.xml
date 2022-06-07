@@ -23,11 +23,12 @@
     <string name="str_agenda_Inventory">Inventory</string>
     <!-- Calendar Activity -->
     <string name="str_calendar_New">New</string>
-    <string name="str_calendar_empty">empty</string>
-    <string name="str_calendar_date">Date:</string>
-    <string name="str_calendar_task">Task:</string>
-    <string name="str_calendar_selectField">Select Field</string>
-    <string name="str_calendar_addEvent">Add Event</string>
+    <!-- Calendar_new_event Activity -->
+    <string name="str_calendar_new_event_Empty">empty</string>
+    <string name="str_calendar_new_event_Date">Date:</string>
+    <string name="str_calendar_new_event_Task">Task:</string>
+    <string name="str_calendar_new_event_SelectField">Select Field</string>
+    <string name="str_calendar_new_event_AddEvent">Add Event</string>
     <!-- Crops Activity -->
     <string name="str_crops_new">new</string>
     <!-- Crops Add  - Crops Detailed Activity -->
@@ -51,6 +52,7 @@
     <string name="str_animals_add_Confirm">Confirm</string>
     <!-- Animals_Detailed Activity -->
     <string name="str_animals_detailed_AddFeature">Add Feature</string>
+    <string name="str_animals_detailed_Delete">Delete</string>
     <!-- Animals_Detailed_Edit Activity -->
     <string name="str_animals_detailed_edit_Feature">Feature</string>
     <string name="str_animals_detailed_edit_Value">Value</string>

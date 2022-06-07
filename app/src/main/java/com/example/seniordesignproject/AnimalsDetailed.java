@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
-    Button addFeature_btn;
+    Button addFeature_btn, delete_btn;
     String key_extra;
 
     ListView listView;
@@ -41,10 +41,8 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         listView = findViewById(R.id.animals_detailed_ListView);
         features_list = new ArrayList<Animal_Feature>();
         addFeature_btn = findViewById(R.id.animals_detailed_AddFeature_btn);
+        delete_btn = findViewById(R.id.animals_detailed_Delete_btn);
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +50,17 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         setContentView(R.layout.activity_animals_detailed);
         init();
 
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
+
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
+        });
+
+        delete_btn.setOnClickListener(v -> {
+            FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops").child(key_extra).removeValue();
+            startActivity(new Intent(AnimalsDetailed.this, Animals.class));
         });
 
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
@@ -71,7 +78,10 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
                         for(DataSnapshot i: ds.getChildren()){
                             //System.out.println("feature: " + i.getKey());
                             //System.out.println("value: " + i.getValue());
-                            features_list.add(new Animal_Feature(i.getKey(),i.getValue().toString()));
+                            // Don't add TYPE because it is only used in backend, user shouldn't see this feature
+                            if (!i.getKey().equals("TYPE")){
+                                features_list.add(new Animal_Feature(i.getKey(),i.getValue().toString()));
+                            }
                         }
                     }
                 }

@@ -34,8 +34,8 @@ public class CropsDetailed extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         extra = getIntent().getStringExtra("Name");
-        ref = database.getReference("Users/"+userUid+"/Crops/"+extra);
-        refEdit = database.getReference("Users/"+userUid+"/Crops/"+extra);
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops/"+extra);
+        refEdit = database.getReference("Users/"+userUid+"/Animals-Crops/"+extra);
         cropType_pt = findViewById(R.id.cropsDetailed_cropType_pt);
         treeNumber_pt = findViewById(R.id.cropsDetailed_treeNumber_pt);
         acres_pt = findViewById(R.id.cropsDetailed_acres_pt);

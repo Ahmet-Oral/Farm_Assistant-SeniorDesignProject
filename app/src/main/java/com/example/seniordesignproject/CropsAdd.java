@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class CropsAdd extends AppCompatActivity {
     FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    DatabaseReference ref;
     private EditText et_cropType, et_acres, et_totalTrees, et_name;
 
     private Button btn_add;
@@ -49,7 +49,7 @@ public class CropsAdd extends AppCompatActivity {
         String totalTrees = et_totalTrees.getText().toString();
         String name = et_name.getText().toString();
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("Users/"+userUid+"/Crops");
+        ref = rootNode.getReference("Users/"+userUid+"/Animals-Crops");
         //adding table continents
         HashMap map = new HashMap();
         if (cropType.isEmpty()){
@@ -68,8 +68,9 @@ public class CropsAdd extends AppCompatActivity {
         map.put("NumberofTrees", totalTrees);}
         if (!name.isEmpty()){
             map.put("Name", name);}
+        map.put("TYPE","Crop");
         //update the database
-        reference.child(name).updateChildren(map);
+        ref.child(name).updateChildren(map);
         Toast.makeText(CropsAdd.this, "Crops Added Successfully" , Toast.LENGTH_SHORT).show();
         startActivity(new Intent(CropsAdd.this, Crops.class));
     }

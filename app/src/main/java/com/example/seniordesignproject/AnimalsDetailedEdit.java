@@ -35,7 +35,7 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
 
         userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
 
         feature_extra = getIntent().getStringExtra("feature");
         value_extra = getIntent().getStringExtra("value");
@@ -58,7 +58,7 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
         init();
 
         // These features key can't be edited because they are required in other activities
-        if(feature_extra.equals("AnimalType") || feature_extra.equals("NumberOfAnimals")){
+        if(feature_extra.equals("AnimalType") || feature_extra.equals("NumberOfAnimals") || feature_extra.equals("Name")){
             feature_et.setEnabled(false);
         }
 
@@ -74,12 +74,12 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
             case R.id.animals_detailed_edit_Delete_btn:
 
                 // These features key can't be deleted because they are required in other activities
-                if(feature_extra.equals("AnimalType") || feature_extra.equals("NumberOfAnimals")){
+                if(feature_extra.equals("AnimalType") || feature_extra.equals("NumberOfAnimals") || feature_extra.equals("Name")){
                     Toast.makeText(AnimalsDetailedEdit.this, "Can't Delete This Feature", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals/"+key_extra).child(feature_extra).removeValue();
+                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
 
                 Intent intent = new Intent(AnimalsDetailedEdit.this, AnimalsDetailed.class);
                 intent.putExtra("key",key_extra);
@@ -99,7 +99,7 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
                 map.put(feature_et.getText().toString(), value_et.getText().toString());
 
                 // Remove old value
-                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals/"+key_extra).child(feature_extra).removeValue();
+                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
 
                 // Update the database
                 ref.child(key_extra).updateChildren(map);

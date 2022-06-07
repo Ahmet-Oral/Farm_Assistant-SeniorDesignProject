@@ -6,8 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -21,17 +19,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.protobuf.StringValue;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class NewCalendarEvent extends AppCompatActivity {
+public class CalendarNewEvent extends AppCompatActivity {
     String dateExtra;
     TextView date_tv;
     FirebaseDatabase database;
@@ -50,10 +45,10 @@ public class NewCalendarEvent extends AppCompatActivity {
         getSupportActionBar().setTitle("New Event");
 
         dateExtra = getIntent().getStringExtra("date");
-        date_tv = findViewById(R.id.newCalendarEvent_date_tv);
+        date_tv = findViewById(R.id.calendar_new_event_DateDisplay_tv);
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Crops");
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
         field_list = new ArrayList<>();
         field_list.add("None");
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
@@ -65,7 +60,7 @@ public class NewCalendarEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_calendar_event);
+        setContentView(R.layout.activity_calendar_new_event);
         init();
         date_tv.setText(dateExtra);
 
@@ -74,7 +69,7 @@ public class NewCalendarEvent extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     //list of fields for dropdown menu
-                    field_list.add(ds.getKey().toString());
+                    field_list.add(ds.child("Name").getValue().toString());
                 }
             }
             @Override
@@ -83,16 +78,16 @@ public class NewCalendarEvent extends AppCompatActivity {
         });
 
 
-        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,field_list);
+        adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_menu,field_list);
         autoCompleteTxt.setAdapter(adapterItems);
 
         autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> {
             String field = parent.getItemAtPosition(position).toString();
         });
 
-        task_et = findViewById(R.id.newCalendarEvent_task_tv);
+        task_et = findViewById(R.id.calendar_new_event_Task_pt);
         field_et = findViewById(R.id.auto_complete_txt);
-        date_tv = findViewById(R.id.newCalendarEvent_date_tv);
+        date_tv = findViewById(R.id.calendar_new_event_DateDisplay_tv);
 
         String myDate = date_tv.getText().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -134,7 +129,7 @@ public class NewCalendarEvent extends AppCompatActivity {
 
         addEvent_btn.setOnClickListener(v -> {
             if (task_et.getText().toString().isEmpty()){
-                Toast.makeText(NewCalendarEvent.this, "Task Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarNewEvent.this, "Task Cannot be Empty!" , Toast.LENGTH_SHORT).show();
                 task_et.requestFocus();
                 return;
             }
@@ -157,8 +152,8 @@ public class NewCalendarEvent extends AppCompatActivity {
             //update the database
             System.out.println("dateExtra before push: " + dateExtra);
             ref.child(dateExtra).updateChildren(map);
-            Toast.makeText(NewCalendarEvent.this, "Event Successfully Added!" , Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(NewCalendarEvent.this, Calendar.class));
+            Toast.makeText(CalendarNewEvent.this, "Event Successfully Added!" , Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(CalendarNewEvent.this, Calendar.class));
 
         });
 

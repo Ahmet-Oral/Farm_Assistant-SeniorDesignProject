@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -83,7 +85,6 @@ public class Calendar extends AppCompatActivity {
                     System.out.println("eventDatesList: " + eventDatesList);
 
                 }
-
                 // Create events with values taken from the database
                 for (int i = 0; i < database_events_dates.size(); i++){
                     Long newEventDate = Long.parseLong(database_events_dates.get(i));
@@ -91,8 +92,6 @@ public class Calendar extends AppCompatActivity {
                     System.out.println("date-task " + newEventDate+" - "+newEventTask);
                     compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
                 }
-
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -125,14 +124,20 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println(database_events_tasks.get(position));
+            }
+        });
+
         new_btn.setOnClickListener(v -> {
             if (dateC == null) {
                 Toast.makeText(Calendar.this, "Please Select a Date!" , Toast.LENGTH_SHORT).show();
             }else {
-                Intent intent = new Intent(Calendar.this, NewCalendarEvent.class);
+                Intent intent = new Intent(Calendar.this, CalendarNewEvent.class);
                 intent.putExtra("date",dateC);
                 startActivity(intent);
-
             }
         });
 

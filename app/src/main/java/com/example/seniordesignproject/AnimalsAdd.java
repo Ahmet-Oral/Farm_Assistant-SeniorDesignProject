@@ -124,7 +124,7 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
         String animalNumber = animalNumber_et.getText().toString();
         String fieldName = fieldName_et.getText().toString();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Animals");
+        ref = database.getReference("Users/"+userUid+"/Animals-Crops");
         //adding table continents
         HashMap map = new HashMap();
         if (animalType.isEmpty()){
@@ -144,15 +144,16 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
             Toast.makeText(AnimalsAdd.this, "Field Name Can't be Empty!" , Toast.LENGTH_SHORT).show();
             return;
         }else {
-            map.put("FieldName", fieldName);
+            map.put("Name", fieldName);
         }
+        map.put("TYPE","Animal");
 
         for (int i = 0; i < features_list.size(); i++){
             map.put(features_list.get(i).getFeature(),features_list.get(i).getValue());
         }
 
         //update the database
-        ref.child(animalType).updateChildren(map);
+        ref.child(fieldName).updateChildren(map);
         Toast.makeText(AnimalsAdd.this, "Animals Added Successfully" , Toast.LENGTH_SHORT).show();
         startActivity(new Intent(AnimalsAdd.this, Animals.class));
     }
