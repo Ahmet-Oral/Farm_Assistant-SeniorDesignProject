@@ -37,6 +37,7 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         getSupportActionBar().setTitle("Animals Detailed");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Get the key for selected animal field to take it's values from database
         key_extra = getIntent().getStringExtra("key");
         listView = findViewById(R.id.animals_detailed_ListView);
         features_list = new ArrayList<Animal_Feature>();
@@ -54,31 +55,31 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Animals-Crops");
 
+        // Open custom dialog to add new features
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
         });
 
         delete_btn.setOnClickListener(v -> {
+            // Delete the node using the key taken from Animals.class
             FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops").child(key_extra).removeValue();
             startActivity(new Intent(AnimalsDetailed.this, Animals.class));
         });
 
+        // Define the adapter and use features_list for content
         Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
 
+
+        // Create new Animal_Feature object using the key taken from Animals.class
+        //... and store these objects in features_list to be used in listView adapter
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 features_list.clear();
-                //System.out.println("on data change activated");
                 for(DataSnapshot ds: snapshot.getChildren()){
-
                     if(ds.getKey().equals(key_extra)){
-                        //System.out.println("ds match: "+ds);
-                        //System.out.println("asd: " + ds.getChildren());
                         for(DataSnapshot i: ds.getChildren()){
-                            //System.out.println("feature: " + i.getKey());
-                            //System.out.println("value: " + i.getValue());
-                            // Don't add TYPE because it is only used in backend, user shouldn't see this feature
+                            // Don't add TYPE because it is only used for program to detect its type, user shouldn't see this feature
                             if (!i.getKey().equals("TYPE")){
                                 features_list.add(new Animal_Feature(i.getKey(),i.getValue().toString()));
                             }
@@ -86,7 +87,6 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
                     }
                 }
                 adapter.notifyDataSetChanged();
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -95,10 +95,10 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
 
         listView.setAdapter(adapter);
 
+        // Pass the key, feature and it's value to the next activity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //System.out.println("feature: "+features_list.get(position).getFeature()+" value: "+ features_list.get(position).getValue());
                 Intent intent = new Intent(AnimalsDetailed.this, AnimalsDetailedEdit.class);
                 intent.putExtra("feature",features_list.get(position).getFeature());
                 intent.putExtra("value",features_list.get(position).getValue());
@@ -115,6 +115,7 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         exampleDialog.show(getSupportFragmentManager(), "example dialog");
     }
 
+    // Take the values from the dialog and add new feature to the database
     @Override
     public void applyTexts(String feature, String value) {
         HashMap map = new HashMap();

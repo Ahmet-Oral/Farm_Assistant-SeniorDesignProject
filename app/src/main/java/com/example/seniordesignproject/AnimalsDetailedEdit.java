@@ -62,6 +62,7 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
             feature_et.setEnabled(false);
         }
 
+        // Set feature and it's value with parameters taken from AnimalsDetailed.class
         feature_et.setText(feature_extra);
         value_et.setText(value_extra);
     }
@@ -72,42 +73,40 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.animals_detailed_edit_Delete_btn:
-
                 // These features key can't be deleted because they are required in other activities
                 if(feature_extra.equals("AnimalType") || feature_extra.equals("NumberOfAnimals") || feature_extra.equals("Name")){
                     Toast.makeText(AnimalsDetailedEdit.this, "Can't Delete This Feature", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                // Delete the feature (Find it by using the key_extra and feature_extra values taken from AnimalsDetailed.class)
                 FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
-
                 Intent intent = new Intent(AnimalsDetailedEdit.this, AnimalsDetailed.class);
                 intent.putExtra("key",key_extra);
                 startActivity(intent);
                 break;
 
             case R.id.animals_detailed_edit_Cancel_btn:
-
                 Intent intent2 = new Intent(AnimalsDetailedEdit.this, AnimalsDetailed.class);
                 intent2.putExtra("key",key_extra);
                 startActivity(intent2);
                 break;
 
             case R.id.animals_detailed_edit_Save_btn:
-
                 HashMap map = new HashMap();
+                // Put new feature and it's value to the hashmap
                 map.put(feature_et.getText().toString(), value_et.getText().toString());
 
                 // Remove old value
                 FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
 
-                // Update the database
+                // Update the database with new value
                 ref.child(key_extra).updateChildren(map);
 
                 Intent intent3 = new Intent(AnimalsDetailedEdit.this, AnimalsDetailed.class);
+                // Pass the key_extra back to AnimalsDetailed.class because it needs to know which node will be displayed
                 intent3.putExtra("key",key_extra);
                 startActivity(intent3);
-
                 break;
 
         }

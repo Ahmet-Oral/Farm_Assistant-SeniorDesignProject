@@ -54,6 +54,9 @@ public class Animals extends AppCompatActivity {
 
         Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.animals_info_adapter_view, animals_list);
 
+        // Get the nodes in Animals-Crops with TYPE=="Animal"
+        // Create Animal_Field object with "Name" and "NumberOfAnimals" values and store it in animals_list to use them in listView
+        // Also store the keys
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -70,9 +73,10 @@ public class Animals extends AppCompatActivity {
             }
         });
 
+
         listview.setOnItemClickListener((parent, view, position, id) -> {
             adapter.notifyDataSetChanged();
-            //System.out.println("db name: "+list_keys.get(position)+" name: " + animals_list.get(position).getName()  +" acres "+ animals_list.get(position).getNumber());
+            // Pass the clicked fields key to the next activity
             Intent intent = new Intent(Animals.this, AnimalsDetailed.class);
             intent.putExtra("key", list_keys.get(position));
             startActivity(intent);
