@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,22 +66,25 @@ public class AnimalsToDo extends AppCompatActivity {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     if(ds.child("FieldKey").getValue().toString().equals(key_extra)){
                         // Add events "date" and "task" to display in listView
-                        todo_list.add(new Animal_Todo_obj(ds.child("Task").getValue().toString(), ds.child("Date dd-MM-yyyy").getValue().toString()));
+                        // Also add that events Key so we can access it in next activity when clicked from listview
+                        todo_list.add(new Animal_Todo_obj(ds.child("Task").getValue().toString(), ds.child("Date dd-MM-yyyy").getValue().toString(),ds.getKey()));
                         adapter.notifyDataSetChanged();
                     }
                 }
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-
-        //todo_list.add(new Animal_Todo_obj("Task1","Date1"));
-
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                todo_list.get(position).getTodo_obj_key();
+                System.out.println(todo_list.get(position).getTodo_obj_key());
+            }
+        });
 
     }
 }

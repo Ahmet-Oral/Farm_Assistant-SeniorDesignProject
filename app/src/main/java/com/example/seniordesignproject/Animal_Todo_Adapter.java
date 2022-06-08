@@ -29,8 +29,9 @@ public class Animal_Todo_Adapter extends ArrayAdapter<Animal_Todo_obj> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String Date = getItem(position).getDate();
         String Task = getItem(position).getTask();
+        String Todo_obj_key = getItem(position).getTodo_obj_key();
 
-        Animal_Todo_obj animal_todo_obj = new Animal_Todo_obj(Date, Task);
+        Animal_Todo_obj animal_todo_obj = new Animal_Todo_obj(Date, Task, Todo_obj_key);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 

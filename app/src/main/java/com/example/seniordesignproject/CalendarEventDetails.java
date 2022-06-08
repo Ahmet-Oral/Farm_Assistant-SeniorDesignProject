@@ -36,7 +36,7 @@ import java.util.HashMap;
 public class CalendarEventDetails extends AppCompatActivity {
     private Button datePicker_btn, save_btn, cancel_btn, delete_btn;
     private DatePickerDialog datePickerDialog;
-    private String date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, fieldKey_str;
+    private String date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, clickedEventKey_extra;
     private EditText task_et, field_et;
     private TextInputLayout field_til;
 
@@ -55,7 +55,7 @@ public class CalendarEventDetails extends AppCompatActivity {
 
         clickedDate_extra = getIntent().getStringExtra("ClickedDate");
         clickedTask_extra = getIntent().getStringExtra("ClickedTask");
-        System.out.println("EXTRA: "+ clickedDate_extra+" "+clickedTask_extra);
+        clickedEventKey_extra = getIntent().getStringExtra("ClickedEventKey");
 
         task_et = findViewById(R.id.calendar_event_details_Task_pt);
         task_et.setText(clickedTask_extra);
@@ -66,6 +66,7 @@ public class CalendarEventDetails extends AppCompatActivity {
         field_list = new ArrayList<>();
         field_list.add("None");
         autoCompleteTxt = findViewById(R.id.calendar_event_details_auto_complete_txt);
+
 
         save_btn = findViewById(R.id.calendar_event_details_Save_btn);
         cancel_btn = findViewById(R.id.calendar_event_details_Cancel_btn);
@@ -108,15 +109,15 @@ public class CalendarEventDetails extends AppCompatActivity {
         autoCompleteTxt.setAdapter(adapterItems);
 
 
-        // Get the key of the selected event using date and task
-        // If there are other events with same date and task (highly unlikely) it will be buggy
+        // Get the key and store (this part is a mess, clean the code!)
+        // Update the dropdown menu's hint
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     // Get the key of an event with given date and task value
                     // These extra values are taken from the listView in the calendar.class
-                    if (ds.child("Task").getValue().toString().equals(clickedTask_extra) && ds.child("Date dd-MM-yyyy").getValue().toString().equals(clickedDate_extra)){
+                    if (ds.getKey().equals(clickedEventKey_extra)){
                         // Store the event key to be able to use while updating the database
                         eventKey_str = ds.getKey();
                         // Default hintText for dropdow is "Select Field"
@@ -150,7 +151,7 @@ public class CalendarEventDetails extends AppCompatActivity {
                             if(ds.child("Name").getValue().toString().equals(field_et.getText().toString())){
                                 // Get TYPE and Key of that field
                                 newType_str = ds.child("TYPE").getValue().toString();
-                                fieldKey_str = ds.getKey();
+                                clickedEventKey_extra = ds.getKey();
                             }
                             // If selected field is found in Animal-Crops, update database for new values
                             // Else, update it as "None"
@@ -160,8 +161,8 @@ public class CalendarEventDetails extends AppCompatActivity {
                             }else {
                                 map1.put("Type","None");
                             }
-                            if (fieldKey_str!=null){
-                                map1.put("FieldKey",fieldKey_str);
+                            if (clickedEventKey_extra!=null){
+                                map1.put("FieldKey",clickedEventKey_extra);
                             }else {
                                 map1.put("FieldKey","None");
                             }
