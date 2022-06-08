@@ -29,6 +29,14 @@ public class AnimalsDetailedEdit extends AppCompatActivity implements View.OnCli
         Toolbar toolbar = findViewById(R.id.toolbar_animals_detailed_edit);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Edit Feature");
+        // Using setNavigation icon and listener because we need to pass key_extra back
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(AnimalsDetailedEdit.this, AnimalsDetailed.class);
+            intent.putExtra("key",key_extra);
+            startActivity(intent);
+        });
+
 
         feature_et = findViewById(R.id.animals_detailed_edit_Features_pt);
         value_et = findViewById(R.id.animals_detailed_edit_Value_pt);

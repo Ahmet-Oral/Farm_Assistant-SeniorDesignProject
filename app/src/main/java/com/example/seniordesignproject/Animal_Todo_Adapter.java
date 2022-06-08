@@ -11,34 +11,38 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Animal_Field_Adapter extends ArrayAdapter<Animal_Field> {
-
+public class Animal_Todo_Adapter extends ArrayAdapter<Animal_Todo_obj> {
     private Context mContext;
     int mResource;
 
-    public Animal_Field_Adapter(Context context, int resource, ArrayList<Animal_Field> objects) {
+
+    public Animal_Todo_Adapter(Context context, int resource, ArrayList<Animal_Todo_obj> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
     }
 
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String name = getItem(position).getName();
-        String number = getItem(position).getNumber();
+        String Date = getItem(position).getDate();
+        String Task = getItem(position).getTask();
 
-        Animal_Field animal_field = new Animal_Field(name, number);
+        Animal_Todo_obj animal_todo_obj = new Animal_Todo_obj(Date, Task);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        TextView tv_name = convertView.findViewById(R.id.animals_info_adapter_Name_tv);
-        TextView tv_number = convertView.findViewById(R.id.animals_info_adapter_Number_tv);
+        TextView tv_date = convertView.findViewById(R.id.animals_todo_adapter_DateDown_tv);
+        TextView tv_task = convertView.findViewById(R.id.animals_todo_adapter_Task_tv);
+        TextView tv_dateUp = convertView.findViewById(R.id.animals_todo_adapter_DateUp_tv);
 
-        tv_name.setText(name);
-        tv_number.setText(number);
+        tv_dateUp.setText("Date:");
+        tv_date.setText(Date);
+        tv_task.setText(Task);
+
         return convertView;
+
     }
 }

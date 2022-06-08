@@ -38,8 +38,6 @@
     <string name="str_calendar_event_details_DeleteEvent">Delete Event</string>
 
 
-
-
     <!-- Crops Activity -->
     <string name="str_crops_new">new</string>
     <!-- Crops Add  - Crops Detailed Activity -->
@@ -64,6 +62,8 @@
     <!-- Animals_Detailed Activity -->
     <string name="str_animals_detailed_AddFeature">Add Feature</string>
     <string name="str_animals_detailed_Delete">Delete</string>
+    <string name="str_animals_detailed_ToDo">To-Do</string>
+
     <!-- Animals_Detailed_Edit Activity -->
     <string name="str_animals_detailed_edit_Feature">Feature</string>
     <string name="str_animals_detailed_edit_Value">Value</string>

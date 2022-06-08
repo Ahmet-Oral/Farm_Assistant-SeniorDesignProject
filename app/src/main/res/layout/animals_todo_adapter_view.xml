@@ -12,7 +12,7 @@
         android:text="TextView1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/animals_info_adapter_Name_tv"
+        android:id="@+id/animals_todo_adapter_Task_tv"
         android:layout_weight="66.6"/>
 
     <LinearLayout
@@ -26,14 +26,14 @@
             android:text="Total Number:"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/animals_info_adapter_TotalNumber_tv"/>
+            android:id="@+id/animals_todo_adapter_DateUp_tv"/>
 
         <TextView
             android:gravity="center"
             android:text="TextView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/animals_info_adapter_Number_tv"
+            android:id="@+id/animals_todo_adapter_DateDown_tv"
             android:layout_below="@+id/textView2"/>
     </LinearLayout>
 

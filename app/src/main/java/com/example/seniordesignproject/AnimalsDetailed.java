@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
-    Button addFeature_btn, delete_btn;
+    Button addFeature_btn, delete_btn, toDo_btn;
     String key_extra;
 
     ListView listView;
@@ -43,6 +43,7 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         features_list = new ArrayList<Animal_Feature>();
         addFeature_btn = findViewById(R.id.animals_detailed_AddFeature_btn);
         delete_btn = findViewById(R.id.animals_detailed_Delete_btn);
+        toDo_btn = findViewById(R.id.animals_detailed_ToDo_btn);
 
     }
     @Override
@@ -55,6 +56,13 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Animals-Crops");
 
+
+        toDo_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(AnimalsDetailed.this, AnimalsToDo.class);
+            // Pass the key of selected field
+            intent.putExtra("key",key_extra);
+            startActivity(intent);
+        });
         // Open custom dialog to add new features
         addFeature_btn.setOnClickListener(v -> {
             openDialog();
