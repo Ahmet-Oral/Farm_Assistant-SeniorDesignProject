@@ -61,6 +61,15 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
             Intent intent = new Intent(AnimalsDetailed.this, AnimalsToDo.class);
             // Pass the key of selected field
             intent.putExtra("key",key_extra);
+
+            // Pass the AnimalorCropType to AnimalsToDo.class, which will also be passed to CalendarNewEvent.class
+
+            for(Animal_Feature af: features_list){
+                System.out.println("animalsDetailed af.getFeature(): "+af.getFeature());
+                if (af.getFeature().equals("Name")){
+                    intent.putExtra("name",af.getValue());
+                }
+            }
             startActivity(intent);
         });
         // Open custom dialog to add new features

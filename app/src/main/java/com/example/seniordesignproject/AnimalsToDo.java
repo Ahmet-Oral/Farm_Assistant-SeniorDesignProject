@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 public class AnimalsToDo extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Animal_Todo_obj> todo_list;
-    private String key_extra;
-
+    private String key_extra, name_extra;
+    private Button add_btn;
     private FirebaseDatabase database;
     private DatabaseReference ref;
 
@@ -44,6 +45,9 @@ public class AnimalsToDo extends AppCompatActivity {
 
         // Get the key of the selected field from last activity
         key_extra = getIntent().getStringExtra("key");
+        name_extra = getIntent().getStringExtra("name");
+
+        add_btn = findViewById(R.id.animals_to_do_Add_Btn);
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference("Users/"+userUid+"/Events");
@@ -57,6 +61,13 @@ public class AnimalsToDo extends AppCompatActivity {
         setContentView(R.layout.activity_animals_to_do);
         init();
         Animal_Todo_Adapter adapter = new Animal_Todo_Adapter(this, R.layout.animals_todo_adapter_view, todo_list);
+
+        add_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(AnimalsToDo.this, CalendarNewEvent.class);
+            intent.putExtra("key",key_extra);
+            intent.putExtra("name",name_extra);
+            startActivity(intent);
+        });
 
         // Get all of the events of selected field by using the key_extra taken from last activity
         ref.addValueEventListener(new ValueEventListener() {

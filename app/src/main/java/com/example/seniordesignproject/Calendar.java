@@ -86,7 +86,6 @@ public class Calendar extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //System.out.println("snapshot:  " +snapshot);
                 // Clear lists to avoid duplicates
                 database_events_tasks.clear();
                 database_events_dates.clear();
@@ -167,13 +166,10 @@ public class Calendar extends AppCompatActivity {
 
 
         new_btn.setOnClickListener(v -> {
-            if (dateC == null) {
-                Toast.makeText(Calendar.this, "Please Select a Date!" , Toast.LENGTH_SHORT).show();
-            }else {
-                Intent intent = new Intent(Calendar.this, CalendarNewEvent.class);
-                intent.putExtra("date",dateC);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Calendar.this, CalendarNewEvent.class);
+            intent.putExtra("date",dateC);
+            startActivity(intent);
+
         });
 
     }

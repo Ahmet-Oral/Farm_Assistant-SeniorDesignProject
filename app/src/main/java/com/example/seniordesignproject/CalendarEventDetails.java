@@ -40,12 +40,12 @@ public class CalendarEventDetails extends AppCompatActivity {
     private EditText task_et, field_et;
     private TextInputLayout field_til;
 
-    ArrayList<String> field_list;
-    ArrayAdapter<String> adapterItems;
-    AutoCompleteTextView autoCompleteTxt;
+    private ArrayList<String> field_list;
+    private ArrayAdapter<String> adapterItems;
+    private AutoCompleteTextView autoCompleteTxt;
 
-    FirebaseDatabase database;
-    DatabaseReference ref,ref_fieldList;
+    private FirebaseDatabase database;
+    private DatabaseReference ref,ref_fieldList;
     
     public void init() {
         Toolbar toolbar = findViewById(R.id.toolbar_calendar_event_details);

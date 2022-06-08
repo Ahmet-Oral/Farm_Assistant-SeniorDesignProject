@@ -63,6 +63,8 @@
     <string name="str_animals_detailed_AddFeature">Add Feature</string>
     <string name="str_animals_detailed_Delete">Delete</string>
     <string name="str_animals_detailed_ToDo">To-Do</string>
+    <!-- Animals_to_do Activity -->
+    <string name="str_animals_to_do_Add">Add</string>
 
     <!-- Animals_Detailed_Edit Activity -->
     <string name="str_animals_detailed_edit_Feature">Feature</string>

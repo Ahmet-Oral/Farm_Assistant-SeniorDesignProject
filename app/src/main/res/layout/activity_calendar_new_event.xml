@@ -45,14 +45,30 @@ tools:context=".CalendarNewEvent">
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         tools:text="@string/str_calendar_new_event_Date" />
 
+    <Button
+        android:id="@+id/calendar_new_event_DatePicker_btn"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
+        android:onClick="openDatePicker"
+        android:text="@string/str_calendar_event_details_Date"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_new_event_Task_pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Date_tv"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="0.554" />
+
+
     <TextView
         android:id="@+id/calendar_new_event_Task_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="92dp"
         android:text="@string/str_calendar_new_event_Task"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendar_new_event_Date_tv" />
 
@@ -60,26 +76,15 @@ tools:context=".CalendarNewEvent">
         android:id="@+id/calendar_new_event_Task_pt"
         android:layout_width="258dp"
         android:layout_height="48dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginBottom="212dp"
         android:ems="10"
         android:hint="@string/str_calendar_new_event_Empty"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
+        app:layout_constraintBottom_toTopOf="@+id/new_calendar_event_addEvent_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.663"
-        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Task_tv"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_new_event_DateDisplay_tv" />
-
-    <TextView
-        android:id="@+id/calendar_new_event_DateDisplay_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="@string/str_calendar_new_event_Empty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Date_tv"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Task_tv" />
 
     <Button
         android:id="@+id/new_calendar_event_addEvent_btn"
