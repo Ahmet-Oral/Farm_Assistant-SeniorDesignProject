@@ -36,7 +36,7 @@ import java.util.HashMap;
 public class CalendarEventDetails extends AppCompatActivity {
     private Button datePicker_btn, save_btn, cancel_btn, delete_btn;
     private DatePickerDialog datePickerDialog;
-    private String date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, clickedEventKey_extra;
+    private String keyExtra, where_extra, date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, clickedEventKey_extra;
     private EditText task_et, field_et;
     private TextInputLayout field_til;
 
@@ -56,6 +56,11 @@ public class CalendarEventDetails extends AppCompatActivity {
         clickedDate_extra = getIntent().getStringExtra("ClickedDate");
         clickedTask_extra = getIntent().getStringExtra("ClickedTask");
         clickedEventKey_extra = getIntent().getStringExtra("ClickedEventKey");
+        // Key of the field where we came from, will be empty if we came from Calendar
+        keyExtra = getIntent().getStringExtra("key");
+        // Name of where we came from, will be used to go back
+        where_extra = getIntent().getStringExtra("where");
+
 
         task_et = findViewById(R.id.calendar_event_details_Task_pt);
         task_et.setText(clickedTask_extra);
@@ -82,6 +87,11 @@ public class CalendarEventDetails extends AppCompatActivity {
         setContentView(R.layout.activity_calendar_event_details);
         init();
         initDatePicker();
+
+        // If we came from animals or crops, lock the field selection because it will be already selected
+        if (keyExtra!=null){
+            field_til.setEnabled(false);
+        }
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
@@ -202,19 +212,54 @@ public class CalendarEventDetails extends AppCompatActivity {
 
             //update the database using eventKey_str to update selected event
             ref.child(eventKey_str).updateChildren(map);
-            Intent intent = new Intent(CalendarEventDetails.this, com.example.seniordesignproject.Calendar.class);
-            startActivity(intent);
+            Intent intent;
+
+            // If where_extra!=null, it means we came from somewhere else than Calendar
+            // Find where we came from using where_extra and go back to there
+            if (where_extra!=null){
+                if (where_extra.equals("animalsToDo")){
+                    intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
+                }
+            }else {
+                intent = new Intent(CalendarEventDetails.this, Calendar.class);
+                startActivity(intent);
+            }
+
         });
 
         cancel_btn.setOnClickListener(v -> {
-            Intent intent = new Intent(CalendarEventDetails.this, Calendar.class);
-            startActivity(intent);
+            Intent intent;
+            // If where_extra!=null, it means we came from somewhere else than Calendar
+            // Find where we came from using where_extra and go back to there
+            if (where_extra!=null){
+                if (where_extra.equals("animalsToDo")){
+                    intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
+                }
+            }else {
+                intent = new Intent(CalendarEventDetails.this, Calendar.class);
+                startActivity(intent);
+            }
         });
 
         delete_btn.setOnClickListener(v -> {
             FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Events").child(eventKey_str).removeValue();
-            Intent intent = new Intent(CalendarEventDetails.this, Calendar.class);
-            startActivity(intent);
+            Intent intent;
+            // If where_extra!=null, it means we came from somewhere else than Calendar
+            // Find where we came from using where_extra and go back to there
+            if (where_extra!=null){
+                if (where_extra.equals("animalsToDo")){
+                    intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
+                }
+            }else {
+                intent = new Intent(CalendarEventDetails.this, Calendar.class);
+                startActivity(intent);
+            }
 
         });
     }

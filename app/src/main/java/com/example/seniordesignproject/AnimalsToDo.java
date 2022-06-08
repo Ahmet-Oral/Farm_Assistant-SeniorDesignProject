@@ -45,6 +45,7 @@ public class AnimalsToDo extends AppCompatActivity {
 
         // Get the key of the selected field from last activity
         key_extra = getIntent().getStringExtra("key");
+        // Get fields name to pass on CalendarNewEvent in case user clicks new event
         name_extra = getIntent().getStringExtra("name");
 
         add_btn = findViewById(R.id.animals_to_do_Add_Btn);
@@ -92,8 +93,16 @@ public class AnimalsToDo extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                todo_list.get(position).getTodo_obj_key();
-                System.out.println(todo_list.get(position).getTodo_obj_key());
+                Intent intent = new Intent(AnimalsToDo.this, CalendarEventDetails.class);
+                // Pas the date, task and key of the clicked event
+                // Also pass this class name
+                intent.putExtra("where","animalsToDo");
+                intent.putExtra("ClickedDate",todo_list.get(position).getDate());
+                intent.putExtra("ClickedTask", todo_list.get(position).getTask());
+                intent.putExtra("ClickedEventKey",todo_list.get(position).getTodo_obj_key());
+                intent.putExtra("key",key_extra);
+                startActivity(intent);
+
             }
         });
 
