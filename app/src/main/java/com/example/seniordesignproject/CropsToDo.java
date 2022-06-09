@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AnimalsToDo extends AppCompatActivity {
+public class CropsToDo extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Animal_Todo_obj> todo_list;
     private String key_extra, name_extra;
@@ -29,18 +29,18 @@ public class AnimalsToDo extends AppCompatActivity {
     private DatabaseReference ref;
 
     public void init(){
-        Toolbar toolbar = findViewById(R.id.toolbar_animals_to_do);
+        Toolbar toolbar = findViewById(R.id.toolbar_crops_to_do);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("To-Do");
         // Using setNavigation icon and listener because we need to pass key_extra back
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(v -> {
-            Intent intent = new Intent(AnimalsToDo.this, AnimalsDetailed.class);
+            Intent intent = new Intent(CropsToDo.this, CropsDetailed.class);
             intent.putExtra("key",key_extra);
             startActivity(intent);
         });
 
-        listView = findViewById(R.id.animals_to_do_ListView);
+        listView = findViewById(R.id.crops_to_do_ListView);
         todo_list = new ArrayList<>();
 
         // Get the key of the selected field from last activity
@@ -48,7 +48,7 @@ public class AnimalsToDo extends AppCompatActivity {
         // Get fields name to pass on CalendarNewEvent in case user clicks new event
         name_extra = getIntent().getStringExtra("name");
 
-        add_btn = findViewById(R.id.animals_to_do_Add_Btn);
+        add_btn = findViewById(R.id.crops_to_do_Add_Btn);
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference("Users/"+userUid+"/Events");
@@ -59,14 +59,14 @@ public class AnimalsToDo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_animals_to_do);
+        setContentView(R.layout.activity_crops_to_do);
         init();
         Animal_Todo_Adapter adapter = new Animal_Todo_Adapter(this, R.layout.animals_todo_adapter_view, todo_list);
 
         add_btn.setOnClickListener(v -> {
-            Intent intent = new Intent(AnimalsToDo.this, CalendarNewEvent.class);
+            Intent intent = new Intent(CropsToDo.this, CalendarNewEvent.class);
             intent.putExtra("key",key_extra);
-            intent.putExtra("where","animalsToDo");
+            intent.putExtra("where","cropsToDo");
             intent.putExtra("name",name_extra);
             startActivity(intent);
         });
@@ -94,10 +94,10 @@ public class AnimalsToDo extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(AnimalsToDo.this, CalendarEventDetails.class);
+                Intent intent = new Intent(CropsToDo.this, CalendarEventDetails.class);
                 // Pas the date, task and key of the clicked event
                 // Also pass this class name
-                intent.putExtra("where","animalsToDo");
+                intent.putExtra("where","cropsToDo");
                 intent.putExtra("ClickedDate",todo_list.get(position).getDate());
                 intent.putExtra("ClickedTask", todo_list.get(position).getTask());
                 intent.putExtra("ClickedEventKey",todo_list.get(position).getTodo_obj_key());
@@ -108,4 +108,5 @@ public class AnimalsToDo extends AppCompatActivity {
         });
 
     }
+
 }

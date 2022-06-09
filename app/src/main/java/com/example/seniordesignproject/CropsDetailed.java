@@ -7,7 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,35 +19,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CropsDetailed extends AppCompatActivity {
-    TextView cropType_pt, treeNumber_pt, acres_pt, name_pt;
-    FirebaseDatabase database;
-    DatabaseReference ref;
-    DatabaseReference refEdit;
-    Button saveChanges_btn;
-    String extra;
+public class CropsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
+    private Button addFeature_btn, delete_btn, toDo_btn, notes_btn;
+    private String key_extra, where_extra;
 
-    public void init(){
-        Toolbar toolbar = findViewById(R.id.toolbar_crops);
+    private ListView listView;
+    private ArrayList<Animal_Feature> features_list;
+
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
+
+    public void init() {
+        Toolbar toolbar = findViewById(R.id.toolbar_crops_detailed);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Crops Detailed");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        database = FirebaseDatabase.getInstance();
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        extra = getIntent().getStringExtra("Name");
-        ref = database.getReference("Users/"+userUid+"/Animals-Crops/"+extra);
-        refEdit = database.getReference("Users/"+userUid+"/Animals-Crops/"+extra);
-        cropType_pt = findViewById(R.id.cropsDetailed_cropType_pt);
-        treeNumber_pt = findViewById(R.id.cropsDetailed_treeNumber_pt);
-        acres_pt = findViewById(R.id.cropsDetailed_acres_pt);
-        name_pt = findViewById(R.id.cropsDetailed_name_pt);
-        saveChanges_btn = findViewById(R.id.crops_detailed_saveChanges_btn);
-        getSupportActionBar().setTitle("Crops, "+extra);
 
+        // Get the key for selected animal field to take it's values from database
+        key_extra = getIntent().getStringExtra("key");
+        listView = findViewById(R.id.crops_detailed_ListView);
+        features_list = new ArrayList<Animal_Feature>();
+        addFeature_btn = findViewById(R.id.crops_detailed_AddFeature_btn);
+        delete_btn = findViewById(R.id.crops_detailed_Delete_btn);
+        toDo_btn = findViewById(R.id.crops_detailed_ToDo_btn);
+        notes_btn = findViewById(R.id.crops_detailed_Notes_btn);
 
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,40 +55,102 @@ public class CropsDetailed extends AppCompatActivity {
         setContentView(R.layout.activity_crops_detailed);
         init();
 
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/" + userUid + "/Animals-Crops");
+
+        notes_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CropsDetailed.this, Notes.class);
+                // Pass the key of selected field
+                intent.putExtra("key", key_extra);
+                where_extra = "Crop";
+                intent.putExtra("where", where_extra);
+                startActivity(intent);
+            }
+        });
+        toDo_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(CropsDetailed.this, CropsToDo.class);
+            // Pass the key of selected field
+            intent.putExtra("key", key_extra);
+
+            // Pass the AnimalOrCropType to CropsToDo.class, which will also be passed to CalendarNewEvent.class
+
+            for (Animal_Feature af : features_list) {
+                if (af.getFeature().equals("Name")) {
+                    intent.putExtra("name", af.getValue());
+                }
+            }
+            startActivity(intent);
+        });
+        // Open custom dialog to add new features
+        addFeature_btn.setOnClickListener(v -> {
+            openDialog();
+        });
+
+        delete_btn.setOnClickListener(v -> {
+            // Delete the node using the key taken from Animals.class
+            FirebaseDatabase.getInstance().getReference().child("Users/" + userUid + "/Animals-Crops").child(key_extra).removeValue();
+            startActivity(new Intent(CropsDetailed.this, Crops.class));
+        });
+
+        // Define the adapter and use features_list for content
+        Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
+
+
+        // Create new Animal_Feature object using the key taken from Animals.class
+        //... and store these objects in features_list to be used in listView adapter
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                cropType_pt.setText(snapshot.child("CropType").getValue().toString());
-                acres_pt.setText(snapshot.child("Acres").getValue().toString());
-                treeNumber_pt.setText(snapshot.child("NumberofTrees").getValue().toString());
-                name_pt.setText(snapshot.child("Name").getValue().toString());
+                features_list.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.getKey().equals(key_extra)) {
+                        for (DataSnapshot i : ds.getChildren()) {
+                            // Don't add TYPE because it is only used for program to detect its type, user shouldn't see this feature
+                            if (!i.getKey().equals("TYPE")) {
+                                features_list.add(new Animal_Feature(i.getKey(), i.getValue().toString()));
+                            }
+                        }
+                    }
+                }
+                adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        saveChanges_btn.setOnClickListener(new View.OnClickListener() {
+
+        listView.setAdapter(adapter);
+
+        // Pass the key, feature and it's value to the next activity
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                refEdit.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        HashMap map = new HashMap();
-                        map.put("CropType", cropType_pt.getText().toString());
-                        map.put("Acres", acres_pt.getText().toString());
-                        map.put("NumberofTrees", treeNumber_pt.getText().toString());
-                        map.put("Name",name_pt.getText().toString());
-                        //update the database
-                        extra = name_pt.getText().toString();
-                        refEdit.updateChildren(map);
-                        startActivity(new Intent(CropsDetailed.this, Crops.class));
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(CropsDetailed.this, CropsDetailedEdit.class);
+                intent.putExtra("feature", features_list.get(position).getFeature());
+                intent.putExtra("value", features_list.get(position).getValue());
+                intent.putExtra("key", key_extra);
+                startActivity(intent);
             }
         });
 
+    }
+
+
+    public void openDialog() {
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    // Take the values from the dialog and add new feature to the database
+    @Override
+    public void applyTexts(String feature, String value) {
+        HashMap map = new HashMap();
+        map.put(feature, value);
+        //update the database
+        ref.child(key_extra).updateChildren(map);
     }
 }

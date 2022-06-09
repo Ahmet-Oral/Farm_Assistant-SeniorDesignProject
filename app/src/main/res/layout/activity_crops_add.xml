@@ -5,120 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CropsAdd">
-
-    <EditText
-        android:id="@+id/cropsAdd_cropType_pt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/str_crop_empty_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cropsAdd_cropType_tv"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_add" />
-
     <include
         android:id="@+id/toolbar_crops_add"
         layout="@layout/toolbar" />
 
     <Button
-        android:id="@+id/cropsAdd_add_btn"
+        android:id="@+id/crops_add_AddFeature_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_crop_add"
+        android:text="@string/str_animals_add_AddFeature"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/crops_add_AddAnimal_btn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/cropsAdd_cropType_tv"
+    <Button
+        android:id="@+id/crops_add_AddAnimal_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/str_crop_type"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/cropsAdd_cropType_pt"
+        android:text="@string/str_animals_add_Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/crops_add_AddFeature_btn" />
+
+    <TextView
+        android:id="@+id/crops_add_Type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/str_animals_add_Type"
+        app:layout_constraintEnd_toStartOf="@+id/crops_add_Type_pt"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_add" />
 
-    <TextView
-        android:id="@+id/cropsAdd_acres_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/str_crop_acres"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/cropsAdd_acres_pt"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_cropType_tv" />
-
-    <TextView
-        android:id="@+id/cropsAdd_treeNumber_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/str_crop_total_tree"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/cropsAdd_treeNumber_pt"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_acres_tv" />
-
     <EditText
-        android:id="@+id/cropsAdd_acres_pt"
+        android:id="@+id/crops_add_Type_pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/str_crop_empty_hint"
+        android:hint="@string/str_animals_add_Type"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_cropType_pt" />
-
-    <EditText
-        android:id="@+id/cropsAdd_treeNumber_pt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/str_crop_empty_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cropsAdd_treeNumber_tv"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_acres_pt" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_add" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/crops_add_Number_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/str_crop_name"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/cropsAdd_name_pt"
+        android:layout_marginTop="45dp"
+        android:text="@string/str_animals_add_Number"
+        app:layout_constraintEnd_toStartOf="@+id/crops_add_Number_pt"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_treeNumber_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/crops_add_Type_tv" />
 
     <EditText
-        android:id="@+id/cropsAdd_name_pt"
+        android:id="@+id/crops_add_Number_pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="@string/str_crop_empty_hint"
+        android:hint="@string/str_animals_add_Number"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/cropsAdd_treeNumber_pt" />
+        app:layout_constraintTop_toBottomOf="@+id/crops_add_Type_pt" />
+
+    <ListView
+        android:id="@+id/crops_add_ListView"
+        android:layout_width="409dp"
+        android:layout_height="380dp"
+        app:layout_constraintBottom_toTopOf="@+id/crops_add_AddAnimal_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crops_add_Name_tv" />
+
+    <TextView
+        android:id="@+id/crops_add_Name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/str_animals_add_Name"
+        app:layout_constraintEnd_toStartOf="@+id/crops_add_Name_pt"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crops_add_Number_tv" />
+
+    <EditText
+        android:id="@+id/crops_add_Name_pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/str_animals_add_Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crops_add_Number_pt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

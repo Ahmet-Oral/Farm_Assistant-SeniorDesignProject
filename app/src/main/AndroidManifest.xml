@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeniorDesignProject">
         <activity
+            android:name=".CropsDetailedEdit"
+            android:exported="false" />
+        <activity
+            android:name=".CropsToDo"
+            android:exported="false" />
+        <activity
             android:name=".NotesGeneral"
             android:exported="false"
-            android:parentActivityName=".Agenda"/>
+            android:parentActivityName=".Agenda" />
         <activity
             android:name=".NotesNew"
             android:exported="false" />

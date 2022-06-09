@@ -45,7 +45,12 @@ public class Notes extends AppCompatActivity {
                 Intent intent = new Intent(Notes.this, AnimalsDetailed.class);
                 intent.putExtra("key",key_extra);
                 startActivity(intent);
+            }else if (where_extra.equals("Crop")){
+                Intent intent = new Intent(Notes.this, CropsDetailed.class);
+                intent.putExtra("key",key_extra);
+                startActivity(intent);
             }
+
 
         });
 

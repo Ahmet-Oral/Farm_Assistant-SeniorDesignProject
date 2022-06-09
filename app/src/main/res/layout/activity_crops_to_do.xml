@@ -4,31 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Crops">
+    tools:context=".CropsToDo">
 
     <include
-        android:id="@+id/toolbar_crops"
+        android:id="@+id/toolbar_crops_to_do"
         layout="@layout/toolbar" />
 
+    <ListView
+        android:id="@+id/crops_to_do_ListView"
+        android:layout_width="409dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_to_do" />
+
     <Button
-        android:id="@+id/crops_New_btn"
+        android:id="@+id/crops_to_do_Add_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/str_crops_new"
+        android:text="@string/str_animals_to_do_Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ListView
-        android:id="@+id/crops_ListView"
-        android:layout_width="409dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/crops_New_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

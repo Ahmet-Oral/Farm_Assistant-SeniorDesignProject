@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class CalendarNewEvent extends AppCompatActivity {
-    private String dateExtra, nameExtra, keyExtra, fieldType, fieldKey, fieldName, date_jan_dd_yyyy_str, date_dd_MM_yyyy_str, date_duplicateCheck_str;
+    private String dateExtra, where, nameExtra, keyExtra, fieldType, fieldKey, fieldName, date_jan_dd_yyyy_str, date_dd_MM_yyyy_str, date_duplicateCheck_str;
     private FirebaseDatabase database;
     private DatabaseReference ref,ref_fieldType;
     private ArrayList<String> field_list, datesFromDatabase;
@@ -53,6 +53,7 @@ public class CalendarNewEvent extends AppCompatActivity {
         nameExtra = getIntent().getStringExtra("name");
         // Key of the field in case user came from a field type activity
         keyExtra = getIntent().getStringExtra("key");
+        where = getIntent().getStringExtra("where");
 
         field_list = new ArrayList<>();
         field_list.add("None");
@@ -233,11 +234,18 @@ public class CalendarNewEvent extends AppCompatActivity {
             ref.child(date_duplicateCheck_str).updateChildren(map);
             Toast.makeText(CalendarNewEvent.this, "Event Successfully Added!" , Toast.LENGTH_SHORT).show();
 
-            // If we came from animals, go to animalsToDo and pass the animal key back (should update this when there will be a possibility to come from crops)
-            if(nameExtra!=null){
-                Intent intent = new Intent(CalendarNewEvent.this, AnimalsToDo.class);
-                intent.putExtra("key",keyExtra);
-                startActivity(intent);
+            // If we came from a field activity, find out which one and go back to it
+            Intent intent;
+            if(where!=null){
+                if (where.equals("animalsToDo")){
+                    intent = new Intent(CalendarNewEvent.this, AnimalsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
+                }else if(where.equals("cropsToDo")){
+                    intent = new Intent(CalendarNewEvent.this, CropsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
+                }
 
             }else {
                 startActivity(new Intent(CalendarNewEvent.this, Calendar.class));

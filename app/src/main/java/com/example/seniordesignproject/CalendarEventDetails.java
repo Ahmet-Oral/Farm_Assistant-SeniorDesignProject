@@ -221,6 +221,10 @@ public class CalendarEventDetails extends AppCompatActivity {
                     intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
                     intent.putExtra("key",keyExtra);
                     startActivity(intent);
+                }else if(where_extra.equals("cropsToDo")){
+                    intent = new Intent(CalendarEventDetails.this, CropsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    startActivity(intent);
                 }
             }else {
                 intent = new Intent(CalendarEventDetails.this, Calendar.class);
