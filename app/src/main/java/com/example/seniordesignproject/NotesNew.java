@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class NotesNew extends AppCompatActivity {
 
 
     private TextInputLayout field_til;
-    private String keyExtra, note_key;
+    private String key_extra, note_key, where_extra;
     private EditText note_et, field_et;
     private Button confirm_btn, cancel_btn;
     private FirebaseDatabase database;
@@ -36,20 +37,32 @@ public class NotesNew extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_notes_new);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("New Note");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Using setNavigation icon and listener because we need to pass key_extra back
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(NotesNew.this, Notes.class);
+            intent.putExtra("key",key_extra);
+            intent.putExtra("where",where_extra);
+            startActivity(intent);
+        });
 
-        keyExtra = getIntent().getStringExtra("key");
+
+        key_extra = getIntent().getStringExtra("key");
+        // Pas where_extra in case user clicks back 2 times in toolbar
+        where_extra = getIntent().getStringExtra("where");
+
 
         field_til = findViewById(R.id.notes_new_textInputLayout);
         field_et = findViewById(R.id.notes_new_auto_complete_txt);
         note_et = findViewById(R.id.notes_new_Note_pt);
 
         confirm_btn = findViewById(R.id.notes_new_Confirm_btn);
+        cancel_btn = findViewById(R.id.notes_new_Cancel_btn);
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Notes");
-        ref_keys = database.getReference("Users/"+userUid+"/Notes/"+keyExtra);
+        ref_keys = database.getReference("Users/"+userUid+"/Notes/"+key_extra);
 
         noteKeysFromDatabase = new ArrayList<>();
 
@@ -82,12 +95,12 @@ public class NotesNew extends AppCompatActivity {
         });
 
 
-        // If keyExtra is not null, set as hint of dropdown menu
+        // If key_extra is not null, set as hint of dropdown menu
         // Also set field_et too because we will use it to determine values that will be put to database
-        if (keyExtra != null){
-            field_til.setHint(keyExtra);
+        if (key_extra != null){
+            field_til.setHint(key_extra);
             field_til.setEnabled(false);
-            field_et.setText(keyExtra);
+            field_et.setText(key_extra);
         }else {
             field_til.setHint("Select Field");
         }
@@ -95,19 +108,27 @@ public class NotesNew extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(note_key);
                 NoteKeyDuplicateChecker();
-                System.out.println(note_key);
                 CreateNewNote();
 
-            }
+                // Pass the key back so Notes.class will know which notes to display
+                Intent intent = new Intent(NotesNew.this, Notes.class);
+                intent.putExtra("key",key_extra);
+                intent.putExtra("where",where_extra);
+                startActivity(intent);
+                            }
         });
-
+        cancel_btn.setOnClickListener(v -> {
+            // Pass the key back so Notes.class will know which notes to display
+            Intent intent = new Intent(NotesNew.this, Notes.class);
+            intent.putExtra("key",key_extra);
+            intent.putExtra("where",where_extra);
+            startActivity(intent);
+        });
 
 
     }
     public void NoteKeyDuplicateChecker(){
-        System.out.println("noteKeysFromDatabase: "+noteKeysFromDatabase);
         for (int i = 0; i < noteKeysFromDatabase.size(); i++){
             if(noteKeysFromDatabase.get(i).equals(note_key)){
                 note_key= note_key + "-" + i;
@@ -118,13 +139,9 @@ public class NotesNew extends AppCompatActivity {
     }
 
     public void CreateNewNote(){
-
         HashMap map = new HashMap();
         map.put(note_key, note_et.getText().toString());
-
         ref.child(field_et.getText().toString()).updateChildren(map);
-
-
-
     }
+
 }

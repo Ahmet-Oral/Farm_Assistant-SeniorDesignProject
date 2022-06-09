@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class Notes extends AppCompatActivity {
     private Button new_btn;
     private ListView listView;
-    private String key_extra;
+    private String key_extra, where_extra;
     ArrayAdapter<String> adapter;
     ArrayList<String> notes_list;
 
@@ -38,12 +38,24 @@ public class Notes extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_notes);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Notes");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Using setNavigation icon and listener because we need to pass key_extra back
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(v -> {
+            if (where_extra.equals("Animal")){
+                Intent intent = new Intent(Notes.this, AnimalsDetailed.class);
+                intent.putExtra("key",key_extra);
+                startActivity(intent);
+            }
+
+        });
+
+        key_extra = getIntent().getStringExtra("key");
+        where_extra = getIntent().getStringExtra("where");
 
         new_btn = findViewById(R.id.notes_New_btn);
         listView = findViewById(R.id.notes_ListView);
 
-        key_extra = getIntent().getStringExtra("key");
+
 
         notes_list = new ArrayList<>();
 
@@ -51,7 +63,7 @@ public class Notes extends AppCompatActivity {
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/Notes");
+        ref = database.getReference("Users/"+userUid+"/Notes/"+key_extra);
 
     }
 
@@ -61,12 +73,32 @@ public class Notes extends AppCompatActivity {
         setContentView(R.layout.activity_notes);
         init();
 
-        // Pass the key of the field
+
+        // Get notes_list from database
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    notes_list.add(ds.getValue().toString());
+                }
+                listView.setAdapter(adapter);
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
         new_btn.setOnClickListener(v -> {
             Intent intent = new Intent(Notes.this, NotesNew.class);
+            // Pass the key of the field and which activity user came from
             intent.putExtra("key",key_extra);
+            intent.putExtra("where",where_extra);
             startActivity(intent);
         });
+
+
 
 
 

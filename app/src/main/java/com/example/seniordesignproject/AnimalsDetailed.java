@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
     private Button addFeature_btn, delete_btn, toDo_btn, notes_btn;
-    private String key_extra;
+    private String key_extra, where_extra;
 
     private ListView listView;
     private ArrayList<Animal_Feature> features_list;
@@ -63,6 +63,8 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
                 Intent intent = new Intent(AnimalsDetailed.this, Notes.class);
                 // Pass the key of selected field
                 intent.putExtra("key",key_extra);
+                where_extra = "Animal";
+                intent.putExtra("where",where_extra);
                 startActivity(intent);
             }
         });
