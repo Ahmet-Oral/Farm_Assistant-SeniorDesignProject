@@ -64,6 +64,7 @@ public class NotesGeneral extends AppCompatActivity {
 
         listView = findViewById(R.id.notes_general_ListView);
         adapter = new ArrayAdapter<String>(NotesGeneral.this,R.layout.notes_adapter_view,R.id.notes_adapter_view_Note,notes_list);
+        listView.setAdapter(adapter);
 
     }
 
@@ -74,15 +75,10 @@ public class NotesGeneral extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_general);
         init();
-        // Get the notes from database
-        listView.setAdapter(adapter);
-        updateNoteValuesFromDatabase();
-        adapter.notifyDataSetChanged();
 
 
 
         field_til.setHint("Select Field");
-
         // If field_et is not null, set text to it. Else, set text to "General Notes"
         if (noteKey_extra==null){
             field_et.setText("General Notes");
@@ -90,6 +86,13 @@ public class NotesGeneral extends AppCompatActivity {
         }else{
             field_et.setText(noteKey_extra);
         }
+
+
+        // Get the notes from database
+        getTheKeyOfSelectedField(field_et.getText().toString());
+        updateNoteValuesFromDatabase();
+        adapter.notifyDataSetChanged();
+
 
         // Adapter for dropdown menu
         adapterItems = new ArrayAdapter<String>(this,R.layout.dropdown_menu, field_list);
@@ -113,9 +116,11 @@ public class NotesGeneral extends AppCompatActivity {
 
         // When user selects different field, fetch values for that field from database and update the ListView
         autoCompleteTxt.setOnItemClickListener((parent, view, position, id) -> {
+            notes_list.clear();
             // Dropdown menu has the names for fields, we need to find selected fields key to fetch correct notes from database
             getTheKeyOfSelectedField(field_et.getText().toString());
             updateNoteValuesFromDatabase();
+            adapter.notifyDataSetChanged();
         });
 
         new_btn.setOnClickListener(v -> {
@@ -147,11 +152,11 @@ public class NotesGeneral extends AppCompatActivity {
         });
     }
     public void updateNoteValuesFromDatabase(){
-        notes_list.clear();
         // Get the notes for the field selected in dropdown menu, default=general notes
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("aaaaaaaaa");
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.getKey().equals(field_key)) {
                         for(DataSnapshot dsChild: ds.getChildren()){
