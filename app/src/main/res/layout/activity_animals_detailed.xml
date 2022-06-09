@@ -13,12 +13,14 @@
     <ListView
         android:id="@+id/animals_detailed_ListView"
         android:layout_width="409dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_marginTop="2dp"
         app:layout_constraintBottom_toTopOf="@+id/animals_detailed_AddFeature_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals_detailed">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals_detailed"
+        app:layout_constraintVertical_bias="0.284">
 
     </ListView>
 
@@ -26,34 +28,46 @@
         android:id="@+id/animals_detailed_AddFeature_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/str_animals_detailed_AddFeature"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toEndOf="@+id/animals_detailed_Delete_btn" />
 
     <Button
         android:id="@+id/animals_detailed_Delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/str_animals_detailed_Delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/animals_detailed_ToDo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_animals_detailed_ToDo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/animals_detailed_Delete_btn"
+        app:layout_constraintBottom_toTopOf="@+id/animals_detailed_AddFeature_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toEndOf="@+id/animals_detailed_Notes_btn"
+        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView"
+        app:layout_constraintVertical_bias="0.372" />
+
+    <Button
+        android:id="@+id/animals_detailed_Notes_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="56dp"
+        android:text="@string/str_animals_detailed_Notes"
+        app:layout_constraintBottom_toTopOf="@+id/animals_detailed_Delete_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintVertical_bias="0.826" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

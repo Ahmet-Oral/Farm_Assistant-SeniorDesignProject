@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeniorDesignProject">
         <activity
+            android:name=".NotesNew"
+            android:exported="false" />
+        <activity
+            android:name=".Notes"
+            android:exported="false" />
+        <activity
             android:name=".AnimalsToDo"
             android:exported="false"
-            android:parentActivityName=".AnimalsDetailed"/>
+            android:parentActivityName=".AnimalsDetailed" />
         <activity
             android:name=".CalendarEventDetails"
             android:exported="false"

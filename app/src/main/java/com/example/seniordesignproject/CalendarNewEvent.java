@@ -124,7 +124,7 @@ public class CalendarNewEvent extends AppCompatActivity {
 
 
         // Get all the dates for checking duplicates
-        // If duplicate is found, change it's key by adding for loop counter
+        // If duplicate is found, change it's key
         ref = database.getReference("Users/"+userUid+"/Events");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -137,6 +137,7 @@ public class CalendarNewEvent extends AppCompatActivity {
                 for (int i = 0; i < datesFromDatabase.size(); i++){
                     if(datesFromDatabase.get(i).equals(date_duplicateCheck_str)){
                         date_duplicateCheck_str= date_duplicateCheck_str + "-" + i;
+                        // Restart the loop and check again
                         i = 0;
                     }
                 }

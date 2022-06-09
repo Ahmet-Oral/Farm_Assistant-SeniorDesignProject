@@ -63,6 +63,7 @@
     <string name="str_animals_detailed_AddFeature">Add Feature</string>
     <string name="str_animals_detailed_Delete">Delete</string>
     <string name="str_animals_detailed_ToDo">To-Do</string>
+    <string name="str_animals_detailed_Notes">Notes</string>
     <!-- Animals_to_do Activity -->
     <string name="str_animals_to_do_Add">Add</string>
 
@@ -73,6 +74,14 @@
     <string name="str_animals_detailed_edit_Cancel">Cancel</string>
     <string name="str_animals_detailed_edit_Save">Save</string>
 
+
+    <!-- Notes Activity -->
+    <string name="str_notes_NewNote">New Note</string>
+
+    <!-- Notes_new Activity -->
+    <string name="str_notes_new_Confirm">Confirm</string>
+    <string name="str_notes_new_Cancel">Cancel</string>
+    <string name="str_notes_new_Note">Note</string>
 
     <!-- General Information Activity -->
 
