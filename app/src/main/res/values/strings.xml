@@ -74,6 +74,8 @@
     <string name="str_animals_detailed_edit_Cancel">Cancel</string>
     <string name="str_animals_detailed_edit_Save">Save</string>
 
+    <!-- Notes_general Activity -->
+    <string name="str_notes_general_NewNote">New Note</string>
 
     <!-- Notes Activity -->
     <string name="str_notes_NewNote">New Note</string>

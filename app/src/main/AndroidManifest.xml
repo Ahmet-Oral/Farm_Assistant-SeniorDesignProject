@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeniorDesignProject">
         <activity
+            android:name=".NotesGeneral"
+            android:exported="false"
+            android:parentActivityName=".Agenda"/>
+        <activity
             android:name=".NotesNew"
             android:exported="false" />
         <activity

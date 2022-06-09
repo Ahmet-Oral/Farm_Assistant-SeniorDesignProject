@@ -48,7 +48,7 @@ public class Agenda extends AppCompatActivity implements View.OnClickListener{
 
                 break;
             case R.id.agenda_Notes_btn:
-
+                startActivity(new Intent(Agenda.this, NotesGeneral.class));
                 break;
             case R.id.agenda_Inventory_btn:
 
