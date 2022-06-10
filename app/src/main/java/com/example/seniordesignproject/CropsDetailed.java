@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 public class CropsDetailed extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
     private Button addFeature_btn, delete_btn, toDo_btn, notes_btn;
-    private String key_extra, where_extra;
+    private String key_extra, where_extra, name_extra;
 
     private ListView listView;
     private ArrayList<Animal_Feature> features_list;
@@ -67,6 +67,7 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
                 intent.putExtra("key", key_extra);
                 where_extra = "Crop";
                 intent.putExtra("where", where_extra);
+                intent.putExtra("name", name_extra);
                 startActivity(intent);
             }
         });
@@ -80,6 +81,8 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
             for (Animal_Feature af : features_list) {
                 if (af.getFeature().equals("Name")) {
                     intent.putExtra("name", af.getValue());
+
+
                 }
             }
             startActivity(intent);
@@ -111,6 +114,11 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
                             // Don't add TYPE because it is only used for program to detect its type, user shouldn't see this feature
                             if (!i.getKey().equals("TYPE")) {
                                 features_list.add(new Animal_Feature(i.getKey(), i.getValue().toString()));
+                                // Set title of the action bar with selected fields name
+                                if (i.getKey().equals("Name")){
+                                    name_extra = i.getValue().toString();
+                                    getSupportActionBar().setTitle(i.getValue().toString());
+                                }
                             }
                         }
                     }

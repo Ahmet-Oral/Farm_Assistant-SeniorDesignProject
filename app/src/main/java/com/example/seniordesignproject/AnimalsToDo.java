@@ -31,7 +31,7 @@ public class AnimalsToDo extends AppCompatActivity {
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_animals_to_do);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("To-Do");
+        getSupportActionBar().setTitle(", To-Do");
         // Using setNavigation icon and listener because we need to pass key_extra back
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(v -> {
@@ -47,6 +47,9 @@ public class AnimalsToDo extends AppCompatActivity {
         key_extra = getIntent().getStringExtra("key");
         // Get fields name to pass on CalendarNewEvent in case user clicks new event
         name_extra = getIntent().getStringExtra("name");
+
+        // Put fields name to action bar
+        getSupportActionBar().setTitle(name_extra+", To-Do");
 
         add_btn = findViewById(R.id.animals_to_do_Add_Btn);
 

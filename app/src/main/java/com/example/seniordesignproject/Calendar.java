@@ -79,6 +79,8 @@ public class Calendar extends AppCompatActivity {
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
+
+
         // Using same adapter view as we used in animals_todo
         Calendar_Event_Adapter adapter = new Calendar_Event_Adapter(this, R.layout.animals_todo_adapter_view, eventObj_list);
 

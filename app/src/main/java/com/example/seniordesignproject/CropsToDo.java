@@ -48,6 +48,9 @@ public class CropsToDo extends AppCompatActivity {
         // Get fields name to pass on CalendarNewEvent in case user clicks new event
         name_extra = getIntent().getStringExtra("name");
 
+        // Put fields name to action bar
+        getSupportActionBar().setTitle(name_extra+", To-Do");
+
         add_btn = findViewById(R.id.crops_to_do_Add_Btn);
 
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();

@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class Notes extends AppCompatActivity {
     private Button new_btn;
     private ListView listView;
-    private String key_extra, where_extra;
+    private String key_extra, where_extra, name_extra;
     ArrayAdapter<String> adapter;
     ArrayList<String> notes_list;
 
@@ -56,6 +56,10 @@ public class Notes extends AppCompatActivity {
 
         key_extra = getIntent().getStringExtra("key");
         where_extra = getIntent().getStringExtra("where");
+        name_extra = getIntent().getStringExtra("name");
+
+        // Update action bars title with selected fields name
+        getSupportActionBar().setTitle(name_extra+", Notes");
 
         new_btn = findViewById(R.id.notes_New_btn);
         listView = findViewById(R.id.notes_ListView);
