@@ -166,7 +166,7 @@ public class WeatherForecast extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(WeatherForecast.this,error.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(WeatherForecast.this,"City Not Found!",Toast.LENGTH_SHORT).show();
             }
         });
 
