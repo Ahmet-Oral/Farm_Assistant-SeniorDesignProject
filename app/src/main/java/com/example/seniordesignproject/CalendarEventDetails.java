@@ -275,6 +275,7 @@ public class CalendarEventDetails extends AppCompatActivity {
             }
         };
 
+
         // Split the date for displaying current events date in datePicker_btn
         String[] tokens = clickedDate_extra.split("-");
         int year = Integer.parseInt(tokens[2]);

@@ -173,7 +173,16 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Calendar.this, CalendarEventDetails.class);
-                intent.putExtra("ClickedDate",dateC);
+
+                // If user does click todays event without selecting date, dateC will not be initialized
+                // So if dateC is null, it means user clicked todays event and dateC should be todaysDate
+                if (dateC==null){
+                    intent.putExtra("ClickedDate",todaysDate);
+
+                }else{
+                    intent.putExtra("ClickedDate",dateC);
+
+                }
                 intent.putExtra("ClickedTask", eventInfoList.get(position).toString());
                 intent.putExtra("ClickedEventKey",eventObj_list.get(position).getEvent_obj_key());
                 startActivity(intent);

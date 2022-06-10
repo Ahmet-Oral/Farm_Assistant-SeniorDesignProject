@@ -54,28 +54,34 @@ public class MainActivity extends AppCompatActivity {
         temperature_tv = findViewById(R.id.main_Temperature_tv);
         date_tv = findViewById(R.id.main_Date_tv);
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users/"+userUid+"/User Details");
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = auth.getCurrentUser();
+        System.out.println("1");
         if(user == null){
             startActivity(new Intent(MainActivity.this, Register.class));
         }
 
+
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("2");
         init();
         // Get weather to display
         FindWeather();
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid+"/User Details");
 
 
 
@@ -95,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn_weather.setOnClickListener(v -> {
-            confirmDialog("btn_Weather");
-
-        });
+            startActivity(new Intent(MainActivity.this, WeatherForecast.class));});
         btn_agenda.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Agenda.class));});
         btn_crops.setOnClickListener(v -> {
@@ -113,25 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void confirmDialog(String buttonInfo){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle("Title");
-        builder.setMessage("Message");
-        builder.setPositiveButton("Confirm",
-                (dialog, which) -> {
-                    if (buttonInfo.equals("btn_Weather")){
-                        startActivity(new Intent(MainActivity.this, WeatherForecast.class));
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+
     public void FindWeather()
     {
         final String city = "Mugla";
