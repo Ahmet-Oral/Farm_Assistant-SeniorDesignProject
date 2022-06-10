@@ -38,14 +38,14 @@ public class Calendar extends AppCompatActivity {
 
     private ArrayList<Calendar_Event_obj> eventObj_list;
 
-    ArrayList<String> database_events_dates,database_events_tasks, database_events_types, database_events_keys, database_events_fields;
-    FirebaseDatabase database;
-    DatabaseReference ref;
-    ArrayAdapter<String> adapter;
-    ListView listView;
-    Button new_btn;
-    String dateC;
-    List<Event> events;
+    private ArrayList<String> database_events_dates,database_events_tasks, database_events_types, database_events_keys, database_events_fields;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
+    private ArrayAdapter<String> adapter;
+    private ListView listView;
+    private Button new_btn;
+    private String dateC, todaysDate, day_str, month_str;
+    private List<Event> events;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_calendar);
@@ -118,6 +118,20 @@ public class Calendar extends AppCompatActivity {
                         compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
                     }
                 }
+
+                // To get today's date and list the events of today because listing events don't trigger without clicking to calendar
+                Date date = new Date();
+                todaysDate = dateFormatDay.format(date);
+                for (int i = 0; i < eventDatesList.size(); i++){
+                    if(eventDatesList.get(i).equals(todaysDate)){
+                        eventInfoList.add(database_events_tasks.get(i));
+                        // Create eventObjects for the listView
+                        eventObj_list.add(new Calendar_Event_obj(database_events_dates.get(i),database_events_fields.get(i),database_events_keys.get(i)));
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+                // Display events
+                listView.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

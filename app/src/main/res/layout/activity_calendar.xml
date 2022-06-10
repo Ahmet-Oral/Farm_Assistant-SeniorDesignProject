@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Calendar">
+
+
+    <ListView
+        android:id="@+id/calendar_ListView"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="#DAEFC1"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_New_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
+
     <include
         android:id="@+id/toolbar_calendar"
         layout="@layout/toolbar" />
@@ -15,7 +34,7 @@
         android:layout_height="250dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="#9E9E9E"
+        app:compactCalendarBackgroundColor="#8C8686"
         app:compactCalendarCurrentDayBackgroundColor="#94B870"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#94B870"
         app:compactCalendarCurrentSelectedDayIndicatorStyle="no_fill_large_indicator"
@@ -28,15 +47,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_calendar" />
 
-    <ListView
-        android:id="@+id/calendar_ListView"
-        android:layout_width="409dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
-
     <Button
         android:id="@+id/calendar_New_btn"
         android:layout_width="wrap_content"
@@ -45,7 +55,7 @@
         android:text="@string/str_calendar_New"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_ListView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
