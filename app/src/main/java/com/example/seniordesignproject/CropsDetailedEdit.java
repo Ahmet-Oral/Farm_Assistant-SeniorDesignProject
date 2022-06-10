@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +20,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class CropsDetailedEdit extends AppCompatActivity implements View.OnClickListener {
-    String userUid, feature_extra, value_extra, key_extra;
-    EditText feature_et, value_et;
-    Button delete_btn, cancel_btn, save_btn;
+    private String userUid, feature_extra, value_extra, key_extra;
+    private EditText feature_et, value_et;
+    private Button delete_btn, cancel_btn, save_btn;
 
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_crops_detailed_edit);
@@ -88,10 +90,7 @@ public class CropsDetailedEdit extends AppCompatActivity implements View.OnClick
                 }
 
                 // Delete the feature (Find it by using the key_extra and feature_extra values taken from AnimalsDetailed.class)
-                FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
-                Intent intent = new Intent(CropsDetailedEdit.this, CropsDetailed.class);
-                intent.putExtra("key",key_extra);
-                startActivity(intent);
+                confirmDialog("delete_btn");
                 break;
 
             case R.id.crops_detailed_edit_Cancel_btn:
@@ -120,5 +119,26 @@ public class CropsDetailedEdit extends AppCompatActivity implements View.OnClick
                 break;
 
         }
+    }
+    public void confirmDialog(String buttonInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setMessage("Delete "+ feature_extra +"?");
+        builder.setPositiveButton("Confirm",
+                (dialog, which) -> {
+                    if (buttonInfo.equals("delete_btn")){
+                        FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Animals-Crops/"+key_extra).child(feature_extra).removeValue();
+                        Intent intent = new Intent(CropsDetailedEdit.this, CropsDetailed.class);
+                        intent.putExtra("key",key_extra);
+                        startActivity(intent);
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

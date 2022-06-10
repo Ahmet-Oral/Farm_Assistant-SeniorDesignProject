@@ -29,8 +29,9 @@
             android:id="@+id/main_Weather_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
-            android:text="@string/str_main_Weather"
+            android:text="Muğla"
             app:layout_constraintEnd_toStartOf="@+id/main_Temperature_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Welcome_tv" />
@@ -39,6 +40,7 @@
             android:id="@+id/main_Temperature_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
             android:text="@string/str_main_TempExample"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +76,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
             android:alpha="0.25"
-            android:color="#66FF0000"
+            android:backgroundTint="#57C1FB"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/main_Date_tv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +90,7 @@
             android:layout_width="300dp"
             android:layout_height="64dp"
             android:layout_marginTop="32dp"
+            android:backgroundTint="#94B870"
             android:text="@string/str_main_Agenda"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +102,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_main_Crops"
+            android:backgroundTint="#94B870"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Agenda_btn" />
@@ -109,6 +113,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_main_Animals"
+            android:backgroundTint="#94B870"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Crops_btn" />
@@ -119,6 +124,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_main_GeneralInformation"
+            android:backgroundTint="#94B870"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Animals_btn" />
@@ -129,6 +135,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_main_Settings"
+            android:backgroundTint="#94B870"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_GeneralInfo_btn" />

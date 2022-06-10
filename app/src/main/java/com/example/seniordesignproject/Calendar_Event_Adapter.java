@@ -40,7 +40,7 @@ public class Calendar_Event_Adapter extends ArrayAdapter<Calendar_Event_obj> {
 
         tv_fieldName.setText("Field:");
         tv_field.setText(Event_obj_Field);
-        tv_task.setText(Event_obj_key);
+        tv_task.setText(Event_obj_Task);
 
         return convertView;
 

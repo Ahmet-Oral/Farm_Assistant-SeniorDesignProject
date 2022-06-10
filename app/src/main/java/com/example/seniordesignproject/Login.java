@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
     private Button btn_login;
     private EditText et_login_email, et_login_password;
     private TextView tv_forgetpasswd;
-    FirebaseAuth auth;
+    private FirebaseAuth auth;
 
 
     public void init(){

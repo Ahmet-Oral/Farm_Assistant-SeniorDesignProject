@@ -26,8 +26,8 @@ public class Notes extends AppCompatActivity {
     private Button new_btn;
     private ListView listView;
     private String key_extra, where_extra, name_extra;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> notes_list;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> notes_list;
 
 
     private FirebaseDatabase database;

@@ -27,10 +27,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class WeatherForecast extends AppCompatActivity {
-    EditText editText;
-    Button searchWeather_btn;
-    ImageView imageView;
-    TextView temptv, time, longitude, latitude, humidity, sunrise, sunset, pressure, wind, country, city_nam, max_temp, min_temp, feels;
+    private EditText editText;
+    private Button searchWeather_btn;
+    private ImageView imageView;
+    private TextView temptv, time, longitude, latitude, humidity, sunrise, sunset, pressure, wind, country, city_nam, max_temp, min_temp, feels;
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_weather);
         setSupportActionBar(toolbar);
@@ -62,6 +62,9 @@ public class WeatherForecast extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
         init();
+        // Default city name
+        editText.setText("Mugla");
+        FindWeather();
 
         searchWeather_btn.setOnClickListener(v -> FindWeather());
 

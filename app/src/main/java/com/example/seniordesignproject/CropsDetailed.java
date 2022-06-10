@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +33,7 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
 
     private FirebaseDatabase database;
     private DatabaseReference ref;
+    String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     public void init() {
         Toolbar toolbar = findViewById(R.id.toolbar_crops_detailed);
@@ -55,7 +58,6 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
         setContentView(R.layout.activity_crops_detailed);
         init();
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/" + userUid + "/Animals-Crops");
 
@@ -94,8 +96,7 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
 
         delete_btn.setOnClickListener(v -> {
             // Delete the node using the key taken from Animals.class
-            FirebaseDatabase.getInstance().getReference().child("Users/" + userUid + "/Animals-Crops").child(key_extra).removeValue();
-            startActivity(new Intent(CropsDetailed.this, Crops.class));
+            confirmDialog("delete_btn");
         });
 
         // Define the adapter and use features_list for content
@@ -160,5 +161,24 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
         map.put(feature, value);
         //update the database
         ref.child(key_extra).updateChildren(map);
+    }
+
+    public void confirmDialog(String buttonInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setMessage("Delete "+ name_extra +"?");
+        builder.setPositiveButton("Confirm",
+                (dialog, which) -> {
+                    if (buttonInfo.equals("delete_btn")){
+                        FirebaseDatabase.getInstance().getReference().child("Users/" + userUid + "/Animals-Crops").child(key_extra).removeValue();
+                        startActivity(new Intent(CropsDetailed.this, Crops.class));                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

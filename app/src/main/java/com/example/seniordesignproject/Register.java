@@ -25,9 +25,9 @@ public class Register extends AppCompatActivity {
     private  Button btn_createAcc;
     private EditText et_name, et_register_email, et_register_password;
     private TextView et_alreadyHaveAcc;
-    FirebaseAuth auth;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    private FirebaseAuth auth;
+    private FirebaseDatabase rootNode;
+    private DatabaseReference reference;
 
     public void init(){
         btn_createAcc = (Button) findViewById(R.id.register_createaccount_btn);

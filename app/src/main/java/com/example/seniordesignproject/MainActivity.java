@@ -1,17 +1,46 @@
 package com.example.seniordesignproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn_weather, btn_agenda, btn_crops, btn_animals, btn_general_information, btn_settings;
-    FirebaseAuth auth;
+    private TextView welcome_tv, temperature_tv, date_tv;
+    private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd.MM.yyyy");
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
     public void init(){
         btn_weather = (Button) findViewById(R.id.main_Weather_btn);
@@ -21,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         btn_general_information = (Button) findViewById(R.id.main_GeneralInfo_btn);
         btn_settings = (Button) findViewById(R.id.main_Settings_btn);
         auth = FirebaseAuth.getInstance();
+        welcome_tv = findViewById(R.id.main_Welcome_tv);
+        temperature_tv = findViewById(R.id.main_Temperature_tv);
+        date_tv = findViewById(R.id.main_Date_tv);
+
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users/"+userUid+"/User Details");
     }
 
     @Override
@@ -38,9 +74,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        // Get weather to display
+        FindWeather();
+
+
+
+
+
+
+        // Get users name for the welcome text
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                welcome_tv.setText("Welcome "+ snapshot.child("Name").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
         btn_weather.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, WeatherForecast.class));});
+            confirmDialog("btn_Weather");
+
+        });
         btn_agenda.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Agenda.class));});
         btn_crops.setOnClickListener(v -> {
@@ -52,5 +109,63 @@ public class MainActivity extends AppCompatActivity {
         btn_settings.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Settings.class)); });
 
+
+
+
+    }
+    public void confirmDialog(String buttonInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Title");
+        builder.setMessage("Message");
+        builder.setPositiveButton("Confirm",
+                (dialog, which) -> {
+                    if (buttonInfo.equals("btn_Weather")){
+                        startActivity(new Intent(MainActivity.this, WeatherForecast.class));
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    public void FindWeather()
+    {
+        final String city = "Mugla";
+        String url ="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=035059e14913707c7da6334071b65b61&units=metric";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            //find temperature
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject object = jsonObject.getJSONObject("main");
+                            double temp = object.getDouble("temp");
+                            temperature_tv.setText(temp+"°C");
+                            System.out.println("Json: "+jsonObject);
+
+                            Date date = new Date();
+                            date_tv.setText(dateFormatDay.format(date));
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this,error.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        requestQueue.add(stringRequest);
     }
 }

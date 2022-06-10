@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Settings extends AppCompatActivity {
     private Button btn_signout;
-    FirebaseAuth auth;
+    private FirebaseAuth auth;
     private TextView tv_userUid;
 
     public void init(){

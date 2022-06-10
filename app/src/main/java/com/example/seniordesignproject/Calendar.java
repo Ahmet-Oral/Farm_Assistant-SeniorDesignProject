@@ -30,11 +30,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class Calendar extends AppCompatActivity {
-    CompactCalendarView compactCalendar;
+    private CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
     private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd-MM-yyyy");
-    List eventDatesList = new ArrayList<String>();
-    List eventInfoList = new ArrayList<String>();
+    private List eventDatesList = new ArrayList<String>();
+    private List eventInfoList = new ArrayList<String>();
 
     private ArrayList<Calendar_Event_obj> eventObj_list;
 
@@ -126,7 +126,7 @@ public class Calendar extends AppCompatActivity {
                     if(eventDatesList.get(i).equals(todaysDate)){
                         eventInfoList.add(database_events_tasks.get(i));
                         // Create eventObjects for the listView
-                        eventObj_list.add(new Calendar_Event_obj(database_events_dates.get(i),database_events_fields.get(i),database_events_keys.get(i)));
+                        eventObj_list.add(new Calendar_Event_obj(database_events_tasks.get(i),database_events_fields.get(i),database_events_keys.get(i)));
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -155,7 +155,7 @@ public class Calendar extends AppCompatActivity {
                         eventInfoList.add(database_events_tasks.get(i));
 
                         // Create eventObjects for the listView
-                        eventObj_list.add(new Calendar_Event_obj(database_events_dates.get(i),database_events_fields.get(i),database_events_keys.get(i)));
+                        eventObj_list.add(new Calendar_Event_obj(database_events_tasks.get(i),database_events_fields.get(i),database_events_keys.get(i)));
                     }
                     adapter.notifyDataSetChanged();
                 }

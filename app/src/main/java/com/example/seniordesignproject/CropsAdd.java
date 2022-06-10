@@ -22,15 +22,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CropsAdd extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
-    Button addFeature_btn, addAnimal_btn;
-    EditText animalType_et, animalNumber_et, fieldName_et;
-    String temp_feature, temp_value;
+    private Button addFeature_btn, addAnimal_btn;
+    private EditText animalType_et, animalNumber_et, fieldName_et;
+    private String temp_feature, temp_value;
 
-    ListView listView;
-    ArrayList<Animal_Feature> features_list;
+    private ListView listView;
+    private ArrayList<Animal_Feature> features_list;
 
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
     public void init() {
         Toolbar toolbar = findViewById(R.id.toolbar_crops_add);

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,6 +44,7 @@ public class CalendarEventDetails extends AppCompatActivity {
     private ArrayList<String> field_list;
     private ArrayAdapter<String> adapterItems;
     private AutoCompleteTextView autoCompleteTxt;
+    String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     private FirebaseDatabase database;
     private DatabaseReference ref,ref_fieldList;
@@ -93,7 +95,6 @@ public class CalendarEventDetails extends AppCompatActivity {
             field_til.setEnabled(false);
         }
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Events");
 
@@ -250,21 +251,7 @@ public class CalendarEventDetails extends AppCompatActivity {
         });
 
         delete_btn.setOnClickListener(v -> {
-            FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Events").child(eventKey_str).removeValue();
-            Intent intent;
-            // If where_extra!=null, it means we came from somewhere else than Calendar
-            // Find where we came from using where_extra and go back to there
-            if (where_extra!=null){
-                if (where_extra.equals("animalsToDo")){
-                    intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
-                    intent.putExtra("key",keyExtra);
-                    startActivity(intent);
-                }
-            }else {
-                intent = new Intent(CalendarEventDetails.this, Calendar.class);
-                startActivity(intent);
-            }
-
+            confirmDialog("delete_btn");
         });
     }
 
@@ -350,5 +337,36 @@ public class CalendarEventDetails extends AppCompatActivity {
 
         //default should never happen
         return "JAN";
+    }
+    public void confirmDialog(String buttonInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setMessage("Delete This Event?");
+        builder.setPositiveButton("Confirm",
+                (dialog, which) -> {
+                    if (buttonInfo.equals("delete_btn")){
+                        FirebaseDatabase.getInstance().getReference().child("Users/"+userUid+"/Events").child(eventKey_str).removeValue();
+                        Intent intent;
+                        // If where_extra!=null, it means we came from somewhere else than Calendar
+                        // Find where we came from using where_extra and go back to there
+                        if (where_extra!=null){
+                            if (where_extra.equals("animalsToDo")){
+                                intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
+                                intent.putExtra("key",keyExtra);
+                                startActivity(intent);
+                            }
+                        }else {
+                            intent = new Intent(CalendarEventDetails.this, Calendar.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

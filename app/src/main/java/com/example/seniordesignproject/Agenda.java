@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Agenda extends AppCompatActivity implements View.OnClickListener{
-    Button calendar_btn, todoList_btn, notes_btn, inventory_btn;
+    private Button calendar_btn, notes_btn, inventory_btn;
 
     public void init(){
         Toolbar toolbar = findViewById(R.id.toolbar_agenda);
@@ -18,12 +18,10 @@ public class Agenda extends AppCompatActivity implements View.OnClickListener{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         calendar_btn = findViewById(R.id.agenda_Calendar_btn);
-        todoList_btn = findViewById(R.id.agenda_ToDoList_btn);
         notes_btn = findViewById(R.id.agenda_Notes_btn);
         inventory_btn = findViewById(R.id.agenda_Inventory_btn);
 
         calendar_btn.setOnClickListener(this);
-        todoList_btn.setOnClickListener(this);
         notes_btn.setOnClickListener(this);
         inventory_btn.setOnClickListener(this);
     }
@@ -43,9 +41,6 @@ public class Agenda extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.agenda_Calendar_btn:
                 startActivity(new Intent(Agenda.this, Calendar.class));
-                break;
-            case R.id.agenda_ToDoList_btn:
-
                 break;
             case R.id.agenda_Notes_btn:
                 startActivity(new Intent(Agenda.this, NotesGeneral.class));
