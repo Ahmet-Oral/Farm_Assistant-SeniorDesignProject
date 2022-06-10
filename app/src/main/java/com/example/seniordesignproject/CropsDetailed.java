@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -157,6 +158,10 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
     // Take the values from the dialog and add new feature to the database
     @Override
     public void applyTexts(String feature, String value) {
+        if (feature.equals("")||value.equals("")){
+            Toast.makeText(CropsDetailed.this, "Feature or Value Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+            return;
+        }
         HashMap map = new HashMap();
         map.put(feature, value);
         //update the database

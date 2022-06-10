@@ -58,6 +58,7 @@ public class Notes extends AppCompatActivity {
         where_extra = getIntent().getStringExtra("where");
         name_extra = getIntent().getStringExtra("name");
 
+        System.out.println("key_extra: "+key_extra+" where_extra: "+where_extra+" name_extra: "+name_extra);
         // Update action bars title with selected fields name
         getSupportActionBar().setTitle(name_extra+", Notes");
 

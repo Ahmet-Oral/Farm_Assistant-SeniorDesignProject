@@ -100,6 +100,11 @@ public class CropsDetailedEdit extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.crops_detailed_edit_Save_btn:
+                // If feature or its value is null, give alert
+                if (feature_et.getText().toString().equals("") || value_et.getText().toString().equals("")){
+                    Toast.makeText(CropsDetailedEdit.this, "Feature or Value Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 HashMap map = new HashMap();
                 // Put new feature and it's value to the hashmap
                 map.put(feature_et.getText().toString(), value_et.getText().toString());

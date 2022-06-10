@@ -106,6 +106,11 @@ public class AnimalsAdd extends AppCompatActivity implements ExampleDialog.Examp
 
     @Override
     public void applyTexts(String feature, String value) {
+        // If feature or value is empty, give alert
+        if (feature.equals("")||value.equals("")){
+            Toast.makeText(AnimalsAdd.this, "Feature or Value Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+            return;
+        }
         //feature and value are the strings taken from the pop up dialog
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();

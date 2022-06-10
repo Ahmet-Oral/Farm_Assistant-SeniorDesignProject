@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -153,6 +154,11 @@ public class NotesNew extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // If note is empty, give alert
+                if (note_et.getText().toString().equals("")){
+                    Toast.makeText(NotesNew.this, "Note Cannot be Empty!" , Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 NoteKeyDuplicateChecker();
                 CreateNewNote();
 
