@@ -11,5 +11,7 @@
         android:paddingTop="16dp"
         android:text="Note"
         android:textSize="30sp"
+        android:textColor="#334D1A"
+        android:background="#7FC2D6AD"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,8 +18,9 @@
         android:layout_height="250dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
-        android:background="#DAEFC1"
         android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
+
         app:layout_constraintBottom_toTopOf="@+id/calendar_New_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +50,11 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_calendar" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/calendar_New_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

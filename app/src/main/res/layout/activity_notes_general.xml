@@ -34,6 +34,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"        android:backgroundTint="#9975A347"
         android:id="@+id/notes_general_New_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +53,10 @@
         android:layout_width="409dp"
         android:layout_height="440dp"
         android:layout_marginTop="24dp"
+        android:background="#1AC2D6AD"
+        android:nestedScrollingEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/notes_general_New_btn"
-        app:layout_constraintTop_toBottomOf="@+id/notes_general_textInputLayout"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notes_general_textInputLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>

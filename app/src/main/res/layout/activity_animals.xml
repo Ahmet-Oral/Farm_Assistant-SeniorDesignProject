@@ -18,12 +18,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="16dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/animals_AddAnimals_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="@string/str_animals_AddAnimals"
-        android:backgroundTint="#94B870"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,6 +36,8 @@
         android:id="@+id/animals_listView"
         android:layout_width="409dp"
         android:layout_height="500dp"
+        android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
         android:layout_marginTop="1dp"
         app:layout_constraintBottom_toTopOf="@+id/animals_AddAnimals_btn"
         app:layout_constraintEnd_toEndOf="parent"

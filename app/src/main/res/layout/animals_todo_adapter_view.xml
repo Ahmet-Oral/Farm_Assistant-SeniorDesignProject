@@ -12,6 +12,8 @@
         android:text="TextView1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textColor="#334D1A"
+        android:background="#7FC2D6AD"
         android:id="@+id/animals_todo_adapter_Task_tv"
         android:layout_weight="66.6"/>
 
@@ -24,6 +26,8 @@
         <TextView
             android:gravity="center"
             android:text="Total Number:"
+            android:textColor="#334D1A"
+            android:background="#7FC2D6AD"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/animals_todo_adapter_DateUp_tv"/>
@@ -33,6 +37,8 @@
             android:text="TextView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:textColor="#334D1A"
+            android:background="#7FC2D6AD"
             android:id="@+id/animals_todo_adapter_DateDown_tv"
             android:layout_below="@+id/textView2"/>
     </LinearLayout>

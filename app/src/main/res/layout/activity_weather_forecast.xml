@@ -33,6 +33,11 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_weather" />
 
         <Button
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:stateListAnimator="@null"
+            app:cornerRadius="36dp"
+            android:backgroundTint="#9994B870 "
             android:id="@+id/weather_searchWeather_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,10 +46,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:background="#94B870"
             android:padding="10dp"
             android:text="Search Weather"
-            android:textColor="#FF000000"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +63,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
             android:background="#94B870"
+            android:backgroundTint="#9994B870 "
             android:scrollbarSize="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +77,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="10dp"
                 android:text="Date / Time"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_country" />
@@ -97,7 +101,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:text="Country"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +114,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:text="City"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_country"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,6 +132,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="30dp"
             android:background="#94B870"
+            android:backgroundTint="#9994B870 "
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -142,7 +148,9 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="5dp"
                 android:text=": Longitude"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
+                android:backgroundTint="#9994B870 "
+
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView16"
                 app:layout_constraintTop_toBottomOf="@+id/latitude" />
@@ -155,7 +163,7 @@
                 android:layout_marginLeft="66dp"
                 android:layout_marginTop="5dp"
                 android:text=": Latitude"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView15"
                 app:layout_constraintTop_toBottomOf="@+id/feels" />
@@ -168,7 +176,7 @@
                 android:layout_marginLeft="59dp"
                 android:layout_marginTop="5dp"
                 android:text=": Humidity"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView18"
                 app:layout_constraintTop_toBottomOf="@+id/longitude" />
@@ -181,7 +189,7 @@
                 android:layout_marginLeft="72dp"
                 android:layout_marginTop="5dp"
                 android:text=": Sunrise"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView19"
                 app:layout_constraintTop_toBottomOf="@+id/humidity" />
@@ -194,7 +202,7 @@
                 android:layout_marginLeft="78dp"
                 android:layout_marginTop="5dp"
                 android:text=": Sunset"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView20"
                 app:layout_constraintTop_toBottomOf="@+id/sunrise" />
@@ -207,7 +215,7 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="5dp"
                 android:text=": Pressure"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView21"
                 app:layout_constraintTop_toBottomOf="@+id/sunset" />
@@ -221,7 +229,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="30dp"
                 android:text=": Wind Speed"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/weather_textView17"
@@ -236,7 +244,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Latitude"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/calendar_new_event_Task_tv" />
@@ -249,7 +257,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Longitude"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_textView15" />
@@ -263,7 +271,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="30dp"
                 android:text="Wind Speed"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -277,7 +285,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Humidity"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_textView16" />
@@ -290,7 +298,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Sunrise"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_textView18" />
@@ -303,7 +311,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Sunset"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_textView19" />
@@ -316,7 +324,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Pressure"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weather_textView20" />
@@ -329,7 +337,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:text="Feels Like"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -342,7 +350,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:text=": Feels Like"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/calendar_new_event_Task_tv"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -359,6 +367,8 @@
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
             android:background="#94B870"
+            android:backgroundTint="#9994B870 "
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -371,7 +381,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="45dp"
                 android:text="Min Temperature"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -386,7 +396,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:text="Temperature"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="50sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -400,7 +410,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="45dp"
                 android:text="Max Temperature"
-                android:textColor="#FF000000"
+                android:textColor="#293D14"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

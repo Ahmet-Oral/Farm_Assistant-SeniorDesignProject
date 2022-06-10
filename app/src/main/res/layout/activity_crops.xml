@@ -15,6 +15,11 @@
         layout="@layout/toolbar" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_New_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +34,8 @@
         android:layout_width="409dp"
         android:layout_height="500dp"
         android:layout_marginTop="1dp"
+        android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/crops_New_btn"
         app:layout_constraintEnd_toEndOf="parent"

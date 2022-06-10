@@ -14,6 +14,11 @@
         layout="@layout/toolbar" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/animals_add_AddFeature_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +29,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+                android:backgroundTint="#9975A347"
         android:id="@+id/animals_add_AddAnimal_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,6 +91,8 @@
         android:id="@+id/animals_add_ListView"
         android:layout_width="409dp"
         android:layout_height="380dp"
+        android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
         app:layout_constraintBottom_toTopOf="@+id/animals_add_AddAnimal_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

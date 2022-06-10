@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,15 +36,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn_weather, btn_agenda, btn_crops, btn_animals, btn_general_information, btn_settings;
+    private Button btn_agenda, btn_crops, btn_animals, btn_general_information, btn_settings;
     private TextView welcome_tv, temperature_tv, date_tv;
+    private ImageButton btn_weather;
     private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd.MM.yyyy");
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference ref;
 
+
+
     public void init(){
-        btn_weather = (Button) findViewById(R.id.main_Weather_btn);
+        btn_weather = (ImageButton) findViewById(R.id.main_Weather_btn);
         btn_agenda = (Button) findViewById(R.id.main_Agenda_btn);
         btn_crops = (Button) findViewById(R.id.main_Crops_btn);
         btn_animals = (Button) findViewById(R.id.main_Animals_btn);
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         welcome_tv = findViewById(R.id.main_Welcome_tv);
         temperature_tv = findViewById(R.id.main_Temperature_tv);
         date_tv = findViewById(R.id.main_Date_tv);
+
+
+
+
 
 
     }

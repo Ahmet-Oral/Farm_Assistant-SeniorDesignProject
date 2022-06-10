@@ -18,11 +18,18 @@
         android:id="@+id/crops_to_do_ListView"
         android:layout_width="409dp"
         android:layout_height="300dp"
+        android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
         android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_to_do" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_to_do_Add_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

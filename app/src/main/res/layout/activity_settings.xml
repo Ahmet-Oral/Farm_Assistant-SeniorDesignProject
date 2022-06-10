@@ -10,6 +10,11 @@
         layout="@layout/toolbar" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/settings_signout_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

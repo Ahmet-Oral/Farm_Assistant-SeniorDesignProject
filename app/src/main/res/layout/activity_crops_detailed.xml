@@ -18,6 +18,8 @@
         android:id="@+id/crops_detailed_ListView"
         android:layout_width="409dp"
         android:layout_height="400dp"
+        android:nestedScrollingEnabled="true"
+        android:background="#1AC2D6AD"
         android:layout_marginTop="2dp"
         app:layout_constraintBottom_toTopOf="@+id/crops_detailed_AddFeature_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +31,11 @@
     </ListView>
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_detailed_AddFeature_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +47,11 @@
         app:layout_constraintStart_toEndOf="@+id/crops_detailed_Delete_btn" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#99DE3E25"
         android:id="@+id/crops_detailed_Delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +62,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_detailed_ToDo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +79,11 @@
         app:layout_constraintVertical_bias="0.372" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_detailed_Notes_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

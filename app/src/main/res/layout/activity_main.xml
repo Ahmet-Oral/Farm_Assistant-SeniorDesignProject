@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/background1"
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/str_main_Welcome"
+            android:textColor="#335C05"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
+            android:elevation="23dp"
             android:text="Muğla"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/main_Temperature_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Welcome_tv" />
@@ -42,7 +51,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
+            android:elevation="23dp"
             android:text="@string/str_main_TempExample"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/main_Weather_tv"
@@ -53,7 +66,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:elevation="23dp"
             android:text="@string/str_main_DateExample"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/main_WeatherType_tv"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,19 +81,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:elevation="23dp"
             android:text="@string/str_main_WeatherType"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/main_Date_tv"
             app:layout_constraintTop_toBottomOf="@+id/main_Temperature_tv" />
 
-        <Button
+        <ImageButton
             android:id="@+id/main_Weather_btn"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
-            android:alpha="0.25"
-            android:backgroundTint="#57C1FB"
+            android:alpha="0.7"
+            android:background="@drawable/fadedclouds"
+            android:elevation="22dp"
+            android:stateListAnimator="@null"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/main_Date_tv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,58 +109,168 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
+
             android:id="@+id/main_Agenda_btn"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="#94B870"
-            android:text="@string/str_main_Agenda"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="155dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#7375A347"
+            android:stateListAnimator="@null"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="36dp"
+            app:iconGravity="textStart"
+            app:layout_constraintBottom_toTopOf="@+id/main_Settings_btn"
+            app:layout_constraintEnd_toStartOf="@+id/main_Crops_btn"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_Weather_btn" />
 
         <Button
             android:id="@+id/main_Crops_btn"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/str_main_Crops"
-            android:backgroundTint="#94B870"
+            android:layout_width="155dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#7375A347"
+            android:hapticFeedbackEnabled="false"
+            android:stateListAnimator="@null"
+            android:textStyle="bold"
+            app:cornerRadius="36dp"
+            app:iconGravity="textStart"
+            app:layout_constraintBottom_toTopOf="@+id/main_Animals_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_Agenda_btn" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_Agenda_btn"
+            app:layout_constraintTop_toBottomOf="@+id/main_Weather_btn" />
 
         <Button
             android:id="@+id/main_Animals_btn"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/str_main_Animals"
-            android:backgroundTint="#94B870"
+            android:layout_width="155dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#737c0a02"
+            android:stateListAnimator="@null"
+            android:textStyle="bold"
+            app:cornerRadius="36dp"
+            app:iconGravity="textStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_Settings_btn"
             app:layout_constraintTop_toBottomOf="@+id/main_Crops_btn" />
 
         <Button
-            android:id="@+id/main_GeneralInfo_btn"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/str_main_GeneralInformation"
-            android:backgroundTint="#94B870"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_Animals_btn" />
-
-        <Button
             android:id="@+id/main_Settings_btn"
-            android:layout_width="300dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/str_main_Settings"
-            android:backgroundTint="#94B870"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="155dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#7375A347"
+            android:stateListAnimator="@null"
+            android:textStyle="bold"
+            app:cornerRadius="36dp"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toStartOf="@+id/main_Animals_btn"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_GeneralInfo_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/main_Agenda_btn" />
+
+        <ImageButton
+            android:id="@+id/main_Agenda_ib"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:backgroundTint="#cfea93"
+
+            android:background="@drawable/agendaicon"
+            app:layout_constraintEnd_toEndOf="@+id/main_Agenda_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Agenda_btn"
+            app:layout_constraintTop_toTopOf="@+id/main_Agenda_btn"
+            />
+
+        <ImageButton
+            android:id="@+id/main_Crops_ib"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:background="@drawable/cropsicon"
+            android:backgroundTint="#cbd838 "
+            app:layout_constraintEnd_toEndOf="@+id/main_Crops_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Crops_btn"
+            app:layout_constraintTop_toTopOf="@+id/main_Crops_btn" />
+
+        <ImageButton
+            android:id="@+id/main_Settings_ib"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:background="@drawable/settingsicon"
+            app:layout_constraintEnd_toEndOf="@+id/main_Settings_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Settings_btn"
+            app:layout_constraintTop_toTopOf="@+id/main_Settings_btn" />
+
+        <ImageButton
+            android:id="@+id/main_Animals_ib"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:background="@drawable/animalicon"
+            android:backgroundTint="#faf0e6"
+            app:layout_constraintEnd_toEndOf="@+id/main_Animals_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Animals_btn"
+            app:layout_constraintTop_toTopOf="@+id/main_Animals_btn" />
+
+        <TextView
+            android:id="@+id/main_Animals_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#AA75A347"
+            android:text="@string/str_main_Animals"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/main_Animals_btn"
+            app:layout_constraintEnd_toEndOf="@+id/main_Animals_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Animals_btn" />
+
+        <TextView
+            android:id="@+id/main_Settings_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#AA75A347"
+            android:text="@string/str_main_Settings"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/main_Settings_btn"
+            app:layout_constraintEnd_toEndOf="@+id/main_Settings_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Settings_btn" />
+
+        <TextView
+            android:id="@+id/main_Crops_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#AA75A347"
+            android:text="@string/str_main_Crops"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/main_Crops_btn"
+            app:layout_constraintEnd_toEndOf="@+id/main_Crops_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Crops_btn" />
+
+        <TextView
+            android:id="@+id/main_Agenda_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#AA75A347"
+            android:text="@string/str_main_Agenda"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/main_Agenda_btn"
+            app:layout_constraintEnd_toEndOf="@+id/main_Agenda_btn"
+            app:layout_constraintStart_toStartOf="@+id/main_Agenda_btn" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

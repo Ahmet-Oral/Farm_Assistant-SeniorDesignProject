@@ -6,39 +6,139 @@
     android:layout_height="match_parent"
     tools:context=".Agenda">
 
+
     <include
         android:id="@+id/toolbar_agenda"
         layout="@layout/toolbar" />
 
     <Button
         android:id="@+id/agenda_Calendar_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="56dp"
-        android:text="@string/str_agenda_Calendar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_agenda" />
+        android:layout_width="155dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#7375A347"
+        android:stateListAnimator="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_Calendar_ib"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Calendar_ib"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Calendar_ib"
+        app:layout_constraintTop_toTopOf="@+id/agenda_Calendar_ib"
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
+
         android:id="@+id/agenda_Notes_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="@string/str_agenda_Notes"
-        app:layout_constraintEnd_toStartOf="@+id/agenda_Inventory_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agenda_Calendar_btn" />
+
+        android:layout_width="155dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#7375A347"
+        android:stateListAnimator="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_Notes_ib"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Notes_ib"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Notes_ib"
+        app:layout_constraintTop_toTopOf="@+id/agenda_Notes_ib"
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/agenda_Inventory_btn"
+        android:layout_width="155dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="-8dp"
+        android:backgroundTint="#7375A347"
+        android:stateListAnimator="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Inventory_ib"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Inventory_ib"
+        app:layout_constraintTop_toTopOf="@+id/agenda_Inventory_ib" />
+
+    <ImageButton
+        android:id="@+id/agenda_Notes_ib"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/notesicon"
+        android:backgroundTint="#334D1A"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/agenda_Calendar_ib"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_agenda" />
+
+    <ImageButton
+        android:id="@+id/agenda_Calendar_ib"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/calendaricon"
+        android:backgroundTint="#334D1A"
+        android:clickable="false"
+        app:layout_constraintEnd_toStartOf="@+id/agenda_Notes_ib"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_agenda" />
+
+    <ImageButton
+        android:id="@+id/agenda_Inventory_ib"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/inventoryicon"
+        android:backgroundTint="#334D1A"
+        android:clickable="false"
+        app:layout_constraintEnd_toStartOf="@+id/agenda_Notes_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agenda_Calendar_ib" />
+
+    <TextView
+        android:id="@+id/agenda_Calendar_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#AA75A347"
+        android:text="@string/str_agenda_Calendar"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_Calendar_btn"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Calendar_btn"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Calendar_btn" />
+
+    <TextView
+        android:id="@+id/agenda_Notes_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#AA75A347"
+        android:text="@string/str_agenda_Notes"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_Notes_btn"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Notes_btn"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Notes_btn" />
+
+    <TextView
+        android:id="@+id/agenda_Inventory_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#AA75A347"
         android:text="@string/str_agenda_Inventory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/agenda_Notes_btn"
-        app:layout_constraintTop_toBottomOf="@+id/agenda_Calendar_btn" />
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/agenda_Inventory_btn"
+        app:layout_constraintEnd_toEndOf="@+id/agenda_Inventory_btn"
+        app:layout_constraintStart_toStartOf="@+id/agenda_Inventory_btn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,11 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_detailed_edit" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#9975A347"
         android:id="@+id/crops_detailed_edit_Save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +44,11 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#99DE3E25"
         android:id="@+id/crops_detailed_edit_Cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +61,11 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <Button
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        app:cornerRadius="18dp"
+        android:backgroundTint="#99DE3E25"
         android:id="@+id/crops_detailed_edit_Delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
