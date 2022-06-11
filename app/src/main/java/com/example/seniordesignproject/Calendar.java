@@ -3,6 +3,7 @@ package com.example.seniordesignproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -111,11 +112,14 @@ public class Calendar extends AppCompatActivity {
                     String newEventTask = database_events_tasks.get(i);
                     //System.out.println("date-task " + newEventDate+" - "+newEventTask);
                     if (database_events_types.get(i).equals("Animal")){
-                        compactCalendar.addEvent(new Event(Color.YELLOW,newEventDate,newEventTask));
+                        int colorCalendarYellow = ContextCompat.getColor(Calendar.this, R.color.colorCalendarYellow);
+                        compactCalendar.addEvent(new Event(colorCalendarYellow,newEventDate,newEventTask));
                     }else if(database_events_types.get(i).equals("Crop")){
-                        compactCalendar.addEvent(new Event(Color.GREEN,newEventDate,newEventTask));
+                        int colorCalendarGreen = ContextCompat.getColor(Calendar.this, R.color.colorCalendarGreen);
+                        compactCalendar.addEvent(new Event(colorCalendarGreen,newEventDate,newEventTask));
                     }else{
-                        compactCalendar.addEvent(new Event(Color.RED,newEventDate,newEventTask));
+                        int colorCalendarRed = ContextCompat.getColor(Calendar.this, R.color.colorCalendarRed);
+                        compactCalendar.addEvent(new Event(colorCalendarRed,newEventDate,newEventTask));
                     }
                 }
 

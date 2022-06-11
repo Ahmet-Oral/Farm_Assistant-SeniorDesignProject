@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorCalendarRed">#B64343</color>
+    <color name="colorCalendarGreen">#10711F</color>
+    <color name="colorCalendarYellow">#DAD73A</color>
+
+    <color name="colorAnimalYellow">#D4C83C</color>
+    <color name="colorCropGreen">#519F4A</color>
+    <color name="colorAnimalYellowBF">#BFD4C83C</color>
+    <color name="colorCropGreenBF">#BF519F4A</color>#10711F
+
+
 </resources>

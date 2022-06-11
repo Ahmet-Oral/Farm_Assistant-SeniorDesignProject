@@ -30,7 +30,7 @@
         <TextView
 
             android:gravity="center"
-            android:text="Total Number:"
+            android:text="Acres"
             android:layout_width="match_parent"
             android:textSize="16dp"
             android:textStyle="bold"
