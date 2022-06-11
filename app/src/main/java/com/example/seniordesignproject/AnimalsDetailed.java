@@ -81,7 +81,6 @@ public class AnimalsDetailed extends AppCompatActivity implements ExampleDialog.
             // Pass the AnimalorCropType to AnimalsToDo.class, which will also be passed to CalendarNewEvent.class
 
             for(Animal_Feature af: features_list){
-                System.out.println("animalsDetailed af.getFeature(): "+af.getFeature());
                 if (af.getFeature().equals("Name")){
                     intent.putExtra("name",af.getValue());
                 }

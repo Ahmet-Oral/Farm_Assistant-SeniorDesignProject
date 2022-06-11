@@ -37,7 +37,7 @@ import java.util.HashMap;
 public class CalendarEventDetails extends AppCompatActivity {
     private Button datePicker_btn, save_btn, cancel_btn, delete_btn;
     private DatePickerDialog datePickerDialog;
-    private String keyExtra, where_extra, date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, clickedEventKey_extra;
+    private String key_extra, where_extra, name_extra, date_jan_dd_yyyy_str, clickedDate_extra, clickedTask_extra, eventKey_str, newType_str, date_dd_MM_yyyy_str, clickedEventKey_extra;
     private EditText task_et, field_et;
     private TextInputLayout field_til;
 
@@ -57,12 +57,14 @@ public class CalendarEventDetails extends AppCompatActivity {
 
         clickedDate_extra = getIntent().getStringExtra("ClickedDate");
         clickedTask_extra = getIntent().getStringExtra("ClickedTask");
+
         clickedEventKey_extra = getIntent().getStringExtra("ClickedEventKey");
         // Key of the field where we came from, will be empty if we came from Calendar
-        keyExtra = getIntent().getStringExtra("key");
+        key_extra = getIntent().getStringExtra("key");
         // Name of where we came from, will be used to go back
         where_extra = getIntent().getStringExtra("where");
-
+        // Name of the field where we came from, will be passed back
+        name_extra = getIntent().getStringExtra("name");
 
         task_et = findViewById(R.id.calendar_event_details_Task_pt);
         task_et.setText(clickedTask_extra);
@@ -91,7 +93,7 @@ public class CalendarEventDetails extends AppCompatActivity {
         initDatePicker();
 
         // If we came from animals or crops, lock the field selection because it will be already selected
-        if (keyExtra!=null){
+        if (key_extra!=null){
             field_til.setEnabled(false);
         }
 
@@ -220,11 +222,13 @@ public class CalendarEventDetails extends AppCompatActivity {
             if (where_extra!=null){
                 if (where_extra.equals("animalsToDo")){
                     intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
-                    intent.putExtra("key",keyExtra);
+                    intent.putExtra("key",key_extra);
+                    intent.putExtra("name",name_extra);
                     startActivity(intent);
                 }else if(where_extra.equals("cropsToDo")){
                     intent = new Intent(CalendarEventDetails.this, CropsToDo.class);
-                    intent.putExtra("key",keyExtra);
+                    intent.putExtra("key",key_extra);
+                    intent.putExtra("name",name_extra);
                     startActivity(intent);
                 }
             }else {
@@ -241,7 +245,13 @@ public class CalendarEventDetails extends AppCompatActivity {
             if (where_extra!=null){
                 if (where_extra.equals("animalsToDo")){
                     intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
-                    intent.putExtra("key",keyExtra);
+                    intent.putExtra("key",key_extra);
+                    intent.putExtra("name",name_extra);
+                    startActivity(intent);
+                }else if(where_extra.equals("cropsToDo")){
+                    intent = new Intent(CalendarEventDetails.this, CropsToDo.class);
+                    intent.putExtra("key",key_extra);
+                    intent.putExtra("name",name_extra);
                     startActivity(intent);
                 }
             }else {
@@ -353,7 +363,13 @@ public class CalendarEventDetails extends AppCompatActivity {
                         if (where_extra!=null){
                             if (where_extra.equals("animalsToDo")){
                                 intent = new Intent(CalendarEventDetails.this, AnimalsToDo.class);
-                                intent.putExtra("key",keyExtra);
+                                intent.putExtra("key",key_extra);
+                                intent.putExtra("name",name_extra);
+                                startActivity(intent);
+                            }else if(where_extra.equals("cropsToDo")){
+                                intent = new Intent(CalendarEventDetails.this, CropsToDo.class);
+                                intent.putExtra("key",key_extra);
+                                intent.putExtra("name",name_extra);
                                 startActivity(intent);
                             }
                         }else {

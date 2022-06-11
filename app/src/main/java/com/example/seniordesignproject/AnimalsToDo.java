@@ -104,6 +104,7 @@ public class AnimalsToDo extends AppCompatActivity {
                 intent.putExtra("ClickedDate",todo_list.get(position).getDate());
                 intent.putExtra("ClickedTask", todo_list.get(position).getTask());
                 intent.putExtra("ClickedEventKey",todo_list.get(position).getTodo_obj_key());
+                intent.putExtra("name",name_extra);
                 intent.putExtra("key",key_extra);
                 startActivity(intent);
 
