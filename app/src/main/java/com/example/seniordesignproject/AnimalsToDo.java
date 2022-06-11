@@ -64,7 +64,7 @@ public class AnimalsToDo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animals_to_do);
         init();
-        Animal_Todo_Adapter adapter = new Animal_Todo_Adapter(this, R.layout.animals_todo_adapter_view, todo_list);
+        Animal_Todo_Adapter adapter = new Animal_Todo_Adapter(this, R.layout.todo_adapter_view, todo_list);
 
         add_btn.setOnClickListener(v -> {
             Intent intent = new Intent(AnimalsToDo.this, CalendarNewEvent.class);

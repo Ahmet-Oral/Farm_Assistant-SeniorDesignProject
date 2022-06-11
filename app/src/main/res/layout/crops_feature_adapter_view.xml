@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100"
-    android:background="#BFD4C83C"
+    android:background="#BF519F4A"
     >
 
 
     <TextView
         android:gravity="center"
         android:textAlignment="center"
-        android:text="feature"
         android:textStyle="bold"
         android:textSize="16dp"
+        android:text="feature"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/animal_feature_adapter_feature"
@@ -21,15 +21,15 @@
 
 
 
-        <TextView
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="feature value"
-            android:textSize="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="50"
-            android:id="@+id/animal_feature_adapter_value"/>
+    <TextView
+        android:gravity="center"
+        android:text="feature value"
+        android:layout_width="match_parent"
+        android:textSize="16dp"
+        android:layout_height="60dp"
+        android:textStyle="bold"
+        android:layout_weight="50"
+        android:id="@+id/animal_feature_adapter_value"/>
 
 
 

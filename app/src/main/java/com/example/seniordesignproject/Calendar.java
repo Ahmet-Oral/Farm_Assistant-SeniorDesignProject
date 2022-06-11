@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -82,7 +81,7 @@ public class Calendar extends AppCompatActivity {
 
 
         // Using same adapter view as we used in animals_todo
-        Calendar_Event_Adapter adapter = new Calendar_Event_Adapter(this, R.layout.animals_todo_adapter_view, eventObj_list);
+        Calendar_Event_Adapter adapter = new Calendar_Event_Adapter(this, R.layout.todo_adapter_view, eventObj_list);
 
 
         ref.addValueEventListener(new ValueEventListener() {

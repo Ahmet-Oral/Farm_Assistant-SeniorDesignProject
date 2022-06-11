@@ -101,7 +101,7 @@ public class CropsDetailed extends AppCompatActivity implements ExampleDialog.Ex
         });
 
         // Define the adapter and use features_list for content
-        Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
+        Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.crops_feature_adapter_view, features_list);
 
 
         // Create new Animal_Feature object using the key taken from Animals.class

@@ -60,7 +60,7 @@ public class CropsAdd extends AppCompatActivity implements ExampleDialog.Example
             addNewAnimal();
         });
 
-        Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.animal_feature_adapter_view, features_list);
+        Animal_Feature_Adapter adapter = new Animal_Feature_Adapter(this, R.layout.crops_feature_adapter_view, features_list);
         //features_list.add(new Animal_Feature("feature1","value1"));
 
         addFeature_btn.setOnClickListener(v -> {

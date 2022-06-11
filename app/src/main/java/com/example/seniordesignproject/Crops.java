@@ -59,7 +59,7 @@ public class Crops extends AppCompatActivity {
         setContentView(R.layout.activity_crops);
         init();
 
-        Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.animals_info_adapter_view, animals_list);
+        Animal_Field_Adapter adapter = new Animal_Field_Adapter(this, R.layout.crops_info_adapter_view, animals_list);
 
         // Get the nodes in Animals-Crops with TYPE=="Animal"
         // Create Animal_Field object with "Name" and "NumberOfAnimals" values and store it in animals_list to use them in listView

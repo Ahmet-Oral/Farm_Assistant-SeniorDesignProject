@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100"
-    android:background="#BFD4C83C"
+    android:background="#BF519F4A"
     >
 
 
@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textStyle="bold"
-        android:textSize="16dp"
         android:elevation="1dp"
         android:textColor="#334D1A"
+        android:textSize="16dp"
         android:id="@+id/animals_info_adapter_Name_tv"
         android:layout_weight="66.6"/>
 
@@ -28,23 +28,24 @@
         android:layout_weight="33.3">
 
         <TextView
-            android:textStyle="bold"
+
             android:gravity="center"
-            android:text="Number of Animals"
+            android:text="Total Number:"
             android:layout_width="match_parent"
             android:textSize="16dp"
+            android:textStyle="bold"
             android:layout_height="30dp"
             android:elevation="1dp"
             android:textColor="#334D1A"
             android:id="@+id/animals_info_adapter_TotalNumber_tv"/>
 
         <TextView
-            android:textStyle="bold"
-            android:textSize="16dp"
             android:gravity="center"
             android:text="TextView3"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
             android:elevation="1dp"
             android:textColor="#334D1A"
             android:id="@+id/animals_info_adapter_Number_tv"
