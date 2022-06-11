@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class CalendarNewEvent extends AppCompatActivity {
-    private String dateExtra, where, nameExtra, keyExtra, fieldType, fieldKey, fieldName, date_jan_dd_yyyy_str, date_dd_MM_yyyy_str, date_duplicateCheck_str;
+    private String dateExtra, where, name_extra, keyExtra, fieldType, fieldKey, fieldName, date_jan_dd_yyyy_str, date_dd_MM_yyyy_str, date_duplicateCheck_str;
     private FirebaseDatabase database;
     private DatabaseReference ref,ref_fieldType;
     private ArrayList<String> field_list, datesFromDatabase;
@@ -46,11 +46,33 @@ public class CalendarNewEvent extends AppCompatActivity {
     public void init(){
         Toolbar toolbar = findViewById(R.id.newCalendarEvent_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("New Event");
 
+        // Using setNavigation icon and listener because we need to pass key_extra back
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(v -> {
+            // If we came from a field activity, find out which one and go back to it
+            Intent intent;
+            if(where!=null){
+                if (where.equals("animalsToDo")){
+                    intent = new Intent(CalendarNewEvent.this, AnimalsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    intent.putExtra("name",name_extra);
+                    startActivity(intent);
+                }else if(where.equals("cropsToDo")){
+                    intent = new Intent(CalendarNewEvent.this, CropsToDo.class);
+                    intent.putExtra("key",keyExtra);
+                    intent.putExtra("name",name_extra);
+                    startActivity(intent);
+                }
+
+            }else {
+                startActivity(new Intent(CalendarNewEvent.this, Calendar.class));
+            }
+        });
+
         dateExtra = getIntent().getStringExtra("date");
-        nameExtra = getIntent().getStringExtra("name");
+        name_extra = getIntent().getStringExtra("name");
         // Key of the field in case user came from a field type activity
         keyExtra = getIntent().getStringExtra("key");
         where = getIntent().getStringExtra("where");
@@ -88,17 +110,16 @@ public class CalendarNewEvent extends AppCompatActivity {
             datePicker_btn.setText(dateExtra);
             // Assigning dateExtra to date_dd_MM_yyyy_str in case user doesn't changes the date
             date_dd_MM_yyyy_str = dateExtra;
-            date_duplicateCheck_str = dateExtra;
         }else{
             datePicker_btn.setText("Select Date");
         }
 
         // If AnimalorCropType_extra is not null, set as hint of dropdown menu
         // Also set field_et too because we will use it to determine values that will be put to database
-        if (nameExtra != null){
-            field_til.setHint(nameExtra);
+        if (name_extra != null){
+            field_til.setHint(name_extra);
             field_til.setEnabled(false);
-            field_et.setText(nameExtra);
+            field_et.setText(name_extra);
 
         }
 
@@ -125,7 +146,6 @@ public class CalendarNewEvent extends AppCompatActivity {
 
 
         // Get all the dates for checking duplicates
-        // If duplicate is found, change it's key
         ref = database.getReference("Users/"+userUid+"/Events");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -134,14 +154,7 @@ public class CalendarNewEvent extends AppCompatActivity {
                     // Get all of the event keys
                     datesFromDatabase.add(ds.getKey());
                 }
-                // If selected date key equals to any other existing key, change its name
-                for (int i = 0; i < datesFromDatabase.size(); i++){
-                    if(datesFromDatabase.get(i).equals(date_duplicateCheck_str)){
-                        date_duplicateCheck_str= date_duplicateCheck_str + "-" + i;
-                        // Restart the loop and check again
-                        i = 0;
-                    }
-                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -154,8 +167,21 @@ public class CalendarNewEvent extends AppCompatActivity {
             if (datePicker_btn.getText().toString().equals("Select Date")){
                 Toast.makeText(CalendarNewEvent.this, "Date Cannot be Empty!" , Toast.LENGTH_SHORT).show();
                 return;
-
             }
+
+            // Check for duplicate keys, if found: change key that will be pushed to database
+            System.out.println("date_duplicateCheck_str: (addBtn): "+date_duplicateCheck_str);
+            for (int i = 0; i < datesFromDatabase.size(); i++){
+                System.out.println("datesFromDatabase.get(i): "+datesFromDatabase.get(i));
+                System.out.println("datesFromDatabase.get(i): "+datesFromDatabase.get(i));
+                if(datesFromDatabase.get(i).equals(date_duplicateCheck_str)){
+                    date_duplicateCheck_str= date_duplicateCheck_str + "-" + i;
+                    // Restart the loop and check again
+                    i = 0;
+                }
+            }
+
+
             // If task is empty return
             if (task_et.getText().toString().isEmpty()){
                 Toast.makeText(CalendarNewEvent.this, "Task Cannot be Empty!" , Toast.LENGTH_SHORT).show();
@@ -240,10 +266,12 @@ public class CalendarNewEvent extends AppCompatActivity {
                 if (where.equals("animalsToDo")){
                     intent = new Intent(CalendarNewEvent.this, AnimalsToDo.class);
                     intent.putExtra("key",keyExtra);
+                    intent.putExtra("name",name_extra);
                     startActivity(intent);
                 }else if(where.equals("cropsToDo")){
                     intent = new Intent(CalendarNewEvent.this, CropsToDo.class);
                     intent.putExtra("key",keyExtra);
+                    intent.putExtra("name",name_extra);
                     startActivity(intent);
                 }
 
