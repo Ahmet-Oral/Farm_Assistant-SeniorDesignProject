@@ -94,6 +94,7 @@ public class Calendar extends AppCompatActivity {
                 database_events_keys.clear();
                 database_events_fields.clear();
                 eventDatesList.clear();
+                System.out.println("snapshot: "+snapshot);
                 for(DataSnapshot ds: snapshot.getChildren()){
                     //Store values for all events in database
                     database_events_tasks.add(ds.child("Task").getValue().toString());

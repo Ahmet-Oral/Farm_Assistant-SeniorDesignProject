@@ -28,7 +28,7 @@ public class NotesNew extends AppCompatActivity {
 
 
     private TextInputLayout field_til;
-    private String key_extra, note_key, where_extra, noteKey_extra;
+    private String key_extra, note_key, where_extra, noteKey_extra, name_extra;
     private EditText note_et, field_et;
     private Button confirm_btn, cancel_btn;
     private FirebaseDatabase database;
@@ -55,6 +55,7 @@ public class NotesNew extends AppCompatActivity {
                 intent = new Intent(NotesNew.this, Notes.class);
                 intent.putExtra("key",key_extra);
                 intent.putExtra("where",where_extra);
+                intent.putExtra("name",name_extra);
             }
             startActivity(intent);
         });
@@ -65,6 +66,7 @@ public class NotesNew extends AppCompatActivity {
         where_extra = getIntent().getStringExtra("where");
         //If user came from NotesGeneral
         noteKey_extra = getIntent().getStringExtra("noteKey_extra");
+        name_extra = getIntent().getStringExtra("name");
 
 
         field_til = findViewById(R.id.notes_new_textInputLayout);
@@ -175,6 +177,8 @@ public class NotesNew extends AppCompatActivity {
                     intent = new Intent(NotesNew.this, Notes.class);
                     intent.putExtra("key",key_extra);
                     intent.putExtra("where",where_extra);
+                    intent.putExtra("name",name_extra);
+
                 }
                 startActivity(intent);
 
@@ -191,6 +195,7 @@ public class NotesNew extends AppCompatActivity {
                 intent = new Intent(NotesNew.this, Notes.class);
                 intent.putExtra("key",key_extra);
                 intent.putExtra("where",where_extra);
+                intent.putExtra("name",name_extra);
             }
             startActivity(intent);
         });

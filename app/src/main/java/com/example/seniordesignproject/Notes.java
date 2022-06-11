@@ -105,6 +105,7 @@ public class Notes extends AppCompatActivity {
             // Pass the key of the field and which activity user came from
             intent.putExtra("key",key_extra);
             intent.putExtra("where",where_extra);
+            intent.putExtra("name",name_extra);
             startActivity(intent);
         });
 

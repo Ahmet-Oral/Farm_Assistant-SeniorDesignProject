@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.layout_dialog, null);
-
         builder.setView(view)
                 .setTitle("Add")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -63,11 +63,4 @@ public class ExampleDialog extends AppCompatDialogFragment {
         void applyTexts(String feature, String value);
     }
 
-    public static EditText getEditTextFeature() {
-        return editTextFeature;
-    }
-
-    public static EditText getEditTextValue() {
-        return editTextValue;
-    }
 }

@@ -2,6 +2,7 @@ package com.example.seniordesignproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // Disable night mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         FirebaseUser user = auth.getCurrentUser();
         System.out.println("1");
         if(user == null){

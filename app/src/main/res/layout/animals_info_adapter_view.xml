@@ -17,7 +17,7 @@
         android:textStyle="bold"
         android:textSize="16dp"
         android:elevation="1dp"
-        android:textColor="#334D1A"
+        android:textColor="#000000"
         android:id="@+id/animals_info_adapter_Name_tv"
         android:layout_weight="66.6"/>
 
@@ -35,7 +35,7 @@
             android:textSize="16dp"
             android:layout_height="30dp"
             android:elevation="1dp"
-            android:textColor="#334D1A"
+            android:textColor="#000000"
             android:id="@+id/animals_info_adapter_TotalNumber_tv"/>
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:elevation="1dp"
-            android:textColor="#334D1A"
+            android:textColor="#000000"
             android:id="@+id/animals_info_adapter_Number_tv"
             android:layout_below="@+id/textView2"/>
 
