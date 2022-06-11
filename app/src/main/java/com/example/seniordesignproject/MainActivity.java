@@ -36,7 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn_agenda, btn_crops, btn_animals, btn_general_information, btn_settings;
+    private Button btn_agenda, btn_crops, btn_animals, btn_settings;
     private TextView welcome_tv, temperature_tv, date_tv;
     private ImageButton btn_weather;
     private SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd.MM.yyyy");
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         btn_agenda = (Button) findViewById(R.id.main_Agenda_btn);
         btn_crops = (Button) findViewById(R.id.main_Crops_btn);
         btn_animals = (Button) findViewById(R.id.main_Animals_btn);
-        btn_general_information = (Button) findViewById(R.id.main_GeneralInfo_btn);
         btn_settings = (Button) findViewById(R.id.main_Settings_btn);
         auth = FirebaseAuth.getInstance();
         welcome_tv = findViewById(R.id.main_Welcome_tv);
@@ -116,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Crops.class)); });
         btn_animals.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Animals.class)); });
-        btn_general_information.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, General_Information.class)); });
         btn_settings.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Settings.class)); });
 

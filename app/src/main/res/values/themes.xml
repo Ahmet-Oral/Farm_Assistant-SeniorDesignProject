@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.SeniorDesignProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name = "android:windowBackground">@drawable/background1</item>
+        <item name = "android:windowBackground">@drawable/background_blured</item>
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>

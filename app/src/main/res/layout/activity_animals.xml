@@ -5,45 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Animals">
 
-    <include
-        android:id="@+id/toolbar_animals"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Animals">
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="16dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/animals_AddAnimals_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/str_animals_AddAnimals"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/toolbar_animals"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/animals_listView"
-        android:layout_width="409dp"
-        android:layout_height="500dp"
-        android:nestedScrollingEnabled="true"
-        android:background="#1AC2D6AD"
-        android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/animals_AddAnimals_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals" />
+        <Button
+            android:id="@+id/animals_AddAnimals_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_animals_AddAnimals"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animals_listView" />
+
+        <ListView
+            android:id="@+id/animals_listView"
+            android:layout_width="409dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="32dp"
+            android:background="#1AC2D6AD"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_animals" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

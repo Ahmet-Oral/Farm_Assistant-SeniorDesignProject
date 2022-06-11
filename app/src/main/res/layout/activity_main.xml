@@ -178,13 +178,13 @@
             android:id="@+id/main_Agenda_ib"
             android:layout_width="150dp"
             android:layout_height="130dp"
-            android:backgroundTint="#cfea93"
-
             android:background="@drawable/agendaicon"
+
+            android:backgroundTint="#cfea93"
+            android:clickable="false"
             app:layout_constraintEnd_toEndOf="@+id/main_Agenda_btn"
             app:layout_constraintStart_toStartOf="@+id/main_Agenda_btn"
-            app:layout_constraintTop_toTopOf="@+id/main_Agenda_btn"
-            />
+            app:layout_constraintTop_toTopOf="@+id/main_Agenda_btn" />
 
         <ImageButton
             android:id="@+id/main_Crops_ib"
@@ -192,6 +192,7 @@
             android:layout_height="130dp"
             android:background="@drawable/cropsicon"
             android:backgroundTint="#cbd838 "
+            android:clickable="false"
             app:layout_constraintEnd_toEndOf="@+id/main_Crops_btn"
             app:layout_constraintStart_toStartOf="@+id/main_Crops_btn"
             app:layout_constraintTop_toTopOf="@+id/main_Crops_btn" />
@@ -201,6 +202,7 @@
             android:layout_width="150dp"
             android:layout_height="130dp"
             android:background="@drawable/settingsicon"
+            android:clickable="false"
             app:layout_constraintEnd_toEndOf="@+id/main_Settings_btn"
             app:layout_constraintStart_toStartOf="@+id/main_Settings_btn"
             app:layout_constraintTop_toTopOf="@+id/main_Settings_btn" />
@@ -211,6 +213,7 @@
             android:layout_height="130dp"
             android:background="@drawable/animalicon"
             android:backgroundTint="#faf0e6"
+            android:clickable="false"
             app:layout_constraintEnd_toEndOf="@+id/main_Animals_btn"
             app:layout_constraintStart_toStartOf="@+id/main_Animals_btn"
             app:layout_constraintTop_toTopOf="@+id/main_Animals_btn" />

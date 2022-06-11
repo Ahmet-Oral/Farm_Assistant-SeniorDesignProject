@@ -6,6 +6,14 @@
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2545" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/abc_ic_ab_back_material.xml" value="0.2545" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner.xml" value="0.177" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_blue.xml" value="0.189" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_cut.xml" value="0.1625" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_cut_blue.xml" value="0.189" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_cut_green.xml" value="0.189" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_cut_yellow.xml" value="0.189" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_green.xml" value="0.189" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/rounded_corner_yellow.xml" value="0.189" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/drawable/transparent.xml" value="0.304" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_agenda.xml" value="0.264" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_animal_to_do.xml" value="0.24895833333333334" />
@@ -33,20 +41,29 @@
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_notes.xml" value="0.264" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_notes_detailed.xml" value="0.2203125" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_notes_general.xml" value="0.24895833333333334" />
-        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_notes_new.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_notes_new.xml" value="0.2" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_register.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_settings.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_settings2.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_weather.xml" value="0.2" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/activity_weather_forecast.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_animal_features.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_animal_field_info.xml" value="0.1609375" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_crop_features.xml" value="0.15" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_crop_field_info.xml" value="0.15" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_features.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_field_info.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_notes.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/adapter_view_todo.xml" value="0.1" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/animal_feature_adapter_view.xml" value="0.2760416666666667" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/animals_info_adapter_view.xml" value="0.264" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/animals_info_listview.xml" value="0.264" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/animals_textview.xml" value="0.24909420289855072" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/animals_todo_adapter_view.xml" value="0.5571428571428572" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/basic.xml" value="0.213768115942029" />
-        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/crop_info.xml" value="0.1" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/crop_info.xml" value="0.2" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/crops_cardview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/dropdown_menu.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/layout_dialog.xml" value="0.2760416666666667" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/list_item.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/ahmet oral/AndroidStudioProjects/SeniorDesignProject/app/src/main/res/layout/notes_adapter_view.xml" value="0.36666666666666664" />

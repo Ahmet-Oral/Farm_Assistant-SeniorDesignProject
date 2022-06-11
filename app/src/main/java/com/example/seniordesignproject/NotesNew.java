@@ -79,7 +79,11 @@ public class NotesNew extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/Notes");
         ref_keys = database.getReference("Users/"+userUid+"/Notes/"+key_extra);
-        ref_fieldList = database.getReference("Users/"+userUid+"/Animals-Crops");
+        // If user came from notes general, change ref to key taken from notes general
+        if (noteKey_extra!=null){
+            ref_keys = database.getReference("Users/"+userUid+"/Notes/"+noteKey_extra);
+
+        }        ref_fieldList = database.getReference("Users/"+userUid+"/Animals-Crops");
 
         noteKeysFromDatabase = new ArrayList<>();
         field_list = new ArrayList<>();

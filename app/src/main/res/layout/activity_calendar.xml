@@ -6,63 +6,60 @@
     android:layout_height="match_parent">
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".Calendar">
-
-
-    <ListView
-        android:id="@+id/calendar_ListView"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:nestedScrollingEnabled="true"
-        android:background="#1AC2D6AD"
-
-        app:layout_constraintBottom_toTopOf="@+id/calendar_New_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
-
-    <include
-        android:id="@+id/toolbar_calendar"
-        layout="@layout/toolbar" />
-
-    <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        android:id="@+id/compactcalendar_view"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="#8C8686"
-        app:compactCalendarCurrentDayBackgroundColor="#94B870"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#94B870"
-        app:compactCalendarCurrentSelectedDayIndicatorStyle="no_fill_large_indicator"
-        app:compactCalendarEventIndicatorStyle="small_indicator"
-        app:compactCalendarMultiEventIndicatorColor="@color/black"
-        app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextColor="#fff"
-        app:compactCalendarTextSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_calendar" />
-
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/calendar_New_btn"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/str_calendar_New"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:context=".Calendar">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ListView
+            android:id="@+id/calendar_ListView"
+            android:layout_width="411dp"
+            android:layout_height="250dp"
+            android:background="#1AC2D6AD"
+            android:nestedScrollingEnabled="true"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
+
+        <include
+            android:id="@+id/toolbar_calendar"
+            layout="@layout/toolbar" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/compactcalendar_view"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="#B352A1CD"
+            app:compactCalendarCurrentDayBackgroundColor="#94B870"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#94B870"
+            app:compactCalendarCurrentSelectedDayIndicatorStyle="no_fill_large_indicator"
+            app:compactCalendarEventIndicatorStyle="small_indicator"
+            app:compactCalendarMultiEventIndicatorColor="@color/black"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="#fff"
+            app:compactCalendarTextSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_calendar" />
+
+        <Button
+            android:id="@+id/calendar_New_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_calendar_New"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendar_ListView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

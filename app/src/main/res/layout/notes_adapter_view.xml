@@ -8,10 +8,11 @@
         android:id="@+id/notes_adapter_view_Note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
         android:text="Note"
         android:textSize="30sp"
         android:textColor="#334D1A"
-        android:background="#7FC2D6AD"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="#D98FA6DD "
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

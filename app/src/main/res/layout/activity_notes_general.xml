@@ -5,58 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NotesGeneral">
-    <include
-        android:id="@+id/toolbar_notes_general"
-        layout="@layout/toolbar" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/notes_general_textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/str_calendar_new_event_SelectField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_notes_general">
+        android:layout_height="match_parent"
+        tools:context=".NotesGeneral">
 
-        <AutoCompleteTextView
-            android:id="@+id/notes_general_auto_complete_txt"
+        <include
+            android:id="@+id/toolbar_notes_general"
+            layout="@layout/toolbar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/notes_general_textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/str_calendar_new_event_SelectField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_notes_general">
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"        android:backgroundTint="#9975A347"
-        android:id="@+id/notes_general_New_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/str_notes_general_NewNote"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+            <AutoCompleteTextView
+                android:id="@+id/notes_general_auto_complete_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ListView
-        android:id="@+id/notes_general_ListView"
-        android:layout_width="409dp"
-        android:layout_height="440dp"
-        android:layout_marginTop="24dp"
-        android:background="#1AC2D6AD"
-        android:nestedScrollingEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/notes_general_New_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notes_general_textInputLayout" />
-</androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>
+        <Button
+            android:id="@+id/notes_general_New_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_notes_general_NewNote"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notes_general_ListView" />
+
+        <ListView
+            android:id="@+id/notes_general_ListView"
+            android:layout_width="409dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/listview_backgroud"
+            android:dividerHeight="-1dp"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notes_general_textInputLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>

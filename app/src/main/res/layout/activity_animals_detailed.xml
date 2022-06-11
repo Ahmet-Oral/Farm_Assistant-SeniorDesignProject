@@ -14,82 +14,76 @@
         android:id="@+id/animals_detailed_ListView"
         android:layout_width="409dp"
         android:layout_height="400dp"
-        android:nestedScrollingEnabled="true"
+        android:layout_marginTop="24dp"
         android:background="#1AC2D6AD"
-        android:layout_marginTop="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/animals_detailed_AddFeature_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:nestedScrollingEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals_detailed"
-        app:layout_constraintVertical_bias="0.284">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_animals_detailed">
 
     </ListView>
 
     <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#99DE3E25"
         android:id="@+id/animals_detailed_AddFeature_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#9975A347"
+        android:stateListAnimator="@null"
         android:text="@string/str_animals_detailed_AddFeature"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toEndOf="@+id/animals_detailed_Delete_btn" />
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/animals_detailed_ToDo_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animals_detailed_Notes_btn"
+        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView" />
 
     <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
         android:id="@+id/animals_detailed_Delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#99DE3E25"
+        android:stateListAnimator="@null"
         android:text="@string/str_animals_detailed_Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_AddFeature_btn" />
 
     <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
         android:id="@+id/animals_detailed_ToDo_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#9975A347"
+        android:stateListAnimator="@null"
         android:text="@string/str_animals_detailed_ToDo"
-        app:layout_constraintBottom_toTopOf="@+id/animals_detailed_AddFeature_btn"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toEndOf="@+id/animals_detailed_Notes_btn"
-        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animals_detailed_AddFeature_btn"
+        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView" />
 
     <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
         android:id="@+id/animals_detailed_Notes_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#9975A347"
+        android:stateListAnimator="@null"
         android:text="@string/str_animals_detailed_Notes"
-        app:layout_constraintBottom_toTopOf="@+id/animals_detailed_Delete_btn"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/animals_detailed_AddFeature_btn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintTop_toBottomOf="@+id/animals_detailed_ListView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

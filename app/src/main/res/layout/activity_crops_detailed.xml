@@ -5,95 +5,86 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CropsDetailed">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CropsDetailed">
 
-    <include
-        android:id="@+id/toolbar_crops_detailed"
-        layout="@layout/toolbar" />
+        <include
+            android:id="@+id/toolbar_crops_detailed"
+            layout="@layout/toolbar" />
 
-    <ListView
-        android:id="@+id/crops_detailed_ListView"
-        android:layout_width="409dp"
-        android:layout_height="400dp"
-        android:nestedScrollingEnabled="true"
-        android:background="#1AC2D6AD"
-        android:layout_marginTop="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/crops_detailed_AddFeature_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_detailed"
-        app:layout_constraintVertical_bias="0.284">
+        <ListView
+            android:id="@+id/crops_detailed_ListView"
+            android:layout_width="409dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="24dp"
+            android:background="#1AC2D6AD"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_crops_detailed">
 
-    </ListView>
+        </ListView>
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/crops_detailed_AddFeature_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/str_animals_detailed_AddFeature"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toEndOf="@+id/crops_detailed_Delete_btn" />
+        <Button
+            android:id="@+id/crops_detailed_AddFeature_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_animals_detailed_AddFeature"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/crops_detailed_ToDo_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/crops_detailed_Notes_btn"
+            app:layout_constraintTop_toBottomOf="@+id/crops_detailed_ListView" />
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#99DE3E25"
-        android:id="@+id/crops_detailed_Delete_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/str_animals_detailed_Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/crops_detailed_Delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#99DE3E25"
+            android:stateListAnimator="@null"
+            android:text="@string/str_animals_detailed_Delete"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crops_detailed_AddFeature_btn" />
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/crops_detailed_ToDo_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_animals_detailed_ToDo"
-        app:layout_constraintBottom_toTopOf="@+id/crops_detailed_AddFeature_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toEndOf="@+id/crops_detailed_Notes_btn"
-        app:layout_constraintTop_toBottomOf="@+id/crops_detailed_ListView"
-        app:layout_constraintVertical_bias="0.372" />
+        <Button
+            android:id="@+id/crops_detailed_ToDo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_animals_detailed_ToDo"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crops_detailed_ListView" />
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/crops_detailed_Notes_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="56dp"
-        android:text="@string/str_animals_detailed_Notes"
-        app:layout_constraintBottom_toTopOf="@+id/crops_detailed_Delete_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crops_detailed_ListView"
-        app:layout_constraintVertical_bias="0.826" />
+        <Button
+            android:id="@+id/crops_detailed_Notes_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_animals_detailed_Notes"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crops_detailed_ListView" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>

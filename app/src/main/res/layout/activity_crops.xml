@@ -5,41 +5,40 @@
     android:layout_height="match_parent"
     android:fillViewport="true"    >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Crops">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Crops">
 
-    <include
-        android:id="@+id/toolbar_crops"
-        layout="@layout/toolbar" />
+        <include
+            android:id="@+id/toolbar_crops"
+            layout="@layout/toolbar" />
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        app:cornerRadius="18dp"
-        android:backgroundTint="#9975A347"
-        android:id="@+id/crops_New_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/str_crops_new"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/crops_New_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#9975A347"
+            android:stateListAnimator="@null"
+            android:text="@string/str_crops_new"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crops_ListView" />
 
-    <ListView
-        android:id="@+id/crops_ListView"
-        android:layout_width="409dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="1dp"
-        android:nestedScrollingEnabled="true"
-        android:background="#1AC2D6AD"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/crops_New_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_crops" />
+        <ListView
+            android:id="@+id/crops_ListView"
+            android:layout_width="409dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="24dp"
+            android:background="#1AC2D6AD"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_crops" />
 
-</androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout></androidx.core.widget.NestedScrollView>
