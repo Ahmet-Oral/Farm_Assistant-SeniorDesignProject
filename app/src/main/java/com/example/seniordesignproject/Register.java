@@ -35,7 +35,6 @@ public class Register extends AppCompatActivity {
         et_name = (EditText) findViewById(R.id.register_name_et);
         et_register_email = (EditText) findViewById(R.id.register_email_et);
         et_register_password = (EditText) findViewById(R.id.register_password_et);
-        auth = FirebaseAuth.getInstance();
 
     }
     @Override
@@ -49,6 +48,7 @@ public class Register extends AppCompatActivity {
 
     }
     private void createUser(){
+        auth = FirebaseAuth.getInstance();
         String name = et_name.getText().toString();
         String email = et_register_email.getText().toString();
         String password = et_register_password.getText().toString();

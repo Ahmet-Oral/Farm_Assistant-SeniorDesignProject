@@ -65,38 +65,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // Disable night mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        FirebaseUser user = auth.getCurrentUser();
-        System.out.println("1");
-        if(user == null){
-            startActivity(new Intent(MainActivity.this, Register.class));
-        }
-
-
-    }
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("2");
+
+        // Disable night mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        // If no user is logged in, go to register class
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+            startActivity(new Intent(MainActivity.this, Register.class));
+            return;
+        }
+
         init();
         // Get weather to display
         FindWeather();
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users/"+userUid+"/User Details");
-
-
-
-
-
 
         // Get users name for the welcome text
         ref.addValueEventListener(new ValueEventListener() {
@@ -120,10 +110,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Animals.class)); });
         btn_settings.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Settings.class)); });
-
-
-
-
     }
 
     public void FindWeather()

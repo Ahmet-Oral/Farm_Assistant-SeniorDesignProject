@@ -81,10 +81,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".General_Information"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".Animals"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -94,10 +90,6 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Agenda"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Weather"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
