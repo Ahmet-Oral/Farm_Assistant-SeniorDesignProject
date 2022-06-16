@@ -110,6 +110,7 @@ public class CalendarNewEvent extends AppCompatActivity {
             datePicker_btn.setText(dateExtra);
             // Assigning dateExtra to date_dd_MM_yyyy_str in case user doesn't changes the date
             date_dd_MM_yyyy_str = dateExtra;
+            date_duplicateCheck_str = dateExtra;
         }else{
             datePicker_btn.setText("Select Date");
         }
@@ -303,6 +304,8 @@ public class CalendarNewEvent extends AppCompatActivity {
             // Also update date_duplicateCheck_str
             date_duplicateCheck_str = date_dd_MM_yyyy_str;
             System.out.println("date_dd_MM_yyyy_str000: "+date_dd_MM_yyyy_str);
+            System.out.println("date_duplicateCheck_str000: "+date_duplicateCheck_str);
+
 
         };
 

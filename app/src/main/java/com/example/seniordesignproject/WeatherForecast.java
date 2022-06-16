@@ -52,8 +52,7 @@ public class WeatherForecast extends AppCompatActivity {
         wind = findViewById(R.id.wind);
         country = findViewById(R.id.weather_country);
         city_nam = findViewById(R.id.weather_city);
-        max_temp = findViewById(R.id.temp_max);
-        min_temp = findViewById(R.id.min_temp);
+
         feels = findViewById(R.id.feels);
     }
 
@@ -141,15 +140,6 @@ public class WeatherForecast extends AppCompatActivity {
                             String wind_find = object9.getString("speed");
                             wind.setText(wind_find+"  km/h");
 
-                            //find min temperature
-                            JSONObject object10 = jsonObject.getJSONObject("main");
-                            double mintemp = object10.getDouble("temp_min");
-                            min_temp.setText("Min Temp\n"+mintemp+" °C");
-
-                            //find max temperature
-                            JSONObject object12 = jsonObject.getJSONObject("main");
-                            double maxtemp = object12.getDouble("temp_max");
-                            max_temp.setText("Max Temp\n"+maxtemp+" °C");
 
                             //find feels
                             JSONObject object13 = jsonObject.getJSONObject("main");
