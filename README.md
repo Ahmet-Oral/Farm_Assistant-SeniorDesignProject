@@ -3,6 +3,7 @@ Senior Design Project
 ###### Instructor:
 Dr. Özgür KILIÇ
 
+
 ## Project Overview
 Farm Assistant is a mobile application for phones with Android OS. It is designed to help users with their planning 
 and organization for agricultural and animal-related work. It can be used by anyone who owns a field or animals. The 
