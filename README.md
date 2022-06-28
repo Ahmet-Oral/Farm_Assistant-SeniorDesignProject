@@ -1,7 +1,7 @@
 # Farm Assistant
 Senior Design Project
 ###### Instructor:
-Dr. Özgür KILIÇ
+Asst. Prof. Özgür KILIÇ
 
 
 ## Project Overview
